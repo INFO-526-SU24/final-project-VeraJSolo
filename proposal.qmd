@@ -35,7 +35,7 @@ The "Great American Coffee Taste Test" dataset is compiled of survey results tha
 
 I chose this data set because I was curious about the demographics and preferences of coffee drinkers. When I realized that the survey participants were those who were already customers of Cometeer, I was further interested - what are the demographics and preferences of these specific customers, and what insights does the dataset show that the company could use for marketing purposes. 
 
-(proposal not complete at this moment) 
+(proposal not complete at this moment, will be completed by Tuesday before peer review due) 
 
 Make sure to load the data and use inline code for some of this information.
 
