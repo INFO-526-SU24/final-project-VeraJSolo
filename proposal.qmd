@@ -31,7 +31,11 @@ library(tidyverse)
 #| message: false
 ```
 
-A brief description of your dataset including its provenance, dimensions, etc. as well as the reason why you chose this dataset.
+The "Great American Coffee Taste Test" dataset is compiled of survey results that were filled out by participants of a taste test, hosted by James Hoffman, a world renowned barista, and coffee company Cometeer. Cometeer had sent 4 different types of coffee without labels to over 4,000 participants. The survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provides coffees, and individual demographics. 
+
+I chose this data set because I was curious about the demographics and preferences of coffee drinkers. When I realized that the survey participants were those who were already customers of Cometeer, I was further interested - what are the demographics and preferences of these specific customers, and what insights does the dataset show that the company could use for marketing purposes. 
+
+(proposal not complete at this moment) 
 
 Make sure to load the data and use inline code for some of this information.
 
