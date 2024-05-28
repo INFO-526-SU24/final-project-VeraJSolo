@@ -48,7 +48,7 @@ The two questions you want to answer.
 
 ## Analysis plan
 
-1. 
+1. Variables: cups, employment_status, number_children, wfh
 2. Variables: strength, roast_level, caffeine, dairy, sweetener
 
 -   A plan for answering each of the questions including the variables involved, variables to be created (if any), external data to be merged in (if any).
