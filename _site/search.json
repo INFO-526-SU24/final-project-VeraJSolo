@@ -11,21 +11,21 @@
     "href": "proposal.html#dataset",
     "title": "Proposal title",
     "section": "Dataset",
-    "text": "Dataset\nA brief description of your dataset including its provenance, dimensions, etc. as well as the reason why you chose this dataset.\nMake sure to load the data and use inline code for some of this information."
+    "text": "Dataset\nThe “Great American Coffee Taste Test” data set is compiled of survey results that were filled out by participants of a taste test, hosted in part by a coffee company Cometeer. Cometeer had sent 4 different types of coffee without labels to over 4,000 participants. The survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provides coffees, and individual demographics.\nI chose this data set because I was curious about the demographics and preferences of coffee drinkers, both of customers of Cometeer and as a representation of the general North American population.\n\n# loading data\n\ncoffee_survey &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-05-14/coffee_survey.csv')\n\nhead(coffee_survey)\n\n# A tibble: 6 × 57\n  submission_id age   cups  where_drink brew  brew_other purchase purchase_other\n  &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt;         \n1 gMR29l        18-2… &lt;NA&gt;  &lt;NA&gt;        &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;     &lt;NA&gt;          \n2 BkPN0e        25-3… &lt;NA&gt;  &lt;NA&gt;        Pod/… &lt;NA&gt;       &lt;NA&gt;     &lt;NA&gt;          \n3 W5G8jj        25-3… &lt;NA&gt;  &lt;NA&gt;        Bean… &lt;NA&gt;       &lt;NA&gt;     &lt;NA&gt;          \n4 4xWgGr        35-4… &lt;NA&gt;  &lt;NA&gt;        Coff… &lt;NA&gt;       &lt;NA&gt;     &lt;NA&gt;          \n5 QD27Q8        25-3… &lt;NA&gt;  &lt;NA&gt;        Pour… &lt;NA&gt;       &lt;NA&gt;     &lt;NA&gt;          \n6 V0LPeM        55-6… &lt;NA&gt;  &lt;NA&gt;        Pod/… &lt;NA&gt;       &lt;NA&gt;     &lt;NA&gt;          \n# ℹ 49 more variables: favorite &lt;chr&gt;, favorite_specify &lt;chr&gt;, additions &lt;chr&gt;,\n#   additions_other &lt;chr&gt;, dairy &lt;chr&gt;, sweetener &lt;chr&gt;, style &lt;chr&gt;,\n#   strength &lt;chr&gt;, roast_level &lt;chr&gt;, caffeine &lt;chr&gt;, expertise &lt;dbl&gt;,\n#   coffee_a_bitterness &lt;dbl&gt;, coffee_a_acidity &lt;dbl&gt;,\n#   coffee_a_personal_preference &lt;dbl&gt;, coffee_a_notes &lt;chr&gt;,\n#   coffee_b_bitterness &lt;dbl&gt;, coffee_b_acidity &lt;dbl&gt;,\n#   coffee_b_personal_preference &lt;dbl&gt;, coffee_b_notes &lt;chr&gt;, …"
   },
   {
     "objectID": "proposal.html#questions",
     "href": "proposal.html#questions",
     "title": "Proposal title",
     "section": "Questions",
-    "text": "Questions\nThe two questions you want to answer."
+    "text": "Questions\nThe two questions I want to answer:\n\nHow do coffee drinking habits correlate with working and lifestyle situations?\nWhat combinations of coffee characteristics are the most popular?"
   },
   {
     "objectID": "proposal.html#analysis-plan",
     "href": "proposal.html#analysis-plan",
     "title": "Proposal title",
     "section": "Analysis plan",
-    "text": "Analysis plan\n\nA plan for answering each of the questions including the variables involved, variables to be created (if any), external data to be merged in (if any)."
+    "text": "Analysis plan\nA plan for answering each of the questions including the variables involved, variables to be created (if any), external data to be merged in (if any).\n\nVariables: cups, employment_status, number_children, wfh\n\nI plan to create a grouped bar plot, of the count of amount of cups drunken per day (“cups”), which will be grouped by position for work status (“employment_status”) and then color will indicate work from home status (“wfh”). I also want to find a way to incorporate number of children (“number_children”), as raising children is a form of labor and should be considered in lifestyle situations.\n\nVariables: strength, roast_level, caffeine\n\nTo make it easier to visualize, I will mutate the “strength”, “roast_level”, and “caffeine” variables from categorical to numeric variables, assigning an appropriate number scale (for example, 1-5 for “Weak” to “Very strong” strength). I then intend to create a contour plot of the three variables, visualizing what combination of the three is the most popular coffee consumed. This could be helpful to know for Cometeer, which coffee could be the most profitable to produce."
   },
   {
     "objectID": "index.html",
@@ -81,7 +81,7 @@
     "href": "presentation.html#tables",
     "title": "Project title",
     "section": "Tables",
-    "text": "Tables\nIf you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\n\n\n\n\nAdelie\nTorgersen\n39.1\n18.7\n181\n3750\nmale\n\n\nAdelie\nTorgersen\n39.5\n17.4\n186\n3800\nfemale\n\n\nAdelie\nTorgersen\n40.3\n18.0\n195\n3250\nfemale\n\n\nAdelie\nTorgersen\nNA\nNA\nNA\nNA\nNA\n\n\nAdelie\nTorgersen\n36.7\n19.3\n193\n3450\nfemale\n\n\nAdelie\nTorgersen\n39.3\n20.6\n190\n3650\nmale"
+    "text": "Tables\nIf you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\n\n\n\n\nAdelie\nTorgersen\n39.1\n18.7\n181\n3750\nmale\n\n\nAdelie\nTorgersen\n39.5\n17.4\n186\n3800\nfemale\n\n\nAdelie\nTorgersen\n40.3\n18.0\n195\n3250\nfemale\n\n\nAdelie\nTorgersen\nNA\nNA\nNA\nNA\nNA\n\n\nAdelie\nTorgersen\n36.7\n19.3\n193\n3450\nfemale\n\n\nAdelie\nTorgersen\n39.3\n20.6\n190\n3650\nmale"
   },
   {
     "objectID": "presentation.html#images",
@@ -109,6 +109,20 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "This project was developed by [Team Name] For INFO 526 - Data Analysis and Visualization at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.\n\nTeam member 1: One sentence description of Team member 1 (e.g., year, major, etc.).\nTeam member 2: One sentence description of Team member 2 (e.g., year, major, etc.).\nTeam member 3: One sentence description of Team member 3 (e.g., year, major, etc.).\nTeam member 4: One sentence description of Team member 4 (e.g., year, major, etc.)."
+    "text": "This project was developed by Vera Soloview Jackson For INFO 526 - Data Analysis and Visualization at the University of Arizona, taught by Dr. Greg Chism. Vera is in her first year of the Master’s of Science in Data Science program at the University of Arizona."
+  },
+  {
+    "objectID": "presentation.html",
+    "href": "presentation.html",
+    "title": "Project title",
+    "section": "",
+    "text": "The presentation is created using the Quarto CLI\n## sets the start of a new slide\n\n\n\n\nYou can use plain text\n\n\n\nor bullet points1\n\n\nor in two columns\n\n\n\nlike\nthis\n\n\n\n\n\n\n# A tibble: 2 × 5\n  term        estimate std.error statistic       p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;\n1 (Intercept)   25.3      3.08        8.22 0.00000000358\n2 speed         -0.116    0.0642     -1.81 0.0806       \n\n\n# A tibble: 1 × 12\n  r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC\n      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1    0.0983        0.0682  5.82      3.27  0.0806     1  -101.  207.  212.\n# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSome text\ngoes here"
+  },
+  {
+    "objectID": "presentation.html#footnotes",
+    "href": "presentation.html#footnotes",
+    "title": "Project title",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nAnd add footnotes↩︎"
   }
 ]

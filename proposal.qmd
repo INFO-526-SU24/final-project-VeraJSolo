@@ -34,7 +34,7 @@ library(tidyverse)
 
 The "Great American Coffee Taste Test" data set is compiled of survey results that were filled out by participants of a taste test, hosted in part by a coffee company Cometeer. Cometeer had sent 4 different types of coffee without labels to over 4,000 participants. The survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provides coffees, and individual demographics.
 
-I chose this data set because I was curious about the demographics and preferences of coffee drinkers, both of customers of Cometeer and the general North American population.
+I chose this data set because I was curious about the demographics and preferences of coffee drinkers, both of customers of Cometeer and as a representation of the general North American population.
 
 ```{r}
 # loading data
