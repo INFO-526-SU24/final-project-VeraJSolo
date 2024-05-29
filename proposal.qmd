@@ -16,6 +16,7 @@ editor: visual
 code-annotations: hover
 execute:
   warning: false
+echo: true
 ---
 
 ```{r}
@@ -31,24 +32,30 @@ library(tidyverse)
 #| message: false
 ```
 
-The "Great American Coffee Taste Test" dataset is compiled of survey results that were filled out by participants of a taste test, hosted by James Hoffman, a world renowned barista, and coffee company Cometeer. Cometeer had sent 4 different types of coffee without labels to over 4,000 participants. The survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provides coffees, and individual demographics. 
+The "Great American Coffee Taste Test" data set is compiled of survey results that were filled out by participants of a taste test, hosted in part by a coffee company Cometeer. Cometeer had sent 4 different types of coffee without labels to over 4,000 participants. The survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provides coffees, and individual demographics.
 
-I chose this data set because I was curious about the demographics and preferences of coffee drinkers. When I realized that the survey participants were those who were already customers of Cometeer, I was further interested - what are the demographics and preferences of these specific customers, and what insights does the dataset show that the company could use for marketing purposes. 
+I chose this data set because I was curious about the demographics and preferences of coffee drinkers, both of customers of Cometeer and the general North American population.
 
-(proposal not complete at this moment, will be completed by Tuesday before peer review due) 
+```{r}
+# loading data
 
-Make sure to load the data and use inline code for some of this information.
+coffee_survey <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-05-14/coffee_survey.csv')
+
+head(coffee_survey)
+```
 
 ## Questions
 
-The two questions you want to answer.
+The two questions I want to answer:
 
-1. How do coffee drinking habits correlate with working conditions?
-2. What are the most popular coffee combinations?
+1.  How do coffee drinking habits correlate with working and lifestyle situations?
+2.  What combinations of coffee characteristics are the most popular?
 
 ## Analysis plan
 
-1. Variables: cups, employment_status, number_children, wfh
-2. Variables: strength, roast_level, caffeine, dairy, sweetener
+A plan for answering each of the questions including the variables involved, variables to be created (if any), external data to be merged in (if any).
 
--   A plan for answering each of the questions including the variables involved, variables to be created (if any), external data to be merged in (if any).
+1.  Variables: cups, employment_status, number_children, wfh
+    1.  I plan to create a grouped bar plot, of the count of amount of cups drunken per day ("cups"), which will be grouped by position for work status ("employment_status") and then color will indicate work from home status ("wfh"). I also want to find a way to incorporate number of children ("number_children"), as raising children is a form of labor and should be considered in lifestyle situations.
+2.  Variables: strength, roast_level, caffeine
+    1.  To make it easier to visualize, I will mutate the "strength", "roast_level", and "caffeine" variables from categorical to numeric variables, assigning an appropriate number scale (for example, 1-5 for "Weak" to "Very strong" strength). I then intend to create a contour plot of the three variables, visualizing what combination of the three is the most popular coffee consumed. This could be helpful to know for Cometeer, which coffee could be the most profitable to produce.
