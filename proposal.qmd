@@ -42,6 +42,7 @@ I chose this data set because I was curious about the demographics and preferenc
 coffee_survey <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-05-14/coffee_survey.csv')
 
 head(coffee_survey)
+?coffee_survey
 ```
 
 ## Questions
@@ -59,9 +60,10 @@ A plan for answering each of the questions including the variables involved, var
 
 1.  Variables: cups, employment_status, number_children, wfh
     1.  I plan to create a grouped bar plot, of the count of amount of cups drunken per day ("cups"), which will be grouped by position for work status ("employment_status") and then color will indicate work from home status ("wfh"). I also want to find a way to incorporate number of children ("number_children"), as raising children is a form of labor and should be considered in lifestyle situations.
-        1.  Number of children may not accurately reflect how many are dependents. To address this, I will incorporate "age" to perhaps further explain any trends (a 30 year old with children is more likely to have them in their home versus a 60 year old with children, although this may be an inappropriate generalization to make and I will play around with the data.)
+        1.  Number of children may not accurately reflect how many are dependents. To address this, I will incorporate "age" to perhaps further explain any trends (a 30 year old with children is more likely to have them in their home versus a 60 year old with children, although this may be an inappropriate generalization to make and I will play around with the data.) (addressing issue #1)
 2.  Variables: strength, roast_level, caffeine
     1.  To make it easier to visualize, I will mutate the "strength", "roast_level", and "caffeine" variables from categorical to numeric variables, assigning an appropriate number scale (for example, 1-5 for "Weak" to "Very strong" strength). I then intend to create a contour plot of the three variables, visualizing what combination of the three is the most popular coffee consumed. This could be helpful to know for Cometeer, which coffee could be the most profitable to produce.
+        1.  To further explore popularity, I could incorporate popularity with value of home-made and cafe-bought coffee (addressing issue #2).
 
 ## Weekly Plan of Attack
 
