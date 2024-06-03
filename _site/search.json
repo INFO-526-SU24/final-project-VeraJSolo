@@ -18,7 +18,7 @@
     "href": "proposal.html#questions",
     "title": "Proposal title",
     "section": "Questions",
-    "text": "Questions\nThe two questions I want to answer:\n\nHow do coffee drinking habits correlate with working and lifestyle situations?\nWhat combinations of coffee characteristics are the most popular?"
+    "text": "Questions\nThe two questions* I want to answer:\n\nHow do coffee drinking habits correlate with working and lifestyle situations?\nWhat combinations of coffee characteristics are the most popular?\n\n*Because this is a solo project, I only need to answer 1 question. For now, I will be attempting to answer both of these, focusing on Question 1."
   },
   {
     "objectID": "proposal.html#analysis-plan",
@@ -40,6 +40,13 @@
     "title": "Project Title",
     "section": "",
     "text": "Add project abstract here."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "This project was developed by Vera Soloview Jackson For INFO 526 - Data Analysis and Visualization at the University of Arizona, taught by Dr. Greg Chism. Vera is in her first year of the Master’s of Science in Data Science program at the University of Arizona."
   },
   {
     "objectID": "presentation.html#quarto",
@@ -105,24 +112,10 @@
     "text": "Feeling adventurous?\n\nYou are welcomed to use the default styling of the slides. In fact, that’s what I expect majority of you will do. You will differentiate yourself with the content of your presentation.\nBut some of you might want to play around with slide styling. Some solutions for this can be found at https://quarto.org/docs/presentations/revealjs."
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "This project was developed by Vera Soloview Jackson For INFO 526 - Data Analysis and Visualization at the University of Arizona, taught by Dr. Greg Chism. Vera is in her first year of the Master’s of Science in Data Science program at the University of Arizona."
-  },
-  {
-    "objectID": "presentation.html",
-    "href": "presentation.html",
-    "title": "Project title",
-    "section": "",
-    "text": "The presentation is created using the Quarto CLI\n## sets the start of a new slide\n\n\n\n\nYou can use plain text\n\n\n\nor bullet points1\n\n\nor in two columns\n\n\n\nlike\nthis\n\n\n\n\n\n\n# A tibble: 2 × 5\n  term        estimate std.error statistic       p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;\n1 (Intercept)   25.3      3.08        8.22 0.00000000358\n2 speed         -0.116    0.0642     -1.81 0.0806       \n\n\n# A tibble: 1 × 12\n  r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC\n      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1    0.0983        0.0682  5.82      3.27  0.0806     1  -101.  207.  212.\n# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSome text\ngoes here"
-  },
-  {
-    "objectID": "presentation.html#footnotes",
-    "href": "presentation.html#footnotes",
-    "title": "Project title",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nAnd add footnotes↩︎"
+    "objectID": "proposal.html#weekly-plan-of-attack",
+    "href": "proposal.html#weekly-plan-of-attack",
+    "title": "Proposal title",
+    "section": "Weekly Plan of Attack",
+    "text": "Weekly Plan of Attack\n\nDemonstration of pipe table syntax\n\n\n\n\n\n\n\n\n\nTask Name\nStatus\nDue\nPriority\nSummary\n\n\n\n\nPeer Proposal\nComplete\nMay 29\nHigh\nProvided peer reviews\n\n\nFinal Proposal\nIn Progress\nJune 3\nHigh\n\n\n\nData wrangling\nIn progress\nJune 7\nHigh\nFocusing on Question 1\n\n\nAttempt plot for Question 1\n\nJune 7\nHigh\n\n\n\nAttempt plot for Question 2\n\nJune 7\nMedium\n\n\n\nFinalize plots\n\nJune 14\nHigh\n\n\n\nBegin presentation\n\nJune 14\nMedium\n\n\n\nFinalize presentation slides and video\n\nJune 20\nHigh\nBy this date, I want to have completed everything, leaving the weekend for any final tweaks\n\n\nFinal Presentation Due\n\nJune 24\nHigh"
   }
 ]
