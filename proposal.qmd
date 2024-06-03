@@ -22,7 +22,11 @@ echo: true
 ```{r}
 #| label: load-pkgs
 #| message: false
-library(tidyverse)
+
+if(!require("pacman"))
+  install.packages("pacman")
+
+pacman::p_load(tidyverse, glue, scales, here, ggthemes, janitor, ggplot2, readr)
 ```
 
 ## Dataset
@@ -30,20 +34,20 @@ library(tidyverse)
 ```{r}
 #| label: load-dataset
 #| message: false
-```
 
-The "Great American Coffee Taste Test" data set is compiled of survey results that were filled out by participants of a taste test, hosted in part by a coffee company Cometeer. Cometeer had sent 4 different types of coffee without labels to over 4,000 participants. The survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provides coffees, and individual demographics.
-
-I chose this data set because I was curious about the demographics and preferences of coffee drinkers, both of customers of Cometeer and as a representation of the general North American population.
-
-```{r}
 # loading data
 
 coffee_survey <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-05-14/coffee_survey.csv')
 
-head(coffee_survey)
-?coffee_survey
+coffee_survey
+
 ```
+
+The "Great American Coffee Taste Test" data set is compiled of survey results that were filled out by participants of a taste test, hosted in part by a coffee company Cometeer. Cometeer had sent 4 different types of coffee without labels to over 4,000 participants. The survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provides coffees, and individual demographics.
+
+I chose this data set because I was curious about the demographics and preferences of coffee drinkers, both of customers of Cometeer and as a representation of the general North American population. My first question will look at coffee drinking habits (how many cups of coffee are drunken a day) and how they correlate with working and lifestyle situations (whether they work or not, if they work from home or not, and how many children they have). It could be interesting to further analyze that data with why they drink coffee (for the caffeine, or is it for the flavor?) or if that coffee is caffeinated or not, but I want to be careful of not introducing too many variables. Overall, my goal for the first question is to highlight a trend that could be reflective of the general American population. As for my second question, I am taking a more "marketing" approach, as I will try to determine which type of coffee (in regards to strength, roast, and caffeine-level) is most popular among Cometeer customers, as this information could assist them with product development.
+
+
 
 ## Questions
 
@@ -52,7 +56,7 @@ The two questions\* I want to answer:
 1.  How do coffee drinking habits correlate with working and lifestyle situations?
 2.  What combinations of coffee characteristics are the most popular?
 
-\*Because this is a solo project, I only need to answer 1 question. For now, I will be attempting to answer both of these, focusing on Question 1.
+\* Because this is a solo project, I only need to answer 1 question. For now, I will be attempting to answer both of these, focusing on Question 1.
 
 ## Analysis plan
 
@@ -68,7 +72,7 @@ A plan for answering each of the questions including the variables involved, var
 ## Weekly Plan of Attack
 
 | Task Name                              | Status      | Due     | Priority | Summary                                                                                     |
-|-----------|-----------|-----------|-----------|-------------------------------|
+|-------------|-------------|-------------|-------------|-----------------------|
 | Peer Proposal                          | Complete    | May 29  | High     | Provided peer reviews                                                                       |
 | Final Proposal                         | In Progress | June 3  | High     |                                                                                             |
 | Data wrangling                         | In progress | June 7  | High     | Focusing on Question 1                                                                      |
@@ -78,5 +82,3 @@ A plan for answering each of the questions including the variables involved, var
 | Begin presentation                     |             | June 14 | Medium   |                                                                                             |
 | Finalize presentation slides and video |             | June 20 | High     | By this date, I want to have completed everything, leaving the weekend for any final tweaks |
 | Final Presentation Due                 |             | June 24 | High     |                                                                                             |
-
-: Demonstration of pipe table syntax
