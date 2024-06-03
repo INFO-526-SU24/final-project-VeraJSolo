@@ -4840,7 +4840,7 @@ vertical-align: -.125em;
 </div>
 </div>
 <p>The “Great American Coffee Taste Test” data set is compiled of survey results that were filled out by participants of a taste test, hosted in part by a coffee company Cometeer. Cometeer had sent 4 different types of coffee without labels to over 4,000 participants. The survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provides coffees, and individual demographics.</p>
-<p>I chose this data set because I was curious about the demographics and preferences of coffee drinkers, both of customers of Cometeer and as a representation of the general North American population. My first question will look at coffee drinking habits (how many cups of coffee are drunken a day) and how they correlate with working and lifestyle situations (whether they work or not, if they work from home or not, and how many children they have). It could be interesting to further analyze that data with why they drink coffee (for the caffeine, or is it for the flavor?) or if that coffee is caffeinated or not, but I want to be careful of not introducing too many variables. Overall, my goal for the first question is to highlight a trend that could be reflective of the general American population. As for my second question, I am taking a more “marketing” approach, as I will try to determine which type of coffee (in regards to strength, roast, and caffeine-level) is most popular among Cometeer customers, as this information could assist them with product development.</p>
+<p>I chose this data set because I was curious about the demographics and preferences of coffee drinkers, both of customers of Cometeer and as a representation of the general North American population. My first question will look at coffee drinking habits (how many cups of coffee are drunken a day) and how they correlate with working and lifestyle situations (whether they work or not, if they work from home or not, and how many children they have). It could be interesting to further analyze that data with why they drink coffee (for the caffeine, or is it for the flavor?) or if that coffee is caffeinated or not, but I want to be careful of not introducing too many variables. Overall, my goal for the first question is to highlight a trend between coffee drinking and lifestyle that could be reflective of the general American population. As for my second question, I am taking a more “marketing” approach, as I will try to determine which type of coffee (in regards to strength, roast, and caffeine-level) is most popular among Cometeer customers, as this information could assist them with product development.</p>
 </section>
 <section id="questions" class="level2">
 <h2 class="anchored" data-anchor-id="questions">Questions</h2>
@@ -4849,25 +4849,21 @@ vertical-align: -.125em;
 <li>How do coffee drinking habits correlate with working and lifestyle situations?</li>
 <li>What combinations of coffee characteristics are the most popular?</li>
 </ol>
-<p>* Because this is a solo project, I only need to answer 1 question. For now, I will be attempting to answer both of these, focusing on Question 1.</p>
+<p>* Because this is a solo project, I only need to answer 1 question. For now, I will be attempting to answer both of these, but prioritizing Question 1, with Question 2 acting as a back up option (I initially thought we needed two questions).</p>
 </section>
 <section id="analysis-plan" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-plan">Analysis plan</h2>
 <p>A plan for answering each of the questions including the variables involved, variables to be created (if any), external data to be merged in (if any).</p>
 <ol type="1">
-<li>Variables: cups, employment_status, number_children, wfh
+<li>Variables: cups, employment_status, number_children, wfh, age
 <ol type="1">
-<li>I plan to create a grouped bar plot, of the count of amount of cups drunken per day (“cups”), which will be grouped by position for work status (“employment_status”) and then color will indicate work from home status (“wfh”). I also want to find a way to incorporate number of children (“number_children”), as raising children is a form of labor and should be considered in lifestyle situations.
-<ol type="1">
-<li>Number of children may not accurately reflect how many are dependents. To address this, I will incorporate “age” to perhaps further explain any trends (a 30 year old with children is more likely to have them in their home versus a 60 year old with children, although this may be an inappropriate generalization to make and I will play around with the data.) (addressing issue #1)</li>
+<li>I plan to create a grouped bar plot, of the count of amount of cups drunken per day (“cups”), which will be grouped by position for work status (“employment_status”) and then color will indicate work from home status (“wfh”). I will also incorporate number of children (“number_children”) into this grouped bar plot, perhaps by faceting.</li>
+<li>As mentioned, I want to find a way to incorporate number of children (“number_children”), as raising children is a form of labor and should be considered in lifestyle situations, but the number of children may not accurately reflect how many are dependents. To address this, I will create a scatter plot, with number of children against number of cups per day, coloring by age. Incorporating “age” may further explain any trends (a 30 year old with children is more likely to have them in their home versus a 60 year old with children, although this may be an inappropriate generalization to make and I will play around with the data.) (addressing issue #1)</li>
 </ol></li>
-</ol></li>
-<li>Variables: strength, roast_level, caffeine
+<li>Variables: strength, roast_level, caffeine, value_equipment, value_cafe
 <ol type="1">
-<li>To make it easier to visualize, I will mutate the “strength”, “roast_level”, and “caffeine” variables from categorical to numeric variables, assigning an appropriate number scale (for example, 1-5 for “Weak” to “Very strong” strength). I then intend to create a contour plot of the three variables, visualizing what combination of the three is the most popular coffee consumed. This could be helpful to know for Cometeer, which coffee could be the most profitable to produce.
-<ol type="1">
-<li>To further explore popularity, I could incorporate popularity with value of home-made and cafe-bought coffee (addressing issue #2).</li>
-</ol></li>
+<li>To make it easier to visualize, I will mutate the “strength”, “roast_level”, and “caffeine” variables from categorical to numeric variables, assigning an appropriate number scale (for example, 1-5 for “Weak” to “Very strong” strength). I then intend to create a contour plot of the three variables, visualizing what combination of the three is the most popular coffee consumed. This could be helpful to know for Cometeer, which coffee could be the most profitable to produce.</li>
+<li>To further explore popularity, I will explore the 3 most popular coffee combinations and compare against the value of home-made (“value_equipment”) and cafe-bought coffee (“value_cafe”) in a bar plot, faceting by the different coffee types (addressing issue #2).</li>
 </ol></li>
 </ol>
 </section>
@@ -4875,11 +4871,11 @@ vertical-align: -.125em;
 <h2 class="anchored" data-anchor-id="weekly-plan-of-attack">Weekly Plan of Attack</h2>
 <table class="table">
 <colgroup>
-<col style="width: 17%">
-<col style="width: 17%">
-<col style="width: 17%">
-<col style="width: 17%">
-<col style="width: 30%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 24%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -4923,7 +4919,7 @@ vertical-align: -.125em;
 <td>Attempt plot for Question 2</td>
 <td></td>
 <td>June 7</td>
-<td>Medium</td>
+<td>Low</td>
 <td></td>
 </tr>
 <tr class="even">
@@ -5653,43 +5649,41 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-49"><a href="#cb4-49"></a></span>
 <span id="cb4-50"><a href="#cb4-50"></a>The &quot;Great American Coffee Taste Test&quot; data set is compiled of survey results that were filled out by participants of a taste test, hosted in part by a coffee company Cometeer. Cometeer had sent 4 different types of coffee without labels to over 4,000 participants. The survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provides coffees, and individual demographics.</span>
 <span id="cb4-51"><a href="#cb4-51"></a></span>
-<span id="cb4-52"><a href="#cb4-52"></a>I chose this data set because I was curious about the demographics and preferences of coffee drinkers, both of customers of Cometeer and as a representation of the general North American population. My first question will look at coffee drinking habits (how many cups of coffee are drunken a day) and how they correlate with working and lifestyle situations (whether they work or not, if they work from home or not, and how many children they have). It could be interesting to further analyze that data with why they drink coffee (for the caffeine, or is it for the flavor?) or if that coffee is caffeinated or not, but I want to be careful of not introducing too many variables. Overall, my goal for the first question is to highlight a trend that could be reflective of the general American population. As for my second question, I am taking a more &quot;marketing&quot; approach, as I will try to determine which type of coffee (in regards to strength, roast, and caffeine-level) is most popular among Cometeer customers, as this information could assist them with product development.</span>
+<span id="cb4-52"><a href="#cb4-52"></a>I chose this data set because I was curious about the demographics and preferences of coffee drinkers, both of customers of Cometeer and as a representation of the general North American population. My first question will look at coffee drinking habits (how many cups of coffee are drunken a day) and how they correlate with working and lifestyle situations (whether they work or not, if they work from home or not, and how many children they have). It could be interesting to further analyze that data with why they drink coffee (for the caffeine, or is it for the flavor?) or if that coffee is caffeinated or not, but I want to be careful of not introducing too many variables. Overall, my goal for the first question is to highlight a trend between coffee drinking and lifestyle that could be reflective of the general American population. As for my second question, I am taking a more &quot;marketing&quot; approach, as I will try to determine which type of coffee (in regards to strength, roast, and caffeine-level) is most popular among Cometeer customers, as this information could assist them with product development.</span>
 <span id="cb4-53"><a href="#cb4-53"></a></span>
-<span id="cb4-54"><a href="#cb4-54"></a></span>
+<span id="cb4-54"><a href="#cb4-54"></a><span class="fu">## Questions</span></span>
 <span id="cb4-55"><a href="#cb4-55"></a></span>
-<span id="cb4-56"><a href="#cb4-56"></a><span class="fu">## Questions</span></span>
+<span id="cb4-56"><a href="#cb4-56"></a>The two questions<span class="sc">\*</span> I want to answer:</span>
 <span id="cb4-57"><a href="#cb4-57"></a></span>
-<span id="cb4-58"><a href="#cb4-58"></a>The two questions<span class="sc">\*</span> I want to answer:</span>
-<span id="cb4-59"><a href="#cb4-59"></a></span>
-<span id="cb4-60"><a href="#cb4-60"></a><span class="ss">1.  </span>How do coffee drinking habits correlate with working and lifestyle situations?</span>
-<span id="cb4-61"><a href="#cb4-61"></a><span class="ss">2.  </span>What combinations of coffee characteristics are the most popular?</span>
+<span id="cb4-58"><a href="#cb4-58"></a><span class="ss">1.  </span>How do coffee drinking habits correlate with working and lifestyle situations?</span>
+<span id="cb4-59"><a href="#cb4-59"></a><span class="ss">2.  </span>What combinations of coffee characteristics are the most popular?</span>
+<span id="cb4-60"><a href="#cb4-60"></a></span>
+<span id="cb4-61"><a href="#cb4-61"></a><span class="sc">\*</span> Because this is a solo project, I only need to answer 1 question. For now, I will be attempting to answer both of these, but prioritizing Question 1, with Question 2 acting as a back up option (I initially thought we needed two questions).</span>
 <span id="cb4-62"><a href="#cb4-62"></a></span>
-<span id="cb4-63"><a href="#cb4-63"></a><span class="sc">\*</span> Because this is a solo project, I only need to answer 1 question. For now, I will be attempting to answer both of these, focusing on Question 1.</span>
+<span id="cb4-63"><a href="#cb4-63"></a><span class="fu">## Analysis plan</span></span>
 <span id="cb4-64"><a href="#cb4-64"></a></span>
-<span id="cb4-65"><a href="#cb4-65"></a><span class="fu">## Analysis plan</span></span>
+<span id="cb4-65"><a href="#cb4-65"></a>A plan for answering each of the questions including the variables involved, variables to be created (if any), external data to be merged in (if any).</span>
 <span id="cb4-66"><a href="#cb4-66"></a></span>
-<span id="cb4-67"><a href="#cb4-67"></a>A plan for answering each of the questions including the variables involved, variables to be created (if any), external data to be merged in (if any).</span>
-<span id="cb4-68"><a href="#cb4-68"></a></span>
-<span id="cb4-69"><a href="#cb4-69"></a><span class="ss">1.  </span>Variables: cups, employment_status, number_children, wfh</span>
-<span id="cb4-70"><a href="#cb4-70"></a><span class="ss">    1.  </span>I plan to create a grouped bar plot, of the count of amount of cups drunken per day (&quot;cups&quot;), which will be grouped by position for work status (&quot;employment_status&quot;) and then color will indicate work from home status (&quot;wfh&quot;). I also want to find a way to incorporate number of children (&quot;number_children&quot;), as raising children is a form of labor and should be considered in lifestyle situations.</span>
-<span id="cb4-71"><a href="#cb4-71"></a><span class="ss">        1.  </span>Number of children may not accurately reflect how many are dependents. To address this, I will incorporate &quot;age&quot; to perhaps further explain any trends (a 30 year old with children is more likely to have them in their home versus a 60 year old with children, although this may be an inappropriate generalization to make and I will play around with the data.) (addressing issue #1)</span>
-<span id="cb4-72"><a href="#cb4-72"></a><span class="ss">2.  </span>Variables: strength, roast_level, caffeine</span>
-<span id="cb4-73"><a href="#cb4-73"></a><span class="ss">    1.  </span>To make it easier to visualize, I will mutate the &quot;strength&quot;, &quot;roast_level&quot;, and &quot;caffeine&quot; variables from categorical to numeric variables, assigning an appropriate number scale (for example, 1-5 for &quot;Weak&quot; to &quot;Very strong&quot; strength). I then intend to create a contour plot of the three variables, visualizing what combination of the three is the most popular coffee consumed. This could be helpful to know for Cometeer, which coffee could be the most profitable to produce.</span>
-<span id="cb4-74"><a href="#cb4-74"></a><span class="ss">        1.  </span>To further explore popularity, I could incorporate popularity with value of home-made and cafe-bought coffee (addressing issue #2).</span>
+<span id="cb4-67"><a href="#cb4-67"></a><span class="ss">1.  </span>Variables: cups, employment_status, number_children, wfh, age</span>
+<span id="cb4-68"><a href="#cb4-68"></a><span class="ss">    1.  </span>I plan to create a grouped bar plot, of the count of amount of cups drunken per day (&quot;cups&quot;), which will be grouped by position for work status (&quot;employment_status&quot;) and then color will indicate work from home status (&quot;wfh&quot;). I will also incorporate number of children (&quot;number_children&quot;) into this grouped bar plot, perhaps by faceting.</span>
+<span id="cb4-69"><a href="#cb4-69"></a><span class="ss">    2.  </span>As mentioned, I want to find a way to incorporate number of children (&quot;number_children&quot;), as raising children is a form of labor and should be considered in lifestyle situations, but the number of children may not accurately reflect how many are dependents. To address this, I will create a scatter plot, with number of children against number of cups per day, coloring by age. Incorporating &quot;age&quot; may further explain any trends (a 30 year old with children is more likely to have them in their home versus a 60 year old with children, although this may be an inappropriate generalization to make and I will play around with the data.) (addressing issue #1)</span>
+<span id="cb4-70"><a href="#cb4-70"></a><span class="ss">2.  </span>Variables: strength, roast_level, caffeine, value_equipment, value_cafe</span>
+<span id="cb4-71"><a href="#cb4-71"></a><span class="ss">    1.  </span>To make it easier to visualize, I will mutate the &quot;strength&quot;, &quot;roast_level&quot;, and &quot;caffeine&quot; variables from categorical to numeric variables, assigning an appropriate number scale (for example, 1-5 for &quot;Weak&quot; to &quot;Very strong&quot; strength). I then intend to create a contour plot of the three variables, visualizing what combination of the three is the most popular coffee consumed. This could be helpful to know for Cometeer, which coffee could be the most profitable to produce.</span>
+<span id="cb4-72"><a href="#cb4-72"></a><span class="ss">    2.  </span>To further explore popularity, I will explore the 3 most popular coffee combinations and compare against the value of home-made (&quot;value_equipment&quot;) and cafe-bought coffee (&quot;value_cafe&quot;) in a bar plot, faceting by the different coffee types (addressing issue #2).</span>
+<span id="cb4-73"><a href="#cb4-73"></a></span>
+<span id="cb4-74"><a href="#cb4-74"></a><span class="fu">## Weekly Plan of Attack</span></span>
 <span id="cb4-75"><a href="#cb4-75"></a></span>
-<span id="cb4-76"><a href="#cb4-76"></a><span class="fu">## Weekly Plan of Attack</span></span>
-<span id="cb4-77"><a href="#cb4-77"></a></span>
-<span id="cb4-78"><a href="#cb4-78"></a>| Task Name                              | Status      | Due     | Priority | Summary                                                                                     |</span>
-<span id="cb4-79"><a href="#cb4-79"></a>|-------------|-------------|-------------|-------------|-----------------------|</span>
-<span id="cb4-80"><a href="#cb4-80"></a>| Peer Proposal                          | Complete    | May 29  | High     | Provided peer reviews                                                                       |</span>
-<span id="cb4-81"><a href="#cb4-81"></a>| Final Proposal                         | In Progress | June 3  | High     |                                                                                             |</span>
-<span id="cb4-82"><a href="#cb4-82"></a>| Data wrangling                         | In progress | June 7  | High     | Focusing on Question 1                                                                      |</span>
-<span id="cb4-83"><a href="#cb4-83"></a>| Attempt plot for Question 1            |             | June 7  | High     |                                                                                             |</span>
-<span id="cb4-84"><a href="#cb4-84"></a>| Attempt plot for Question 2            |             | June 7  | Medium   |                                                                                             |</span>
-<span id="cb4-85"><a href="#cb4-85"></a>| Finalize plots                         |             | June 14 | High     |                                                                                             |</span>
-<span id="cb4-86"><a href="#cb4-86"></a>| Begin presentation                     |             | June 14 | Medium   |                                                                                             |</span>
-<span id="cb4-87"><a href="#cb4-87"></a>| Finalize presentation slides and video |             | June 20 | High     | By this date, I want to have completed everything, leaving the weekend for any final tweaks |</span>
-<span id="cb4-88"><a href="#cb4-88"></a>| Final Presentation Due                 |             | June 24 | High     |                                                                                             |</span>
+<span id="cb4-76"><a href="#cb4-76"></a>| Task Name                              | Status      | Due     | Priority | Summary                                                                                     |</span>
+<span id="cb4-77"><a href="#cb4-77"></a>|--------------|--------------|--------------|--------------|------------------|</span>
+<span id="cb4-78"><a href="#cb4-78"></a>| Peer Proposal                          | Complete    | May 29  | High     | Provided peer reviews                                                                       |</span>
+<span id="cb4-79"><a href="#cb4-79"></a>| Final Proposal                         | In Progress | June 3  | High     |                                                                                             |</span>
+<span id="cb4-80"><a href="#cb4-80"></a>| Data wrangling                         | In progress | June 7  | High     | Focusing on Question 1                                                                      |</span>
+<span id="cb4-81"><a href="#cb4-81"></a>| Attempt plot for Question 1            |             | June 7  | High     |                                                                                             |</span>
+<span id="cb4-82"><a href="#cb4-82"></a>| Attempt plot for Question 2            |             | June 7  | Low      |                                                                                             |</span>
+<span id="cb4-83"><a href="#cb4-83"></a>| Finalize plots                         |             | June 14 | High     |                                                                                             |</span>
+<span id="cb4-84"><a href="#cb4-84"></a>| Begin presentation                     |             | June 14 | Medium   |                                                                                             |</span>
+<span id="cb4-85"><a href="#cb4-85"></a>| Finalize presentation slides and video |             | June 20 | High     | By this date, I want to have completed everything, leaving the weekend for any final tweaks |</span>
+<span id="cb4-86"><a href="#cb4-86"></a>| Final Presentation Due                 |             | June 24 | High     |                                                                                             |</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

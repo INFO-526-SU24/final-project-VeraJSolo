@@ -45,9 +45,7 @@ coffee_survey
 
 The "Great American Coffee Taste Test" data set is compiled of survey results that were filled out by participants of a taste test, hosted in part by a coffee company Cometeer. Cometeer had sent 4 different types of coffee without labels to over 4,000 participants. The survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provides coffees, and individual demographics.
 
-I chose this data set because I was curious about the demographics and preferences of coffee drinkers, both of customers of Cometeer and as a representation of the general North American population. My first question will look at coffee drinking habits (how many cups of coffee are drunken a day) and how they correlate with working and lifestyle situations (whether they work or not, if they work from home or not, and how many children they have). It could be interesting to further analyze that data with why they drink coffee (for the caffeine, or is it for the flavor?) or if that coffee is caffeinated or not, but I want to be careful of not introducing too many variables. Overall, my goal for the first question is to highlight a trend that could be reflective of the general American population. As for my second question, I am taking a more "marketing" approach, as I will try to determine which type of coffee (in regards to strength, roast, and caffeine-level) is most popular among Cometeer customers, as this information could assist them with product development.
-
-
+I chose this data set because I was curious about the demographics and preferences of coffee drinkers, both of customers of Cometeer and as a representation of the general North American population. My first question will look at coffee drinking habits (how many cups of coffee are drunken a day) and how they correlate with working and lifestyle situations (whether they work or not, if they work from home or not, and how many children they have). It could be interesting to further analyze that data with why they drink coffee (for the caffeine, or is it for the flavor?) or if that coffee is caffeinated or not, but I want to be careful of not introducing too many variables. Overall, my goal for the first question is to highlight a trend between coffee drinking and lifestyle that could be reflective of the general American population. As for my second question, I am taking a more "marketing" approach, as I will try to determine which type of coffee (in regards to strength, roast, and caffeine-level) is most popular among Cometeer customers, as this information could assist them with product development.
 
 ## Questions
 
@@ -56,28 +54,28 @@ The two questions\* I want to answer:
 1.  How do coffee drinking habits correlate with working and lifestyle situations?
 2.  What combinations of coffee characteristics are the most popular?
 
-\* Because this is a solo project, I only need to answer 1 question. For now, I will be attempting to answer both of these, focusing on Question 1.
+\* Because this is a solo project, I only need to answer 1 question. For now, I will be attempting to answer both of these, but prioritizing Question 1, with Question 2 acting as a back up option (I initially thought we needed two questions).
 
 ## Analysis plan
 
 A plan for answering each of the questions including the variables involved, variables to be created (if any), external data to be merged in (if any).
 
-1.  Variables: cups, employment_status, number_children, wfh
-    1.  I plan to create a grouped bar plot, of the count of amount of cups drunken per day ("cups"), which will be grouped by position for work status ("employment_status") and then color will indicate work from home status ("wfh"). I also want to find a way to incorporate number of children ("number_children"), as raising children is a form of labor and should be considered in lifestyle situations.
-        1.  Number of children may not accurately reflect how many are dependents. To address this, I will incorporate "age" to perhaps further explain any trends (a 30 year old with children is more likely to have them in their home versus a 60 year old with children, although this may be an inappropriate generalization to make and I will play around with the data.) (addressing issue #1)
-2.  Variables: strength, roast_level, caffeine
+1.  Variables: cups, employment_status, number_children, wfh, age
+    1.  I plan to create a grouped bar plot, of the count of amount of cups drunken per day ("cups"), which will be grouped by position for work status ("employment_status") and then color will indicate work from home status ("wfh"). I will also incorporate number of children ("number_children") into this grouped bar plot, perhaps by faceting.
+    2.  As mentioned, I want to find a way to incorporate number of children ("number_children"), as raising children is a form of labor and should be considered in lifestyle situations, but the number of children may not accurately reflect how many are dependents. To address this, I will create a scatter plot, with number of children against number of cups per day, coloring by age. Incorporating "age" may further explain any trends (a 30 year old with children is more likely to have them in their home versus a 60 year old with children, although this may be an inappropriate generalization to make and I will play around with the data.) (addressing issue #1)
+2.  Variables: strength, roast_level, caffeine, value_equipment, value_cafe
     1.  To make it easier to visualize, I will mutate the "strength", "roast_level", and "caffeine" variables from categorical to numeric variables, assigning an appropriate number scale (for example, 1-5 for "Weak" to "Very strong" strength). I then intend to create a contour plot of the three variables, visualizing what combination of the three is the most popular coffee consumed. This could be helpful to know for Cometeer, which coffee could be the most profitable to produce.
-        1.  To further explore popularity, I could incorporate popularity with value of home-made and cafe-bought coffee (addressing issue #2).
+    2.  To further explore popularity, I will explore the 3 most popular coffee combinations and compare against the value of home-made ("value_equipment") and cafe-bought coffee ("value_cafe") in a bar plot, faceting by the different coffee types (addressing issue #2).
 
 ## Weekly Plan of Attack
 
 | Task Name                              | Status      | Due     | Priority | Summary                                                                                     |
-|-------------|-------------|-------------|-------------|-----------------------|
+|--------------|--------------|--------------|--------------|------------------|
 | Peer Proposal                          | Complete    | May 29  | High     | Provided peer reviews                                                                       |
 | Final Proposal                         | In Progress | June 3  | High     |                                                                                             |
 | Data wrangling                         | In progress | June 7  | High     | Focusing on Question 1                                                                      |
 | Attempt plot for Question 1            |             | June 7  | High     |                                                                                             |
-| Attempt plot for Question 2            |             | June 7  | Medium   |                                                                                             |
+| Attempt plot for Question 2            |             | June 7  | Low      |                                                                                             |
 | Finalize plots                         |             | June 14 | High     |                                                                                             |
 | Begin presentation                     |             | June 14 | Medium   |                                                                                             |
 | Finalize presentation slides and video |             | June 20 | High     | By this date, I want to have completed everything, leaving the weekend for any final tweaks |
