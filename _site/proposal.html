@@ -4850,7 +4850,10 @@ vertical-align: -.125em;
 <ol type="1">
 <li>Variables: cups, employment_status, number_children, wfh
 <ol type="1">
-<li>I plan to create a grouped bar plot, of the count of amount of cups drunken per day (“cups”), which will be grouped by position for work status (“employment_status”) and then color will indicate work from home status (“wfh”). I also want to find a way to incorporate number of children (“number_children”), as raising children is a form of labor and should be considered in lifestyle situations.</li>
+<li>I plan to create a grouped bar plot, of the count of amount of cups drunken per day (“cups”), which will be grouped by position for work status (“employment_status”) and then color will indicate work from home status (“wfh”). I also want to find a way to incorporate number of children (“number_children”), as raising children is a form of labor and should be considered in lifestyle situations.
+<ol type="1">
+<li>Number of children may not accurately reflect how many are dependents. To address this, I will incorporate “age” to perhaps further explain any trends (a 30 year old with children is more likely to have them in their home versus a 60 year old with children, although this may be an inappropriate generalization to make and I will play around with the data.)</li>
+</ol></li>
 </ol></li>
 <li>Variables: strength, roast_level, caffeine
 <ol type="1">
@@ -4863,11 +4866,11 @@ vertical-align: -.125em;
 <table class="table">
 <caption>Demonstration of pipe table syntax</caption>
 <colgroup>
-<col style="width: 24%">
-<col style="width: 7%">
-<col style="width: 5%">
-<col style="width: 6%">
-<col style="width: 56%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 41%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -5655,24 +5658,25 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-65"><a href="#cb4-65"></a></span>
 <span id="cb4-66"><a href="#cb4-66"></a><span class="ss">1.  </span>Variables: cups, employment_status, number_children, wfh</span>
 <span id="cb4-67"><a href="#cb4-67"></a><span class="ss">    1.  </span>I plan to create a grouped bar plot, of the count of amount of cups drunken per day (&quot;cups&quot;), which will be grouped by position for work status (&quot;employment_status&quot;) and then color will indicate work from home status (&quot;wfh&quot;). I also want to find a way to incorporate number of children (&quot;number_children&quot;), as raising children is a form of labor and should be considered in lifestyle situations.</span>
-<span id="cb4-68"><a href="#cb4-68"></a><span class="ss">2.  </span>Variables: strength, roast_level, caffeine</span>
-<span id="cb4-69"><a href="#cb4-69"></a><span class="ss">    1.  </span>To make it easier to visualize, I will mutate the &quot;strength&quot;, &quot;roast_level&quot;, and &quot;caffeine&quot; variables from categorical to numeric variables, assigning an appropriate number scale (for example, 1-5 for &quot;Weak&quot; to &quot;Very strong&quot; strength). I then intend to create a contour plot of the three variables, visualizing what combination of the three is the most popular coffee consumed. This could be helpful to know for Cometeer, which coffee could be the most profitable to produce.</span>
-<span id="cb4-70"><a href="#cb4-70"></a></span>
-<span id="cb4-71"><a href="#cb4-71"></a><span class="fu">## Weekly Plan of Attack</span></span>
-<span id="cb4-72"><a href="#cb4-72"></a></span>
-<span id="cb4-73"><a href="#cb4-73"></a>| Task Name                              | Status      | Due     | Priority | Summary                                                                                     |</span>
-<span id="cb4-74"><a href="#cb4-74"></a>|----------------------------------------|-------------|---------|----------|---------------------------------------------------------------------------------------------|</span>
-<span id="cb4-75"><a href="#cb4-75"></a>| Peer Proposal                          | Complete    | May 29  | High     | Provided peer reviews                                                                       |</span>
-<span id="cb4-76"><a href="#cb4-76"></a>| Final Proposal                         | In Progress | June 3  | High     |                                                                                             |</span>
-<span id="cb4-77"><a href="#cb4-77"></a>| Data wrangling                         | In progress | June 7  | High     | Focusing on Question 1                                                                      |</span>
-<span id="cb4-78"><a href="#cb4-78"></a>| Attempt plot for Question 1            |             | June 7  | High     |                                                                                             |</span>
-<span id="cb4-79"><a href="#cb4-79"></a>| Attempt plot for Question 2            |             | June 7  | Medium   |                                                                                             |</span>
-<span id="cb4-80"><a href="#cb4-80"></a>| Finalize plots                         |             | June 14 | High     |                                                                                             |</span>
-<span id="cb4-81"><a href="#cb4-81"></a>| Begin presentation                     |             | June 14 | Medium   |                                                                                             |</span>
-<span id="cb4-82"><a href="#cb4-82"></a>| Finalize presentation slides and video |             | June 20 | High     | By this date, I want to have completed everything, leaving the weekend for any final tweaks |</span>
-<span id="cb4-83"><a href="#cb4-83"></a>| Final Presentation Due                 |             | June 24 | High     |                                                                                             |</span>
-<span id="cb4-84"><a href="#cb4-84"></a></span>
-<span id="cb4-85"><a href="#cb4-85"></a>: Demonstration of pipe table syntax</span>
+<span id="cb4-68"><a href="#cb4-68"></a><span class="ss">        1.  </span>Number of children may not accurately reflect how many are dependents. To address this, I will incorporate &quot;age&quot; to perhaps further explain any trends (a 30 year old with children is more likely to have them in their home versus a 60 year old with children, although this may be an inappropriate generalization to make and I will play around with the data.)</span>
+<span id="cb4-69"><a href="#cb4-69"></a><span class="ss">2.  </span>Variables: strength, roast_level, caffeine</span>
+<span id="cb4-70"><a href="#cb4-70"></a><span class="ss">    1.  </span>To make it easier to visualize, I will mutate the &quot;strength&quot;, &quot;roast_level&quot;, and &quot;caffeine&quot; variables from categorical to numeric variables, assigning an appropriate number scale (for example, 1-5 for &quot;Weak&quot; to &quot;Very strong&quot; strength). I then intend to create a contour plot of the three variables, visualizing what combination of the three is the most popular coffee consumed. This could be helpful to know for Cometeer, which coffee could be the most profitable to produce.</span>
+<span id="cb4-71"><a href="#cb4-71"></a></span>
+<span id="cb4-72"><a href="#cb4-72"></a><span class="fu">## Weekly Plan of Attack</span></span>
+<span id="cb4-73"><a href="#cb4-73"></a></span>
+<span id="cb4-74"><a href="#cb4-74"></a>| Task Name                              | Status      | Due     | Priority | Summary                                                                                     |</span>
+<span id="cb4-75"><a href="#cb4-75"></a>|-----------|-----------|-----------|-----------|-------------------------------|</span>
+<span id="cb4-76"><a href="#cb4-76"></a>| Peer Proposal                          | Complete    | May 29  | High     | Provided peer reviews                                                                       |</span>
+<span id="cb4-77"><a href="#cb4-77"></a>| Final Proposal                         | In Progress | June 3  | High     |                                                                                             |</span>
+<span id="cb4-78"><a href="#cb4-78"></a>| Data wrangling                         | In progress | June 7  | High     | Focusing on Question 1                                                                      |</span>
+<span id="cb4-79"><a href="#cb4-79"></a>| Attempt plot for Question 1            |             | June 7  | High     |                                                                                             |</span>
+<span id="cb4-80"><a href="#cb4-80"></a>| Attempt plot for Question 2            |             | June 7  | Medium   |                                                                                             |</span>
+<span id="cb4-81"><a href="#cb4-81"></a>| Finalize plots                         |             | June 14 | High     |                                                                                             |</span>
+<span id="cb4-82"><a href="#cb4-82"></a>| Begin presentation                     |             | June 14 | Medium   |                                                                                             |</span>
+<span id="cb4-83"><a href="#cb4-83"></a>| Finalize presentation slides and video |             | June 20 | High     | By this date, I want to have completed everything, leaving the weekend for any final tweaks |</span>
+<span id="cb4-84"><a href="#cb4-84"></a>| Final Presentation Due                 |             | June 24 | High     |                                                                                             |</span>
+<span id="cb4-85"><a href="#cb4-85"></a></span>
+<span id="cb4-86"><a href="#cb4-86"></a>: Demonstration of pipe table syntax</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

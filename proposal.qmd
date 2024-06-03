@@ -59,13 +59,14 @@ A plan for answering each of the questions including the variables involved, var
 
 1.  Variables: cups, employment_status, number_children, wfh
     1.  I plan to create a grouped bar plot, of the count of amount of cups drunken per day ("cups"), which will be grouped by position for work status ("employment_status") and then color will indicate work from home status ("wfh"). I also want to find a way to incorporate number of children ("number_children"), as raising children is a form of labor and should be considered in lifestyle situations.
+        1.  Number of children may not accurately reflect how many are dependents. To address this, I will incorporate "age" to perhaps further explain any trends (a 30 year old with children is more likely to have them in their home versus a 60 year old with children, although this may be an inappropriate generalization to make and I will play around with the data.)
 2.  Variables: strength, roast_level, caffeine
     1.  To make it easier to visualize, I will mutate the "strength", "roast_level", and "caffeine" variables from categorical to numeric variables, assigning an appropriate number scale (for example, 1-5 for "Weak" to "Very strong" strength). I then intend to create a contour plot of the three variables, visualizing what combination of the three is the most popular coffee consumed. This could be helpful to know for Cometeer, which coffee could be the most profitable to produce.
 
 ## Weekly Plan of Attack
 
 | Task Name                              | Status      | Due     | Priority | Summary                                                                                     |
-|----------------------------------------|-------------|---------|----------|---------------------------------------------------------------------------------------------|
+|-----------|-----------|-----------|-----------|-------------------------------|
 | Peer Proposal                          | Complete    | May 29  | High     | Provided peer reviews                                                                       |
 | Final Proposal                         | In Progress | June 3  | High     |                                                                                             |
 | Data wrangling                         | In progress | June 7  | High     | Focusing on Question 1                                                                      |
