@@ -21,8 +21,14 @@ execute:
 #| include: false
 
 # Load packages here
-pacman::p_load(tidymodels,
-               tidyverse)
+pacman::p_load(tidyverse, 
+               glue, 
+               scales, 
+               here, 
+               ggthemes, 
+               janitor, 
+               ggplot2, 
+               readr)
 
 ```
 
@@ -45,11 +51,15 @@ knitr::opts_chunk$set(
 ```{r}
 #| label: load-data
 #| include: false
-# Load data here
-data(mtcars)
-mtcars$speed <- mtcars$hp / mtcars$wt
 
-data("penguins")
+
+# Load data here
+
+coffee_survey <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-05-14/coffee_survey.csv')
+
+coffee_survey
+
+head(coffee_survey)
 ```
 
 # Using Quarto for presentations
@@ -83,12 +93,19 @@ or in two columns
 ## Code
 
 ```{r, echo=FALSE}
-model <- lm(mpg ~ speed, data = mtcars) 
+
+coffee_survey
+
+model <- lm(mpg ~ speed, data = coffee_sruvey) 
 
 model |> tidy()
 
 model |> glance()
 
+coffee_survey %>% 
+  select(cups, employment_status, number_children, wfh, age) %>%
+  
+  
 ```
 
 ## Plots

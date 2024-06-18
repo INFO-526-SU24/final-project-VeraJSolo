@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.4.555">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Vera Jackson">
 <meta name="description" content="Project description">
 
-<title>Project Title - Proposal title</title>
+<title>Project Title - A Coffee Drinker’s Lifestyle</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -4754,7 +4754,7 @@ vertical-align: -.125em;
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#dataset" id="toc-dataset" class="nav-link active" data-scroll-target="#dataset">Dataset</a></li>
+  <li><a href="#data-set" id="toc-data-set" class="nav-link active" data-scroll-target="#data-set">Data set</a></li>
   <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
   <li><a href="#analysis-plan" id="toc-analysis-plan" class="nav-link" data-scroll-target="#analysis-plan">Analysis plan</a></li>
   <li><a href="#weekly-plan-of-attack" id="toc-weekly-plan-of-attack" class="nav-link" data-scroll-target="#weekly-plan-of-attack">Weekly Plan of Attack</a></li>
@@ -4766,7 +4766,7 @@ vertical-align: -.125em;
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Proposal title</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">A Coffee Drinker’s Lifestyle</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 <p class="subtitle lead">Proposal</p>
 </div>
 
@@ -4808,8 +4808,8 @@ vertical-align: -.125em;
 <span id="cb1-3"><a href="#cb1-3"></a></span>
 <span id="cb1-4"><a href="#cb1-4"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, glue, scales, here, ggthemes, janitor, ggplot2, readr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="dataset" class="level2">
-<h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
+<section id="data-set" class="level2">
+<h2 class="anchored" data-anchor-id="data-set">Data set</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># loading data</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a></span>
@@ -4837,6 +4837,25 @@ vertical-align: -.125em;
 #   roast_level &lt;chr&gt;, caffeine &lt;chr&gt;, expertise &lt;dbl&gt;,
 #   coffee_a_bitterness &lt;dbl&gt;, coffee_a_acidity &lt;dbl&gt;,
 #   coffee_a_personal_preference &lt;dbl&gt;, coffee_a_notes &lt;chr&gt;, …</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">head</span>(coffee_survey)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 57
+  submission_id age   cups  where_drink brew  brew_other purchase purchase_other
+  &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt;         
+1 gMR29l        18-2… &lt;NA&gt;  &lt;NA&gt;        &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;     &lt;NA&gt;          
+2 BkPN0e        25-3… &lt;NA&gt;  &lt;NA&gt;        Pod/… &lt;NA&gt;       &lt;NA&gt;     &lt;NA&gt;          
+3 W5G8jj        25-3… &lt;NA&gt;  &lt;NA&gt;        Bean… &lt;NA&gt;       &lt;NA&gt;     &lt;NA&gt;          
+4 4xWgGr        35-4… &lt;NA&gt;  &lt;NA&gt;        Coff… &lt;NA&gt;       &lt;NA&gt;     &lt;NA&gt;          
+5 QD27Q8        25-3… &lt;NA&gt;  &lt;NA&gt;        Pour… &lt;NA&gt;       &lt;NA&gt;     &lt;NA&gt;          
+6 V0LPeM        55-6… &lt;NA&gt;  &lt;NA&gt;        Pod/… &lt;NA&gt;       &lt;NA&gt;     &lt;NA&gt;          
+# ℹ 49 more variables: favorite &lt;chr&gt;, favorite_specify &lt;chr&gt;, additions &lt;chr&gt;,
+#   additions_other &lt;chr&gt;, dairy &lt;chr&gt;, sweetener &lt;chr&gt;, style &lt;chr&gt;,
+#   strength &lt;chr&gt;, roast_level &lt;chr&gt;, caffeine &lt;chr&gt;, expertise &lt;dbl&gt;,
+#   coffee_a_bitterness &lt;dbl&gt;, coffee_a_acidity &lt;dbl&gt;,
+#   coffee_a_personal_preference &lt;dbl&gt;, coffee_a_notes &lt;chr&gt;,
+#   coffee_b_bitterness &lt;dbl&gt;, coffee_b_acidity &lt;dbl&gt;,
+#   coffee_b_personal_preference &lt;dbl&gt;, coffee_b_notes &lt;chr&gt;, …</code></pre>
 </div>
 </div>
 <p>The “Great American Coffee Taste Test” data set is compiled of survey results that were filled out by participants of a taste test, hosted in part by a coffee company Cometeer. Cometeer had sent 4 different types of coffee without labels to over 4,000 participants. The survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provides coffees, and individual demographics.</p>
@@ -4869,13 +4888,13 @@ vertical-align: -.125em;
 </section>
 <section id="weekly-plan-of-attack" class="level2">
 <h2 class="anchored" data-anchor-id="weekly-plan-of-attack">Weekly Plan of Attack</h2>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
-<col style="width: 18%">
-<col style="width: 18%">
-<col style="width: 18%">
-<col style="width: 18%">
-<col style="width: 24%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -5602,88 +5621,90 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class>
-<div class="sourceCode" id="cb4" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">---</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="an">title:</span><span class="co"> &quot;Proposal title&quot;</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="an">subtitle:</span><span class="co"> &quot;Proposal&quot;</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="an">author:</span><span class="co"> </span></span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="co">  - name: &quot;Vera Jackson&quot;</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="co">    affiliations:</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="co">      - name: &quot;School of Information, University of Arizona&quot;</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a><span class="an">description:</span><span class="co"> &quot;Project description&quot;</span></span>
-<span id="cb4-9"><a href="#cb4-9"></a><span class="an">format:</span></span>
-<span id="cb4-10"><a href="#cb4-10"></a><span class="co">  html:</span></span>
-<span id="cb4-11"><a href="#cb4-11"></a><span class="co">    code-tools: true</span></span>
-<span id="cb4-12"><a href="#cb4-12"></a><span class="co">    code-overflow: wrap</span></span>
-<span id="cb4-13"><a href="#cb4-13"></a><span class="co">    code-line-numbers: true</span></span>
-<span id="cb4-14"><a href="#cb4-14"></a><span class="co">    embed-resources: true</span></span>
-<span id="cb4-15"><a href="#cb4-15"></a><span class="an">editor:</span><span class="co"> visual</span></span>
-<span id="cb4-16"><a href="#cb4-16"></a><span class="an">code-annotations:</span><span class="co"> hover</span></span>
-<span id="cb4-17"><a href="#cb4-17"></a><span class="an">execute:</span></span>
-<span id="cb4-18"><a href="#cb4-18"></a><span class="co">  warning: false</span></span>
-<span id="cb4-19"><a href="#cb4-19"></a><span class="an">echo:</span><span class="co"> true</span></span>
-<span id="cb4-20"><a href="#cb4-20"></a><span class="co">---</span></span>
-<span id="cb4-21"><a href="#cb4-21"></a></span>
-<span id="cb4-24"><a href="#cb4-24"></a><span class="in">```{r}</span></span>
-<span id="cb4-25"><a href="#cb4-25"></a><span class="co">#| label: load-pkgs</span></span>
-<span id="cb4-26"><a href="#cb4-26"></a><span class="co">#| message: false</span></span>
-<span id="cb4-27"><a href="#cb4-27"></a></span>
-<span id="cb4-28"><a href="#cb4-28"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">&quot;pacman&quot;</span>))</span>
-<span id="cb4-29"><a href="#cb4-29"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;pacman&quot;</span>)</span>
-<span id="cb4-30"><a href="#cb4-30"></a></span>
-<span id="cb4-31"><a href="#cb4-31"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, glue, scales, here, ggthemes, janitor, ggplot2, readr)</span>
-<span id="cb4-32"><a href="#cb4-32"></a><span class="in">```</span></span>
-<span id="cb4-33"><a href="#cb4-33"></a></span>
-<span id="cb4-34"><a href="#cb4-34"></a><span class="fu">## Dataset</span></span>
-<span id="cb4-35"><a href="#cb4-35"></a></span>
-<span id="cb4-38"><a href="#cb4-38"></a><span class="in">```{r}</span></span>
-<span id="cb4-39"><a href="#cb4-39"></a><span class="co">#| label: load-dataset</span></span>
-<span id="cb4-40"><a href="#cb4-40"></a><span class="co">#| message: false</span></span>
-<span id="cb4-41"><a href="#cb4-41"></a></span>
-<span id="cb4-42"><a href="#cb4-42"></a><span class="co"># loading data</span></span>
-<span id="cb4-43"><a href="#cb4-43"></a></span>
-<span id="cb4-44"><a href="#cb4-44"></a>coffee_survey <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-05-14/coffee_survey.csv&#39;</span>)</span>
-<span id="cb4-45"><a href="#cb4-45"></a></span>
-<span id="cb4-46"><a href="#cb4-46"></a>coffee_survey</span>
-<span id="cb4-47"><a href="#cb4-47"></a></span>
-<span id="cb4-48"><a href="#cb4-48"></a><span class="in">```</span></span>
-<span id="cb4-49"><a href="#cb4-49"></a></span>
-<span id="cb4-50"><a href="#cb4-50"></a>The &quot;Great American Coffee Taste Test&quot; data set is compiled of survey results that were filled out by participants of a taste test, hosted in part by a coffee company Cometeer. Cometeer had sent 4 different types of coffee without labels to over 4,000 participants. The survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provides coffees, and individual demographics.</span>
-<span id="cb4-51"><a href="#cb4-51"></a></span>
-<span id="cb4-52"><a href="#cb4-52"></a>I chose this data set because I was curious about the demographics and preferences of coffee drinkers, both of customers of Cometeer and as a representation of the general North American population. My first question will look at coffee drinking habits (how many cups of coffee are drunken a day) and how they correlate with working and lifestyle situations (whether they work or not, if they work from home or not, and how many children they have). It could be interesting to further analyze that data with why they drink coffee (for the caffeine, or is it for the flavor?) or if that coffee is caffeinated or not, but I want to be careful of not introducing too many variables. Overall, my goal for the first question is to highlight a trend between coffee drinking and lifestyle that could be reflective of the general American population. As for my second question, I am taking a more &quot;marketing&quot; approach, as I will try to determine which type of coffee (in regards to strength, roast, and caffeine-level) is most popular among Cometeer customers, as this information could assist them with product development.</span>
-<span id="cb4-53"><a href="#cb4-53"></a></span>
-<span id="cb4-54"><a href="#cb4-54"></a><span class="fu">## Questions</span></span>
-<span id="cb4-55"><a href="#cb4-55"></a></span>
-<span id="cb4-56"><a href="#cb4-56"></a>The two questions<span class="sc">\*</span> I want to answer:</span>
-<span id="cb4-57"><a href="#cb4-57"></a></span>
-<span id="cb4-58"><a href="#cb4-58"></a><span class="ss">1.  </span>How do coffee drinking habits correlate with working and lifestyle situations?</span>
-<span id="cb4-59"><a href="#cb4-59"></a><span class="ss">2.  </span>What combinations of coffee characteristics are the most popular?</span>
-<span id="cb4-60"><a href="#cb4-60"></a></span>
-<span id="cb4-61"><a href="#cb4-61"></a><span class="sc">\*</span> Because this is a solo project, I only need to answer 1 question. For now, I will be attempting to answer both of these, but prioritizing Question 1, with Question 2 acting as a back up option (I initially thought we needed two questions).</span>
-<span id="cb4-62"><a href="#cb4-62"></a></span>
-<span id="cb4-63"><a href="#cb4-63"></a><span class="fu">## Analysis plan</span></span>
-<span id="cb4-64"><a href="#cb4-64"></a></span>
-<span id="cb4-65"><a href="#cb4-65"></a>A plan for answering each of the questions including the variables involved, variables to be created (if any), external data to be merged in (if any).</span>
-<span id="cb4-66"><a href="#cb4-66"></a></span>
-<span id="cb4-67"><a href="#cb4-67"></a><span class="ss">1.  </span>Variables: cups, employment_status, number_children, wfh, age</span>
-<span id="cb4-68"><a href="#cb4-68"></a><span class="ss">    1.  </span>I plan to create a grouped bar plot, of the count of amount of cups drunken per day (&quot;cups&quot;), which will be grouped by position for work status (&quot;employment_status&quot;) and then color will indicate work from home status (&quot;wfh&quot;). I will also incorporate number of children (&quot;number_children&quot;) into this grouped bar plot, perhaps by faceting.</span>
-<span id="cb4-69"><a href="#cb4-69"></a><span class="ss">    2.  </span>As mentioned, I want to find a way to incorporate number of children (&quot;number_children&quot;), as raising children is a form of labor and should be considered in lifestyle situations, but the number of children may not accurately reflect how many are dependents. To address this, I will create a scatter plot, with number of children against number of cups per day, coloring by age. Incorporating &quot;age&quot; may further explain any trends (a 30 year old with children is more likely to have them in their home versus a 60 year old with children, although this may be an inappropriate generalization to make and I will play around with the data.) (addressing issue #1)</span>
-<span id="cb4-70"><a href="#cb4-70"></a><span class="ss">2.  </span>Variables: strength, roast_level, caffeine, value_equipment, value_cafe</span>
-<span id="cb4-71"><a href="#cb4-71"></a><span class="ss">    1.  </span>To make it easier to visualize, I will mutate the &quot;strength&quot;, &quot;roast_level&quot;, and &quot;caffeine&quot; variables from categorical to numeric variables, assigning an appropriate number scale (for example, 1-5 for &quot;Weak&quot; to &quot;Very strong&quot; strength). I then intend to create a contour plot of the three variables, visualizing what combination of the three is the most popular coffee consumed. This could be helpful to know for Cometeer, which coffee could be the most profitable to produce.</span>
-<span id="cb4-72"><a href="#cb4-72"></a><span class="ss">    2.  </span>To further explore popularity, I will explore the 3 most popular coffee combinations and compare against the value of home-made (&quot;value_equipment&quot;) and cafe-bought coffee (&quot;value_cafe&quot;) in a bar plot, faceting by the different coffee types (addressing issue #2).</span>
-<span id="cb4-73"><a href="#cb4-73"></a></span>
-<span id="cb4-74"><a href="#cb4-74"></a><span class="fu">## Weekly Plan of Attack</span></span>
-<span id="cb4-75"><a href="#cb4-75"></a></span>
-<span id="cb4-76"><a href="#cb4-76"></a>| Task Name                              | Status      | Due     | Priority | Summary                                                                                     |</span>
-<span id="cb4-77"><a href="#cb4-77"></a>|--------------|--------------|--------------|--------------|------------------|</span>
-<span id="cb4-78"><a href="#cb4-78"></a>| Peer Proposal                          | Complete    | May 29  | High     | Provided peer reviews                                                                       |</span>
-<span id="cb4-79"><a href="#cb4-79"></a>| Final Proposal                         | In Progress | June 3  | High     |                                                                                             |</span>
-<span id="cb4-80"><a href="#cb4-80"></a>| Data wrangling                         | In progress | June 7  | High     | Focusing on Question 1                                                                      |</span>
-<span id="cb4-81"><a href="#cb4-81"></a>| Attempt plot for Question 1            |             | June 7  | High     |                                                                                             |</span>
-<span id="cb4-82"><a href="#cb4-82"></a>| Attempt plot for Question 2            |             | June 7  | Low      |                                                                                             |</span>
-<span id="cb4-83"><a href="#cb4-83"></a>| Finalize plots                         |             | June 14 | High     |                                                                                             |</span>
-<span id="cb4-84"><a href="#cb4-84"></a>| Begin presentation                     |             | June 14 | Medium   |                                                                                             |</span>
-<span id="cb4-85"><a href="#cb4-85"></a>| Finalize presentation slides and video |             | June 20 | High     | By this date, I want to have completed everything, leaving the weekend for any final tweaks |</span>
-<span id="cb4-86"><a href="#cb4-86"></a>| Final Presentation Due                 |             | June 24 | High     |                                                                                             |</span>
+<div class="sourceCode" id="cb6" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">---</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="an">title:</span><span class="co"> &quot;A Coffee Drinker&#39;s Lifestyle&quot;</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="an">subtitle:</span><span class="co"> &quot;Proposal&quot;</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="an">author:</span><span class="co"> </span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co">  - name: &quot;Vera Jackson&quot;</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="co">    affiliations:</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co">      - name: &quot;School of Information, University of Arizona&quot;</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="an">description:</span><span class="co"> &quot;Project description&quot;</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="an">format:</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="co">  html:</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="co">    code-tools: true</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="co">    code-overflow: wrap</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="co">    code-line-numbers: true</span></span>
+<span id="cb6-14"><a href="#cb6-14"></a><span class="co">    embed-resources: true</span></span>
+<span id="cb6-15"><a href="#cb6-15"></a><span class="an">editor:</span><span class="co"> visual</span></span>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="an">code-annotations:</span><span class="co"> hover</span></span>
+<span id="cb6-17"><a href="#cb6-17"></a><span class="an">execute:</span></span>
+<span id="cb6-18"><a href="#cb6-18"></a><span class="co">  warning: false</span></span>
+<span id="cb6-19"><a href="#cb6-19"></a><span class="an">echo:</span><span class="co"> true</span></span>
+<span id="cb6-20"><a href="#cb6-20"></a><span class="co">---</span></span>
+<span id="cb6-21"><a href="#cb6-21"></a></span>
+<span id="cb6-24"><a href="#cb6-24"></a><span class="in">```{r}</span></span>
+<span id="cb6-25"><a href="#cb6-25"></a><span class="co">#| label: load-pkgs</span></span>
+<span id="cb6-26"><a href="#cb6-26"></a><span class="co">#| message: false</span></span>
+<span id="cb6-27"><a href="#cb6-27"></a></span>
+<span id="cb6-28"><a href="#cb6-28"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">&quot;pacman&quot;</span>))</span>
+<span id="cb6-29"><a href="#cb6-29"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;pacman&quot;</span>)</span>
+<span id="cb6-30"><a href="#cb6-30"></a></span>
+<span id="cb6-31"><a href="#cb6-31"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, glue, scales, here, ggthemes, janitor, ggplot2, readr)</span>
+<span id="cb6-32"><a href="#cb6-32"></a><span class="in">```</span></span>
+<span id="cb6-33"><a href="#cb6-33"></a></span>
+<span id="cb6-34"><a href="#cb6-34"></a><span class="fu">## Data set</span></span>
+<span id="cb6-35"><a href="#cb6-35"></a></span>
+<span id="cb6-38"><a href="#cb6-38"></a><span class="in">```{r}</span></span>
+<span id="cb6-39"><a href="#cb6-39"></a><span class="co">#| label: load-dataset</span></span>
+<span id="cb6-40"><a href="#cb6-40"></a><span class="co">#| message: false</span></span>
+<span id="cb6-41"><a href="#cb6-41"></a></span>
+<span id="cb6-42"><a href="#cb6-42"></a><span class="co"># loading data</span></span>
+<span id="cb6-43"><a href="#cb6-43"></a></span>
+<span id="cb6-44"><a href="#cb6-44"></a>coffee_survey <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-05-14/coffee_survey.csv&#39;</span>)</span>
+<span id="cb6-45"><a href="#cb6-45"></a></span>
+<span id="cb6-46"><a href="#cb6-46"></a>coffee_survey</span>
+<span id="cb6-47"><a href="#cb6-47"></a></span>
+<span id="cb6-48"><a href="#cb6-48"></a><span class="fu">head</span>(coffee_survey)</span>
+<span id="cb6-49"><a href="#cb6-49"></a></span>
+<span id="cb6-50"><a href="#cb6-50"></a><span class="in">```</span></span>
+<span id="cb6-51"><a href="#cb6-51"></a></span>
+<span id="cb6-52"><a href="#cb6-52"></a>The &quot;Great American Coffee Taste Test&quot; data set is compiled of survey results that were filled out by participants of a taste test, hosted in part by a coffee company Cometeer. Cometeer had sent 4 different types of coffee without labels to over 4,000 participants. The survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provides coffees, and individual demographics.</span>
+<span id="cb6-53"><a href="#cb6-53"></a></span>
+<span id="cb6-54"><a href="#cb6-54"></a>I chose this data set because I was curious about the demographics and preferences of coffee drinkers, both of customers of Cometeer and as a representation of the general North American population. My first question will look at coffee drinking habits (how many cups of coffee are drunken a day) and how they correlate with working and lifestyle situations (whether they work or not, if they work from home or not, and how many children they have). It could be interesting to further analyze that data with why they drink coffee (for the caffeine, or is it for the flavor?) or if that coffee is caffeinated or not, but I want to be careful of not introducing too many variables. Overall, my goal for the first question is to highlight a trend between coffee drinking and lifestyle that could be reflective of the general American population. As for my second question, I am taking a more &quot;marketing&quot; approach, as I will try to determine which type of coffee (in regards to strength, roast, and caffeine-level) is most popular among Cometeer customers, as this information could assist them with product development.</span>
+<span id="cb6-55"><a href="#cb6-55"></a></span>
+<span id="cb6-56"><a href="#cb6-56"></a><span class="fu">## Questions</span></span>
+<span id="cb6-57"><a href="#cb6-57"></a></span>
+<span id="cb6-58"><a href="#cb6-58"></a>The two questions<span class="sc">\*</span> I want to answer:</span>
+<span id="cb6-59"><a href="#cb6-59"></a></span>
+<span id="cb6-60"><a href="#cb6-60"></a><span class="ss">1.  </span>How do coffee drinking habits correlate with working and lifestyle situations?</span>
+<span id="cb6-61"><a href="#cb6-61"></a><span class="ss">2.  </span>What combinations of coffee characteristics are the most popular?</span>
+<span id="cb6-62"><a href="#cb6-62"></a></span>
+<span id="cb6-63"><a href="#cb6-63"></a><span class="sc">\*</span> Because this is a solo project, I only need to answer 1 question. For now, I will be attempting to answer both of these, but prioritizing Question 1, with Question 2 acting as a back up option (I initially thought we needed two questions).</span>
+<span id="cb6-64"><a href="#cb6-64"></a></span>
+<span id="cb6-65"><a href="#cb6-65"></a><span class="fu">## Analysis plan</span></span>
+<span id="cb6-66"><a href="#cb6-66"></a></span>
+<span id="cb6-67"><a href="#cb6-67"></a>A plan for answering each of the questions including the variables involved, variables to be created (if any), external data to be merged in (if any).</span>
+<span id="cb6-68"><a href="#cb6-68"></a></span>
+<span id="cb6-69"><a href="#cb6-69"></a><span class="ss">1.  </span>Variables: cups, employment_status, number_children, wfh, age</span>
+<span id="cb6-70"><a href="#cb6-70"></a><span class="ss">    1.  </span>I plan to create a grouped bar plot, of the count of amount of cups drunken per day (&quot;cups&quot;), which will be grouped by position for work status (&quot;employment_status&quot;) and then color will indicate work from home status (&quot;wfh&quot;). I will also incorporate number of children (&quot;number_children&quot;) into this grouped bar plot, perhaps by faceting.</span>
+<span id="cb6-71"><a href="#cb6-71"></a><span class="ss">    2.  </span>As mentioned, I want to find a way to incorporate number of children (&quot;number_children&quot;), as raising children is a form of labor and should be considered in lifestyle situations, but the number of children may not accurately reflect how many are dependents. To address this, I will create a scatter plot, with number of children against number of cups per day, coloring by age. Incorporating &quot;age&quot; may further explain any trends (a 30 year old with children is more likely to have them in their home versus a 60 year old with children, although this may be an inappropriate generalization to make and I will play around with the data.) (addressing issue #1)</span>
+<span id="cb6-72"><a href="#cb6-72"></a><span class="ss">2.  </span>Variables: strength, roast_level, caffeine, value_equipment, value_cafe</span>
+<span id="cb6-73"><a href="#cb6-73"></a><span class="ss">    1.  </span>To make it easier to visualize, I will mutate the &quot;strength&quot;, &quot;roast_level&quot;, and &quot;caffeine&quot; variables from categorical to numeric variables, assigning an appropriate number scale (for example, 1-5 for &quot;Weak&quot; to &quot;Very strong&quot; strength). I then intend to create a contour plot of the three variables, visualizing what combination of the three is the most popular coffee consumed. This could be helpful to know for Cometeer, which coffee could be the most profitable to produce.</span>
+<span id="cb6-74"><a href="#cb6-74"></a><span class="ss">    2.  </span>To further explore popularity, I will explore the 3 most popular coffee combinations and compare against the value of home-made (&quot;value_equipment&quot;) and cafe-bought coffee (&quot;value_cafe&quot;) in a bar plot, faceting by the different coffee types (addressing issue #2).</span>
+<span id="cb6-75"><a href="#cb6-75"></a></span>
+<span id="cb6-76"><a href="#cb6-76"></a><span class="fu">## Weekly Plan of Attack</span></span>
+<span id="cb6-77"><a href="#cb6-77"></a></span>
+<span id="cb6-78"><a href="#cb6-78"></a>| Task Name                              | Status      | Due     | Priority | Summary                                                                                     |</span>
+<span id="cb6-79"><a href="#cb6-79"></a>|---------------|---------------|---------------|---------------|---------------|</span>
+<span id="cb6-80"><a href="#cb6-80"></a>| Peer Proposal                          | Complete    | May 29  | High     | Provided peer reviews                                                                       |</span>
+<span id="cb6-81"><a href="#cb6-81"></a>| Final Proposal                         | In Progress | June 3  | High     |                                                                                             |</span>
+<span id="cb6-82"><a href="#cb6-82"></a>| Data wrangling                         | In progress | June 7  | High     | Focusing on Question 1                                                                      |</span>
+<span id="cb6-83"><a href="#cb6-83"></a>| Attempt plot for Question 1            |             | June 7  | High     |                                                                                             |</span>
+<span id="cb6-84"><a href="#cb6-84"></a>| Attempt plot for Question 2            |             | June 7  | Low      |                                                                                             |</span>
+<span id="cb6-85"><a href="#cb6-85"></a>| Finalize plots                         |             | June 14 | High     |                                                                                             |</span>
+<span id="cb6-86"><a href="#cb6-86"></a>| Begin presentation                     |             | June 14 | Medium   |                                                                                             |</span>
+<span id="cb6-87"><a href="#cb6-87"></a>| Finalize presentation slides and video |             | June 20 | High     | By this date, I want to have completed everything, leaving the weekend for any final tweaks |</span>
+<span id="cb6-88"><a href="#cb6-88"></a>| Final Presentation Due                 |             | June 24 | High     |                                                                                             |</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
