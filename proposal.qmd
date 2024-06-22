@@ -72,7 +72,7 @@ A plan for answering each of the questions including the variables involved, var
 ## Weekly Plan of Attack
 
 | Task Name                              | Status      | Due     | Priority | Summary                                                                                     |
-|---------------|---------------|---------------|---------------|---------------|
+|----------------------------------------|-------------|---------|----------|---------------------------------------------------------------------------------------------|
 | Peer Proposal                          | Complete    | May 29  | High     | Provided peer reviews                                                                       |
 | Final Proposal                         | In Progress | June 3  | High     |                                                                                             |
 | Data wrangling                         | In progress | June 7  | High     | Focusing on Question 1                                                                      |

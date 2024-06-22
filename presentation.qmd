@@ -21,7 +21,8 @@ execute:
 #| include: false
 
 # Load packages here
-pacman::p_load(tidyverse, 
+pacman::p_load(dplyr,
+               tidyverse, 
                glue, 
                scales, 
                here, 
@@ -102,16 +103,93 @@ model |> tidy()
 
 model |> glance()
 
-coffee_survey %>% 
-  select(cups, employment_status, number_children, wfh, age) %>%
+coffee_survey_clean <- coffee_survey %>% 
+  select(cups, employment_status, number_children, wfh, age)
+
   
+coffee_survey_clean <- coffee_survey_clean %>% filter(!is.na(cups))  
+
+coffee_survey_clean  
+
+
+# plot 1
+coffee_survey_plot1 <- coffee_survey_clean %>% 
+  select(cups, employment_status, wfh) %>% 
+  filter(!is.na(employment_status)) %>%
+  filter(!is.na(wfh))
   
+
+coffee_survey_plot1
+
+ggplot(coffee_survey_plot1) +
+  geom_bar(aes(x= employment_status, fill= cups),
+           position = "fill") 
+
+coffee_survey_plot1_statuscount <- coffee_survey_plot1 %>% 
+  count(employment_status) 
+
+coffee_survey_plot1_totalcount <- coffee_survey_plot1 %>% 
+  count(cups, employment_status) %>% 
+  rename(total = n)
+
+coffee_survey_plot1_totalcount_wfh <- coffee_survey_plot1 %>% 
+  count(cups, employment_status, wfh) %>% 
+  rename(total = n)
+
+coffee_survey_plot1_totalcount_wfh
+
+coffee_survey_plot1_statuscount
+
+coffee_survey_plot1_totalcount
+
+coffee_survey_plot1_use <- left_join(coffee_survey_plot1_statuscount, coffee_survey_plot1_totalcount)
+
+coffee_survey_plot1_use <- coffee_survey_plot1_use %>% 
+  mutate(percent = total/n)
+
+coffee_survey_plot1_use
+
+coffee_survey_plot1_use %>% 
+  ggplot() +
+  geom_bar(aes(x = employment_status, y = "", fill = fct_inorder(cups)), position = "fill", stat = "identity") 
+
+ggplot(coffee_survey_plot1_use, aes(x = "", y = total, fill = fct_inorder(state))) +
+  geom_bar(stat = "identity", width = 1, color = "white") +
+  coord_polar(theta = "y")  #make it a pie chart
+
+
+
+ggplot(coffee_survey_plot1_totalcount_wfh) +
+  geom_bar(aes(x= employment_status, fill= cups),
+           position = "dodge") 
 ```
 
 ## Plots
 
 ```{r}
-penguins |>
+coffee_survey_clean %>% 
+  filter(!is.na(employment_status)) %>%
+  filter(!is.na(wfh)) %>% 
+  ggplot() +
+  geom_jitter(aes(x = employment_status, y = cups)) 
+
+coffee_survey_clean %>% 
+  filter(!is.na(employment_status)) %>%
+  filter(!is.na(wfh)) %>% 
+  ggplot() +
+  geom_count(aes(x = employment_status, y = cups)) +
+  scale_x_discrete(labels = label_wrap(10)) 
+
+
+
+geom_bar(stat="identity") +
+  scale_x_discrete(name = "name", labels = df$name)
+
+barplot(
+  
+  count(tile)
+)
+  
   mutate(species = ifelse(species == "Adelie", "Adelie", "Other")) |>
   ggplot(aes(x = flipper_length_mm, y = body_mass_g, color = species)) +
   geom_point()
