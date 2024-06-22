@@ -97,11 +97,6 @@ or in two columns
 
 coffee_survey
 
-model <- lm(mpg ~ speed, data = coffee_sruvey) 
-
-model |> tidy()
-
-model |> glance()
 
 coffee_survey_clean <- coffee_survey %>% 
   select(cups, employment_status, number_children, wfh, age)
@@ -153,9 +148,6 @@ coffee_survey_plot1_use %>%
   ggplot() +
   geom_bar(aes(x = employment_status, y = "", fill = fct_inorder(cups)), position = "fill", stat = "identity") 
 
-ggplot(coffee_survey_plot1_use, aes(x = "", y = total, fill = fct_inorder(state))) +
-  geom_bar(stat = "identity", width = 1, color = "white") +
-  coord_polar(theta = "y")  #make it a pie chart
 
 
 
@@ -182,17 +174,17 @@ coffee_survey_clean %>%
 
 
 
-geom_bar(stat="identity") +
-  scale_x_discrete(name = "name", labels = df$name)
+#geom_bar(stat="identity") +
+  #scale_x_discrete(name = "name", labels = df$name)
 
-barplot(
+#barplot(
   
-  count(tile)
-)
+#  count(tile)
+
   
-  mutate(species = ifelse(species == "Adelie", "Adelie", "Other")) |>
-  ggplot(aes(x = flipper_length_mm, y = body_mass_g, color = species)) +
-  geom_point()
+#mutate(species = ifelse(species == "Adelie", "Adelie", "Other")) |>
+ # ggplot(aes(x = flipper_length_mm, y = body_mass_g, color = species)) +
+  #geom_point()
 ```
 
 ## Plot and text
@@ -206,12 +198,7 @@ barplot(
 
 ::: {.column width="50%"}
 ```{r, warning=FALSE, fig.width=5.5}
-penguins |>
-  ggplot(aes(x = bill_length_mm, y = species, color = species)) +
-  geom_boxplot(linewidth = 0.75,
-               outlier.size = 2.5) +
-  theme_minimal(base_size = 15) +
-  theme(legend.key.size = unit(0.8, "cm"))
+
 ```
 :::
 :::
@@ -223,10 +210,7 @@ penguins |>
 If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,
 
 ```{r}
-penguins |> 
-  head() |>
-  kableExtra::kable() |>
-  kableExtra::kable_styling()
+
 ```
 
 ## Images
