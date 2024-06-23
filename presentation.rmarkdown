@@ -63,6 +63,7 @@ coffee_survey
 
 ```
 
+
 # Using Quarto for presentations
 
 ## Quarto
@@ -92,6 +93,7 @@ or in two columns
 -   this
 
 ## Code
+
 
 ```{r, echo=FALSE}
 #| label: code for plot 1
@@ -214,7 +216,9 @@ coffee_survey_clean2 %>% ggplot() +
   facet_wrap(~ age)
 ```
 
+
 ## Plots
+
 
 ```{r}
 
@@ -248,6 +252,7 @@ coffee_survey_clean %>%
   #geom_point()
 ```
 
+
 ## Plot and text
 
 ::: columns
@@ -258,9 +263,11 @@ coffee_survey_clean %>%
 :::
 
 ::: {.column width="50%"}
+
 ```{r, warning=FALSE, fig.width=5.5}
 
 ```
+
 :::
 :::
 
@@ -270,9 +277,11 @@ coffee_survey_clean %>%
 
 If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,
 
+
 ```{r}
 
 ```
+
 
 ## Images
 
@@ -303,3 +312,4 @@ Limitations:
 -   You are welcomed to use the default styling of the slides. In fact, that's what I expect majority of you will do. You will differentiate yourself with the content of your presentation.
 
 -   But some of you might want to play around with slide styling. Some solutions for this can be found at https://quarto.org/docs/presentations/revealjs.
+

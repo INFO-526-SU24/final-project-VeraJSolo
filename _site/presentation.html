@@ -409,6 +409,22 @@ Author names
 # ℹ 3,939 more rows</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3,419 × 2
+   cups        employment_status 
+   &lt;chr&gt;       &lt;chr&gt;             
+ 1 3           Employed full-time
+ 2 1           Employed full-time
+ 3 2           Employed full-time
+ 4 2           Unemployed        
+ 5 1           Employed full-time
+ 6 More than 4 Employed full-time
+ 7 2           Unemployed        
+ 8 2           Employed full-time
+ 9 2           Employed full-time
+10 Less than 1 Employed full-time
+# ℹ 3,409 more rows</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3,366 × 3
    cups        employment_status  wfh                       
    &lt;chr&gt;       &lt;chr&gt;              &lt;chr&gt;                     
@@ -424,83 +440,78 @@ Author names
 10 Less than 1 Employed full-time I primarily work in person
 # ℹ 3,356 more rows</code></pre>
 </div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-4-1.png" width="1800"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 78 × 4
-   cups  employment_status  wfh                        total
-   &lt;chr&gt; &lt;chr&gt;              &lt;chr&gt;                      &lt;int&gt;
- 1 1     Employed full-time I do a mix of both           234
- 2 1     Employed full-time I primarily work from home   378
- 3 1     Employed full-time I primarily work in person   250
- 4 1     Employed part-time I do a mix of both            14
- 5 1     Employed part-time I primarily work from home    31
- 6 1     Employed part-time I primarily work in person    44
- 7 1     Homemaker          I primarily work from home    26
- 8 1     Homemaker          I primarily work in person     3
- 9 1     Retired            I do a mix of both             1
-10 1     Retired            I primarily work from home     9
-# ℹ 68 more rows</code></pre>
-</div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
-  employment_status      n
-  &lt;chr&gt;              &lt;int&gt;
-1 Employed full-time  2704
-2 Employed part-time   201
-3 Homemaker             70
-4 Retired               62
-5 Student              210
-6 Unemployed           119</code></pre>
+  employment_status  total_es
+  &lt;chr&gt;                 &lt;int&gt;
+1 Employed full-time     2708
+2 Employed part-time      201
+3 Homemaker                78
+4 Retired                  85
+5 Student                 221
+6 Unemployed              126</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 34 × 3
-   cups  employment_status  total
-   &lt;chr&gt; &lt;chr&gt;              &lt;int&gt;
- 1 1     Employed full-time   862
- 2 1     Employed part-time    89
- 3 1     Homemaker             29
- 4 1     Retired               10
- 5 1     Student               77
- 6 1     Unemployed            44
- 7 2     Employed full-time  1159
- 8 2     Employed part-time    66
- 9 2     Homemaker             26
-10 2     Retired               29
+   cups  employment_status  total_es_c
+   &lt;chr&gt; &lt;chr&gt;                   &lt;int&gt;
+ 1 1     Employed full-time        863
+ 2 1     Employed part-time         89
+ 3 1     Homemaker                  34
+ 4 1     Retired                    19
+ 5 1     Student                    82
+ 6 1     Unemployed                 46
+ 7 2     Employed full-time       1161
+ 8 2     Employed part-time         66
+ 9 2     Homemaker                  28
+10 2     Retired                    37
 # ℹ 24 more rows</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 34 × 5
-   employment_status      n cups        total percent
-   &lt;chr&gt;              &lt;int&gt; &lt;chr&gt;       &lt;int&gt;   &lt;dbl&gt;
- 1 Employed full-time  2704 1             862  0.319 
- 2 Employed full-time  2704 2            1159  0.429 
- 3 Employed full-time  2704 3             351  0.130 
- 4 Employed full-time  2704 4              87  0.0322
- 5 Employed full-time  2704 Less than 1   200  0.0740
- 6 Employed full-time  2704 More than 4    45  0.0166
- 7 Employed part-time   201 1              89  0.443 
- 8 Employed part-time   201 2              66  0.328 
- 9 Employed part-time   201 3              13  0.0647
-10 Employed part-time   201 4               6  0.0299
+<pre><code># A tibble: 34 × 4
+   employment_status  total_es cups        total_es_c
+   &lt;chr&gt;                 &lt;int&gt; &lt;chr&gt;            &lt;int&gt;
+ 1 Employed full-time     2708 1                  863
+ 2 Employed full-time     2708 2                 1161
+ 3 Employed full-time     2708 3                  351
+ 4 Employed full-time     2708 4                   87
+ 5 Employed full-time     2708 Less than 1        200
+ 6 Employed full-time     2708 More than 4         46
+ 7 Employed part-time      201 1                   89
+ 8 Employed part-time      201 2                   66
+ 9 Employed part-time      201 3                   13
+10 Employed part-time      201 4                    6
 # ℹ 24 more rows</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-4-2.png" width="1800"></p>
+<p><img data-src="presentation_files/figure-revealjs/code for plot 1-1.png" width="2400"></p>
 </figure>
 </div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3,406 × 3
+   cups        number_children age            
+   &lt;chr&gt;       &lt;chr&gt;           &lt;chr&gt;          
+ 1 3           More than 3     &lt;18 years old  
+ 2 1           None            25-34 years old
+ 3 2           2               45-54 years old
+ 4 2           None            25-34 years old
+ 5 1           3               35-44 years old
+ 6 More than 4 3               45-54 years old
+ 7 2           2               35-44 years old
+ 8 2           More than 3     45-54 years old
+ 9 2           None            35-44 years old
+10 Less than 1 None            45-54 years old
+# ℹ 3,396 more rows</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-4-3.png" width="1800"></p>
+<p><img data-src="presentation_files/figure-revealjs/code for plot-1.png" width="2400"></p>
 </figure>
 </div>
 </div>
@@ -512,14 +523,14 @@ Author names
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-5-1.png" width="1800"></p>
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-6-1.png" width="1800"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-5-2.png" width="1800"></p>
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-6-2.png" width="1800"></p>
 </figure>
 </div>
 </div>
