@@ -1,11 +1,11 @@
 ---
-title: "Project title"
+title: "Coffee Drinking Habits"
 subtitle: "INFO 526 - Summer 2024 - Final Project"
-author: "Author names"
+author: "Vera Jackson"
 title-slide-attributes:
-  data-background-image: images/watercolour_sys02_img34_teacup-ocean.jpg
+  data-background-image: images/coffee_cover.jpg
   data-background-size: stretch
-  data-background-opacity: "0.7"
+  data-background-opacity: "0.5"
   data-slide-number: none
 format:
   revealjs:
@@ -30,8 +30,7 @@ pacman::p_load(dplyr,
                janitor, 
                ggplot2, 
                readr,
-               ggrepel,
-               ggmosaic)
+               ggrepel)
 
 ```
 
@@ -64,46 +63,19 @@ coffee_survey
 
 ```
 
-# Using Quarto for presentations
+# Introduction
 
-## Quarto
+## Coffee Survey
 
--   The presentation is created using the Quarto CLI
+The "Great American Coffee Taste Test" data set is compiled of survey results that were filled out by participants of a taste test, hosted in part by a coffee company Cometeer. The survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provides coffees, and individual demographics.
 
--   `##` sets the start of a new slide
+![Image credit: Cometeer, cometeer.com.](images/cometeer_logo.png){fig-align="center" width="500"}
 
-## Layouts
-
-You can use plain text
-
-::: columns
-::: {.column width="40%"}
--   or bullet points[^1]
-:::
-
-::: {.column width="60%"}
-or in two columns
-:::
-:::
-
-[^1]: And add footnotes
-
--   like
-
--   this
-
-## Code
+## The Data
 
 ```{r, echo=FALSE}
-#| label: code for plot 1 and 2
-#| fig-height: 8
-#| fig-width: 8
+#| label: introducing data
 
-coffee_survey
-
-##############
-# cleaning for general and plot 1
-# selecting relevant variables for both plots (3,343 rows)
 coffee_survey_cleanNA <- coffee_survey %>% 
   select(cups, employment_status, number_children, wfh, age) %>% 
   filter(!is.na(cups)) %>% 
@@ -112,126 +84,52 @@ coffee_survey_cleanNA <- coffee_survey %>%
   filter(!is.na(number_children)) %>% 
   filter(!is.na(age)) 
 
-coffee_survey_cleanNA  
+head(coffee_survey_cleanNA)
+```
+
+```{r, echo=FALSE}
+#| label: code for plot 1 and 2
+#| include: false
+
+##############
+# cleaning for general and plot 1
+# selecting relevant variables for both plots (3,343 rows)
 
 coffee_survey_count_cups <- coffee_survey_cleanNA %>% 
   count(cups) %>% # counting total count for each employment_status
   rename(total_cups = n)
 
+manual_order <- c("Less than 1", "1", "2", "3", "4", "More than 4")
+
+# Reorder the dataset according to the manual order
+coffee_survey_count_cups <- coffee_survey_count_cups[match(manual_order, coffee_survey_count_cups$cups), ]
+coffee_survey_count_cups
 #calculating percentages
 coffee_survey_count_cups <- coffee_survey_count_cups %>% 
   mutate(percent = total_cups/sum(total_cups))
 
 coffee_survey_count_cups <- coffee_survey_count_cups %>% 
-  mutate(percent = percent(coffee_survey_count_cups$percent, accuracy = 0.1))
+  mutate(percent = percent(coffee_survey_count_cups$percent, accuracy = 0.1)) 
   
+coffee_survey_count_cups
 #mutate to manually position labels on pie chart
-coffee_survey_count_plot1 <- coffee_survey_count_cups %>%  
+coffee_survey_count_plot1 <- coffee_survey_count_cups %>% 
   mutate(csum = rev(cumsum(rev(total_cups))),
          pos = total_cups/2 + lead(csum, 1),
          pos = if_else(is.na(pos), total_cups/2, pos))
 
 
 coffee_survey_count_plot1
-
 # plot 1 ^
 ###################
-# plot 2: looking at differences in employment status
 
-# selecting relevant variables and filtering out na for plot 1 (3,419 rows)
-
-coffee_survey_count_es <- coffee_survey_cleanNA %>% 
-  select(cups, employment_status) %>% 
-  count(employment_status) %>% # counting total count for each employment_status
-  rename(total_es = n)
-
-coffee_survey_count_es
-
-coffee_survey_count_cups_es <- coffee_survey_cleanNA %>% 
-  count(cups, employment_status) %>% # counting total count for each cups + employment_status
-  rename(total_es_c = n)
-
-coffee_survey_count_cups_es
-
-
-# combining counts with original plot and cleaning data set for plotting 
-coffee_survey_count_plot2 <- left_join(coffee_survey_count_es, coffee_survey_count_cups_es) 
-
-coffee_survey_count_plot2
-
-#calculating percentages
-coffee_survey_count_plot2 <- coffee_survey_count_plot2 %>% 
-  mutate(percent = total_es_c/total_es)
-
-coffee_survey_count_plot2 <- coffee_survey_count_plot2 %>% 
-  mutate(percent = percent(coffee_survey_count_plot2$percent, accuracy = 0.1))
-  
-#mutate to manually position labels on pie chart
-coffee_survey_count_plot2 <- coffee_survey_count_plot2 %>% 
-  group_by(employment_status) %>% 
-  mutate(csum = rev(cumsum(rev(total_es_c))),
-         pos = total_es_c/2 + lead(csum, 1),
-         pos = if_else(is.na(pos), total_es_c/2, pos))
-
-coffee_survey_count_plot2
-
-#creating plots
-es1 <- coffee_survey_count_plot2 %>%  
-  filter(employment_status %in% c("Employed full-time")) %>% 
-  ggplot(aes(x = "", y = total_es_c, fill = cups)) +
-  coord_polar(theta = "y") +
-  scale_x_discrete(NULL, expand = c(0, 0)) +
-  scale_y_continuous(NULL, expand = c(0, 0)) +
-  scale_fill_manual(values = 
-                      c("#FBE183FF", "#FE9B00FF",
-                        "#D8443CFF", "#9B3441FF", 
-                        "#E87B89FF", "#E6A2A6FF"), name = "Cups of Coffee per Day") +
-  geom_label_repel( 
-    mapping = aes(y = pos, label = paste(percent)),
-    size = 3,
-    nudge_x = 0.9,
-    show.legend = FALSE) +
-  theme_void() +
-  theme(
-    axis.text = element_blank(),
-    plot.title = element_text(size = 12, face = "bold", hjust = 0.5),
-    plot.title.position = "plot",
-    legend.text = element_text(size = 8), #text of legend
-    legend.key.size = unit(0.25, "cm"),
-    plot.caption = element_text(hjust = 0, size = 6, face = "bold"),
-    plot.tag = element_text(size = 6, hjust = 0),
-    plot.tag.position = "bottom"
-  ) 
-
-es2 <- coffee_survey_count_plot2 %>%  
-  filter(employment_status %in% c("Employed part-time")) %>% 
-  ggplot(aes(x = "", y = total_es_c, fill = cups)) 
-
-es3 <- coffee_survey_count_plot2 %>%  
-  filter(employment_status %in% c("Retired")) %>% 
-  ggplot(aes(x = "", y = total_es_c, fill = cups)) 
-
-es4 <- coffee_survey_count_plot2 %>%  
-  filter(employment_status %in% c("Student")) %>% 
-  ggplot(aes(x = "", y = total_es_c, fill = cups)) 
-
-es5 <- coffee_survey_count_plot2 %>%  
-  filter(employment_status %in% c("Unemployed")) %>% 
-  ggplot(aes(x = "", y = total_es_c, fill = cups)) 
-
-es6 <- coffee_survey_count_plot2 %>%  
-  filter(employment_status %in% c("Homemaker")) %>% 
-  ggplot(aes(x = "", y = total_es_c, fill = cups)) 
-
-# plot 2 ^
-############################
 
 ```
 
 ```{r, echo=FALSE}
 #| label: code for plot 3 and 4
-#| fig-height: 8
-#| fig-width: 8
+#| fig-height: 6
+#| fig-width: 6
 
 coffee_survey
 
@@ -245,7 +143,7 @@ coffee_survey_filter1 <- coffee_survey %>%
                   "2" = "2",
                   "3" = "3",
                   "4" = "4",
-                  "More than 4" = "5"))
+                  "More than 4" = "5")) 
 
 coffee_survey_filter1
 
@@ -305,9 +203,9 @@ coffee_survey_stats
 exp.labs <- c(
   "All",
   "Age",
-  "Number of Children",
-  "Employment Status",
-  "In-Person or Virtual")
+  "Number of \nChildren",
+  "Employment \nStatus",
+  "In-Person or \nVirtual Work")
 
 names(exp.labs) <- c(
   "All", 
@@ -316,23 +214,48 @@ names(exp.labs) <- c(
   "employment_status", 
   "wfh")
 
+
 coffee_survey_stats$explanatory = factor(coffee_survey_stats$explanatory, levels = c("All", "age", "number_children", "employment_status", "wfh"), ordered = TRUE) #manually order explanatory for facet
 
-
-p3 <- ggplot(coffee_survey_stats, 
-       aes(x = mean, y = explanatory_value)) +
+coffee_survey_stats
+p3 <- coffee_survey_stats %>% 
+  mutate(explanatory_value = fct_relevel(explanatory_value, 
+                                         "", 
+                               "<18 years old",
+                               "18-24 years old",
+                               "25-34 years old",
+                               "35-44 years old",
+                               "45-54 years old",
+                               "55-64 years old",
+                               ">65 years old",
+                               "None",
+                               "1",
+                               "2",
+                               "3",
+                               "More than 3",
+                               "Unemployed",
+                               "Student",
+                               "Homemaker",
+                               "Employed part-time",
+                               "Employed full-time",
+                               "Retired",
+                               "I primarily work in person",
+                               "I primarily work from home",
+                               "I do a mix of both")) %>%
+  ggplot(aes(x = mean, y = explanatory_value)) +
   geom_point() +
   geom_errorbar(aes(xmin = low, xmax = high), 
                 width = 0.2) +
-  facet_grid(explanatory ~ response, 
+  facet_grid(explanatory ~ ., 
              scales = "free", 
              space = "free",
              labeller = labeller(explanatory = exp.labs)) +
+  scale_x_continuous(limits = c(0, 5), breaks = c(0, 1, 2, 3, 4, 5), 
+    labels = label_wrap(10)(c("Less than 1", "1", "2", "3", "4", "More than 4"))) +
   labs(
-    x = "Mean Likert score \n(Error bars range from 10th to 90th percentile)",
+    x = "Number of Cups \n(Error bars range from 10th to 90th percentile)",
     y = NULL
   ) +
-  xlim(0, 5) +
   theme_minimal() +
   theme(
     panel.grid = element_blank(), #remove lines in plot
@@ -342,7 +265,8 @@ p3 <- ggplot(coffee_survey_stats,
       fill = "grey90", 
       color = "grey20", 
       linewidth = 1),
-    strip.text.y = element_text(angle = 0)) #turn explanatory facets from vertical to horizontal
+    strip.text.y = element_text(angle = 0)) #turn explanatory facets from vertical to horizontal)
+
 ```
 
 ```{r}
@@ -376,28 +300,53 @@ coffee_survey_percentage <- survey_1 %>% #calculate sums and percentages for div
                      c("4"), 
                    percent_answers/2, percent_answers)) #method to make diverging bar plot with neutral in the middle
   
-coffee_survey_percentage
+coffee_survey_percentage <- coffee_survey_percentage %>% 
+  mutate(explanatory_value = fct_relevel(explanatory_value, 
+                               "<18 years old",
+                               "18-24 years old",
+                               "25-34 years old",
+                               "35-44 years old",
+                               "45-54 years old",
+                               "55-64 years old",
+                               ">65 years old",
+                               "None",
+                               "1",
+                               "2",
+                               "3",
+                               "More than 3",
+                               "Unemployed",
+                               "Student",
+                               "Homemaker",
+                               "Employed part-time",
+                               "Employed full-time",
+                               "Retired",
+                               "I primarily work in person",
+                               "I primarily work from home",
+                               "I do a mix of both")) 
 
 coffee_survey_percentage$response_value <- factor(coffee_survey_percentage$response_value, levels = c("Less than 1", "1", "2", "3", "4", "More than 4"), ordered = TRUE) #manually order response value for facet
-
+coffee_survey_percentage
 
 p4 <- coffee_survey_percentage %>% 
   ggplot(aes(x = explanatory_value,
              y = percent_answers,
              fill = response_value)) +
-  geom_col(data = filter(coffee_survey_percentage, response_value %in% c("Less than 1")), aes(y = percent_answers)) +
-  geom_col(data = filter(coffee_survey_percentage, response_value %in% c("4", "More than 4")), aes(y = -percent_answers)) +
+  geom_col(data = filter(coffee_survey_percentage, 
+                         response_value %in% c("Less than 1")), 
+           aes(y = -percent_answers)) +
+  geom_col(data = filter(coffee_survey_percentage, 
+                         response_value %in% c("More than 4", "4")), 
+           aes(y = percent_answers)) +
   scale_fill_manual(breaks = c("Less than 1", "4", "More than 4"),
                     values = c("green4", "red3", "red4")) +
-  facet_grid(explanatory ~ response, 
+  facet_grid(explanatory ~ ., 
              scales = "free", 
              space = "free",
              labeller = labeller(explanatory = exp.labs)) +
-  scale_x_discrete() +
   labs(
-    title = "Extremes of Numbers of Coffee Drank",
-    x = "Explanatory Value",
-    y = "Percents",
+    title = "Trends Among Coffee Drinkers",
+    x = NULL,
+    y = "Percent of Responses",
     fill = "Number of Cups"
   ) +
   coord_flip() +
@@ -407,110 +356,92 @@ p4 <- coffee_survey_percentage %>%
         panel.grid.major.y = element_blank(),
         legend.text.position = "top",
         legend.title = element_text(hjust = 0.5, face = "bold"),
-        axis.title = element_text(face = "bold"))
+        legend.background = element_rect(
+          fill = "grey90", 
+          colour = "grey20", 
+          linewidth = 0.5),
+        axis.title = element_text(face = "bold"),
+        strip.text = element_text(size = 7),
+    strip.background = element_rect( #creating blocks for facet labels to match original
+      fill = "grey90", 
+      color = "grey20", 
+      linewidth = 1),
+    strip.text.y = element_text(angle = 0)) #turn explanatory facets from vertical to horizontal))
+
 
 ```
 
 
 
 
+## How Much Coffee Would a Coffee Drinker Drink . . .
 
-## Plots
-
-```{r}
+```{r, warning=FALSE, fig.width=5.5, fig.align="center"}
 #plot 1
-coffee_survey_count_plot1 %>%  
+
+p <- coffee_survey_count_plot1 %>%  
+  mutate(cups = fct_relevel(cups, 
+                               "Less than 1",
+                               "1",
+                               "2",
+                               "3",
+                               "4",
+                               "More than 4")) %>% 
   ggplot(aes(x = "", y = total_cups, fill = cups)) +
-  geom_bar(stat = "identity", width = 1) +
+  geom_bar(stat = "identity", width = 1, color = "black") +
   coord_polar(theta = "y") +
   scale_x_discrete(NULL, expand = c(0, 0)) +
   scale_y_continuous(NULL, expand = c(0, 0)) +
   scale_fill_manual(values = 
-                      c("#FBE183FF", "#FE9B00FF",
-                        "#D8443CFF", "#9B3441FF", 
-                        "#E87B89FF", "#E6A2A6FF"), name = "Cups of Coffee per Day") +
+                      c("#D7CCC8FF", "#BCAAA4FF", 
+                        "#A1887FFF", "#8D6E63FF", 
+                        "#6D4C41FF", "#4E342EFF"
+                       ), name = "Number of Cups") +
   geom_label_repel( 
     mapping = aes(y = pos, label = paste(percent)),
     size = 3,
     nudge_x = 0.9,
     show.legend = FALSE) +
+  labs(
+    title = "Distribution of Daily Cups of Coffee \n "
+  ) +
   theme_void() +
   theme(
     axis.text = element_blank(),
     plot.title = element_text(size = 12, face = "bold", hjust = 0.5),
     plot.title.position = "plot",
     legend.text = element_text(size = 8), #text of legend
-    legend.key.size = unit(0.25, "cm"),
-    plot.caption = element_text(hjust = 0, size = 6, face = "bold"),
-    plot.tag = element_text(size = 6, hjust = 0),
-    plot.tag.position = "bottom"
+    legend.key.size = unit(0.5, "cm")
   ) 
 
+p
+```
 
-# plot 2
 
-#es1 / es2
-#(es1 / es2) + geom_bar(stat = "identity", width = 1) +
-  
+## All Variables Accounted For
 
+Average amount of coffee ranges between 1 and 3 cups for each group
+
+```{r, warning=FALSE, fig.width=6, fig.height = 6, fig.align="center"}
 p3
+```
 
+
+## Extremes
+
+
+```{r, warning=FALSE, fig.width=5.5, fig.align="center"}
 p4
-
 ```
 
-## Plot and text
 
-::: columns
-::: {.column width="50%"}
--   Some text
+# Conclusion
 
--   goes here
-:::
+- Average cups of coffee ranges between 1 and 3 cups for each group
+- Drinking less than 1 cup of coffee is more common among those less than 24 years old, no kids, and unemployed.
+- Drinking more coffee is more common among those 45 years old and older, with many kids, and retired.
+- Future work should consider the weight of age on coffee drinking habits or correlation between factors - what truly has a weight on these habits?
 
-::: {.column width="50%"}
-```{r, warning=FALSE, fig.width=5.5}
 
-```
-:::
-:::
 
-# A new section...
-
-## Tables
-
-If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,
-
-```{r}
-
-```
-
-## Images
-
-![Image credit: Danielle Navarro, Percolate.](images/watercolour_sys02_img34_teacup-ocean.png){fig-align="center" width="500"}
-
-## Math Expressions {.smaller}
-
-You can write LaTeX math expressions inside a pair of dollar signs, e.g. \$\\alpha+\\beta\$ renders $\alpha + \beta$. You can use the display style with double dollar signs:
-
-```         
-$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$
-```
-
-$$
-\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i
-$$
-
-Limitations:
-
-1.  The source code of a LaTeX math expression must be in one line, unless it is inside a pair of double dollar signs, in which case the starting `$$` must appear in the very beginning of a line, followed immediately by a non-space character, and the ending `$$` must be at the end of a line, led by a non-space character;
-
-2.  There should not be spaces after the opening `$` or before the closing `$`.
-
-# Wrap up
-
-## Feeling adventurous?
-
--   You are welcomed to use the default styling of the slides. In fact, that's what I expect majority of you will do. You will differentiate yourself with the content of your presentation.
-
--   But some of you might want to play around with slide styling. Some solutions for this can be found at https://quarto.org/docs/presentations/revealjs.
+## References

@@ -10,8 +10,8 @@
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.555">
 
-  <meta name="author" content="Author names">
-  <title>Project Title - Project title</title>
+  <meta name="author" content="Vera Jackson">
+  <title>Project Title - Coffee Drinking Habits</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -325,159 +325,42 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="images/watercolour_sys02_img34_teacup-ocean.jpg" data-background-opacity="0.7" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
-  <h1 class="title">Project title</h1>
+<section id="title-slide" data-background-image="images/coffee_cover.jpg" data-background-opacity="0.5" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
+  <h1 class="title">Coffee Drinking Habits</h1>
   <p class="subtitle">INFO 526 - Summer 2024 - Final Project</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Author names 
+Vera Jackson 
 </div>
 </div>
 </div>
 
 </section>
 <section>
-<section id="using-quarto-for-presentations" class="title-slide slide level1 center">
-<h1>Using Quarto for presentations</h1>
+<section id="introduction" class="title-slide slide level1 center">
+<h1>Introduction</h1>
 
 </section>
-<section id="quarto" class="slide level2">
-<h2>Quarto</h2>
-<ul>
-<li><p>The presentation is created using the Quarto CLI</p></li>
-<li><p><code>##</code> sets the start of a new slide</p></li>
-</ul>
-</section>
-<section id="layouts" class="slide level2">
-<h2>Layouts</h2>
-<p>You can use plain text</p>
-<div class="columns">
-<div class="column" style="width:40%;">
-<ul>
-<li>or bullet points<sup>1</sup></li>
-</ul>
-</div><div class="column" style="width:60%;">
-<p>or in two columns</p>
-</div>
-</div>
-<ul>
-<li><p>like</p></li>
-<li><p>this</p></li>
-</ul>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>And add footnotes</p></li></ol></aside></section>
-<section id="code" class="slide level2">
-<h2>Code</h2>
+<section id="coffee-survey" class="slide level2">
+<h2>Coffee Survey</h2>
+<p>The “Great American Coffee Taste Test” data set is compiled of survey results that were filled out by participants of a taste test, hosted in part by a coffee company Cometeer. The survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provides coffees, and individual demographics.</p>
+
+<img data-src="images/cometeer_logo.png" width="500" class="r-stretch quarto-figure-center"><p class="caption">Image credit: Cometeer, cometeer.com.</p></section>
+<section id="the-data" class="slide level2">
+<h2>The Data</h2>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4,042 × 57
-   submission_id age             cups      where_drink brew  brew_other purchase
-   &lt;chr&gt;         &lt;chr&gt;           &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;   
- 1 gMR29l        18-24 years old &lt;NA&gt;      &lt;NA&gt;        &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;    
- 2 BkPN0e        25-34 years old &lt;NA&gt;      &lt;NA&gt;        Pod/… &lt;NA&gt;       &lt;NA&gt;    
- 3 W5G8jj        25-34 years old &lt;NA&gt;      &lt;NA&gt;        Bean… &lt;NA&gt;       &lt;NA&gt;    
- 4 4xWgGr        35-44 years old &lt;NA&gt;      &lt;NA&gt;        Coff… &lt;NA&gt;       &lt;NA&gt;    
- 5 QD27Q8        25-34 years old &lt;NA&gt;      &lt;NA&gt;        Pour… &lt;NA&gt;       &lt;NA&gt;    
- 6 V0LPeM        55-64 years old &lt;NA&gt;      &lt;NA&gt;        Pod/… &lt;NA&gt;       &lt;NA&gt;    
- 7 V0Gaxg        18-24 years old &lt;NA&gt;      At a cafe,… Pour… &lt;NA&gt;       Nationa…
- 8 AdzRL0        &lt;NA&gt;            &lt;NA&gt;      &lt;NA&gt;        &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;    
- 9 LbWda2        25-34 years old Less tha… At a cafe   &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;    
-10 EXQLWN        &lt;NA&gt;            &lt;NA&gt;      &lt;NA&gt;        &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;    
-# ℹ 4,032 more rows
-# ℹ 50 more variables: purchase_other &lt;chr&gt;, favorite &lt;chr&gt;,
-#   favorite_specify &lt;chr&gt;, additions &lt;chr&gt;, additions_other &lt;chr&gt;,
-#   dairy &lt;chr&gt;, sweetener &lt;chr&gt;, style &lt;chr&gt;, strength &lt;chr&gt;,
-#   roast_level &lt;chr&gt;, caffeine &lt;chr&gt;, expertise &lt;dbl&gt;,
-#   coffee_a_bitterness &lt;dbl&gt;, coffee_a_acidity &lt;dbl&gt;,
-#   coffee_a_personal_preference &lt;dbl&gt;, coffee_a_notes &lt;chr&gt;, …</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3,343 × 5
-   cups        employment_status  number_children wfh                      age  
-   &lt;chr&gt;       &lt;chr&gt;              &lt;chr&gt;           &lt;chr&gt;                    &lt;chr&gt;
- 1 3           Employed full-time More than 3     I primarily work from h… &lt;18 …
- 2 1           Employed full-time None            I primarily work from h… 25-3…
- 3 2           Employed full-time 2               I primarily work from h… 45-5…
- 4 2           Unemployed         None            I do a mix of both       25-3…
- 5 1           Employed full-time 3               I primarily work in per… 35-4…
- 6 More than 4 Employed full-time 3               I primarily work from h… 45-5…
- 7 2           Unemployed         2               I do a mix of both       35-4…
- 8 2           Employed full-time More than 3     I primarily work from h… 45-5…
- 9 2           Employed full-time None            I primarily work in per… 35-4…
-10 Less than 1 Employed full-time None            I primarily work in per… 45-5…
-# ℹ 3,333 more rows</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 5
-  cups        total_cups percent  csum    pos
-  &lt;chr&gt;            &lt;int&gt; &lt;chr&gt;   &lt;int&gt;  &lt;dbl&gt;
-1 1                 1098 32.8%    3343 2794  
-2 2                 1409 42.1%    2245 1540. 
-3 3                  396 11.8%     836  638  
-4 4                  103 3.1%      440  388. 
-5 Less than 1        284 8.5%      337  195  
-6 More than 4         53 1.6%       53   26.5</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 2
-  employment_status  total_es
-  &lt;chr&gt;                 &lt;int&gt;
-1 Employed full-time     2682
-2 Employed part-time      201
-3 Homemaker                70
-4 Retired                  62
-5 Student                 209
-6 Unemployed              119</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 34 × 3
-   cups  employment_status  total_es_c
-   &lt;chr&gt; &lt;chr&gt;                   &lt;int&gt;
- 1 1     Employed full-time        850
- 2 1     Employed part-time         89
- 3 1     Homemaker                  29
- 4 1     Retired                    10
- 5 1     Student                    76
- 6 1     Unemployed                 44
- 7 2     Employed full-time       1154
- 8 2     Employed part-time         66
- 9 2     Homemaker                  26
-10 2     Retired                    29
-# ℹ 24 more rows</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 34 × 4
-   employment_status  total_es cups        total_es_c
-   &lt;chr&gt;                 &lt;int&gt; &lt;chr&gt;            &lt;int&gt;
- 1 Employed full-time     2682 1                  850
- 2 Employed full-time     2682 2                 1154
- 3 Employed full-time     2682 3                  348
- 4 Employed full-time     2682 4                   85
- 5 Employed full-time     2682 Less than 1        200
- 6 Employed full-time     2682 More than 4         45
- 7 Employed part-time      201 1                   89
- 8 Employed part-time      201 2                   66
- 9 Employed part-time      201 3                   13
-10 Employed part-time      201 4                    6
-# ℹ 24 more rows</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 34 × 7
-# Groups:   employment_status [6]
-   employment_status  total_es cups        total_es_c percent  csum    pos
-   &lt;chr&gt;                 &lt;int&gt; &lt;chr&gt;            &lt;int&gt; &lt;chr&gt;   &lt;int&gt;  &lt;dbl&gt;
- 1 Employed full-time     2682 1                  850 31.7%    2682 2257  
- 2 Employed full-time     2682 2                 1154 43.0%    1832 1255  
- 3 Employed full-time     2682 3                  348 13.0%     678  504  
- 4 Employed full-time     2682 4                   85 3.2%      330  288. 
- 5 Employed full-time     2682 Less than 1        200 7.5%      245  145  
- 6 Employed full-time     2682 More than 4         45 1.7%       45   22.5
- 7 Employed part-time      201 1                   89 44.3%     201  156. 
- 8 Employed part-time      201 2                   66 32.8%     112   79  
- 9 Employed part-time      201 3                   13 6.5%       46   39.5
-10 Employed part-time      201 4                    6 3.0%       33   30  
-# ℹ 24 more rows</code></pre>
+  cups        employment_status  number_children wfh                       age  
+  &lt;chr&gt;       &lt;chr&gt;              &lt;chr&gt;           &lt;chr&gt;                     &lt;chr&gt;
+1 3           Employed full-time More than 3     I primarily work from ho… &lt;18 …
+2 1           Employed full-time None            I primarily work from ho… 25-3…
+3 2           Employed full-time 2               I primarily work from ho… 45-5…
+4 2           Unemployed         None            I do a mix of both        25-3…
+5 1           Employed full-time 3               I primarily work in pers… 35-4…
+6 More than 4 Employed full-time 3               I primarily work from ho… 45-5…</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -568,6 +451,22 @@ Author names
 10 cups      1.44     0     2 employment_status "Employed part-time"
 # ℹ 12 more rows</code></pre>
 </div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 22 × 6
+   response  mean   low  high explanatory       explanatory_value   
+   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;ord&gt;             &lt;chr&gt;               
+ 1 cups      1.73     1     3 All               ""                  
+ 2 cups      1.49     0     3 age               "18-24 years old"   
+ 3 cups      1.64     1     3 age               "25-34 years old"   
+ 4 cups      1.83     1     3 age               "35-44 years old"   
+ 5 cups      1.99     1     3 age               "45-54 years old"   
+ 6 cups      2.18     1     4 age               "55-64 years old"   
+ 7 cups      1.21     0     2 age               "&lt;18 years old"     
+ 8 cups      2.22     1     4 age               "&gt;65 years old"     
+ 9 cups      1.78     1     3 employment_status "Employed full-time"
+10 cups      1.44     0     2 employment_status "Employed part-time"
+# ℹ 12 more rows</code></pre>
+</div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -605,7 +504,7 @@ Author names
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 122 × 7
    explanatory explanatory_value response response_value count percent_answers
-   &lt;chr&gt;       &lt;chr&gt;             &lt;chr&gt;    &lt;chr&gt;          &lt;int&gt;           &lt;dbl&gt;
+   &lt;chr&gt;       &lt;fct&gt;             &lt;chr&gt;    &lt;ord&gt;          &lt;int&gt;           &lt;dbl&gt;
  1 age         18-24 years old   cups     1                166         0.371  
  2 age         18-24 years old   cups     2                160         0.358  
  3 age         18-24 years old   cups     3                 33         0.0738 
@@ -621,82 +520,31 @@ Author names
 </div>
 </div>
 </section>
-<section id="plots" class="slide level2">
-<h2>Plots</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-7-1.png" width="1800"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-7-2.png" width="1800"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-7-3.png" width="1800"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="plot-and-text" class="slide level2">
-<h2>Plot and text</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li><p>Some text</p></li>
-<li><p>goes here</p></li>
-</ul>
-</div><div class="column" style="width:50%;">
+<section id="how-much-coffee-would-a-coffee-drinker-drink-.-.-." class="slide level2">
+<h2>How Much Coffee Would a Coffee Drinker Drink . . .</h2>
 
-</div>
-</div>
-</section></section>
+<img data-src="presentation_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1650"></section>
+<section id="all-variables-accounted-for" class="slide level2">
+<h2>All Variables Accounted For</h2>
+<p>Average amount of coffee ranges between 1 and 3 cups for each group</p>
+
+<img data-src="presentation_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1800"></section>
+<section id="extremes" class="slide level2">
+<h2>Extremes</h2>
+
+<img data-src="presentation_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1650"></section></section>
 <section>
-<section id="a-new-section" class="title-slide slide level1 center">
-<h1>A new section…</h1>
-
-</section>
-<section id="tables" class="slide level2">
-<h2>Tables</h2>
-<p>If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,</p>
-</section>
-<section id="images" class="slide level2">
-<h2>Images</h2>
-
-<img data-src="images/watercolour_sys02_img34_teacup-ocean.png" width="500" class="r-stretch quarto-figure-center"><p class="caption">Image credit: Danielle Navarro, Percolate.</p></section>
-<section id="math-expressions" class="slide level2 smaller">
-<h2>Math Expressions</h2>
-<p>You can write LaTeX math expressions inside a pair of dollar signs, e.g.&nbsp;$\alpha+\beta$ renders <span class="math inline">\(\alpha + \beta\)</span>. You can use the display style with double dollar signs:</p>
-<pre><code>$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$</code></pre>
-<p><span class="math display">\[
-\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i
-\]</span></p>
-<p>Limitations:</p>
-<ol type="1">
-<li><p>The source code of a LaTeX math expression must be in one line, unless it is inside a pair of double dollar signs, in which case the starting <code>$$</code> must appear in the very beginning of a line, followed immediately by a non-space character, and the ending <code>$$</code> must be at the end of a line, led by a non-space character;</p></li>
-<li><p>There should not be spaces after the opening <code>$</code> or before the closing <code>$</code>.</p></li>
-</ol>
-</section></section>
-<section>
-<section id="wrap-up" class="title-slide slide level1 center">
-<h1>Wrap up</h1>
-
-</section>
-<section id="feeling-adventurous" class="slide level2">
-<h2>Feeling adventurous?</h2>
+<section id="conclusion" class="title-slide slide level1 center">
+<h1>Conclusion</h1>
 <ul>
-<li><p>You are welcomed to use the default styling of the slides. In fact, that’s what I expect majority of you will do. You will differentiate yourself with the content of your presentation.</p></li>
-<li><p>But some of you might want to play around with slide styling. Some solutions for this can be found at https://quarto.org/docs/presentations/revealjs.</p></li>
+<li>Average cups of coffee ranges between 1 and 3 cups for each group</li>
+<li>Drinking less than 1 cup of coffee is more common among those less than 24 years old, no kids, and unemployed.</li>
+<li>Drinking more coffee is more common among those 45 years old and older, with many kids, and retired.</li>
+<li>Future work should consider the weight of age on coffee drinking habits or correlation between factors - what truly has a weight on these habits?</li>
 </ul>
+</section>
+<section id="references" class="slide level2">
+<h2>References</h2>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -704,7 +552,6 @@ Author names
 </div>
 </div>
 </section></section>
-
     </div>
   </div>
 
