@@ -1,11 +1,11 @@
 ---
-title: "Coffee Drinking Habits"
+title: "Coffee Drinking Habits and Working Conditions"
 subtitle: "INFO 526 - Summer 2024 - Final Project"
 author: "Vera Jackson"
 title-slide-attributes:
   data-background-image: images/coffee_cover.jpg
   data-background-size: stretch
-  data-background-opacity: "0.5"
+  data-background-opacity: "0.4"
   data-slide-number: none
 format:
   revealjs:
@@ -14,6 +14,7 @@ format:
 editor: visual
 execute:
   echo: false
+bibliography: references.bib
 ---
 
 ```{r}
@@ -63,18 +64,35 @@ coffee_survey
 
 ```
 
-# Introduction
+## Coffee: a habit, ritual, necessity, luxury
 
-## Coffee Survey
+-   75% of the US population drink coffee [@loftfield2016]
 
-The "Great American Coffee Taste Test" data set is compiled of survey results that were filled out by participants of a taste test, hosted in part by a coffee company Cometeer. The survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provides coffees, and individual demographics.
+-   Studies have shown that lifestyle and demographic factors influence intake [@loftfield2016]
 
-![Image credit: Cometeer, cometeer.com.](images/cometeer_logo.png){fig-align="center" width="500"}
+## Coffee: a habit, ritual, necessity, luxury
+
+-   75% of the US population drink coffee [@loftfield2016]
+
+-   Studies have shown that lifestyle and demographic factors influence intake [@loftfield2016]
+
+**How much coffee are people drinking, and why?**
+
+## The "Great American Coffee Taste Test" data set
+
+-   Survey results filled out by taste test participants, co-hosted by U.S.-based coffee company Cometeer. [@tracykteal2024]
+
+-   The survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provided coffees, and individual demographics.
+
+![Image credit: Cometeer, cometeer.com [@cometeer].](images/cometeer_logo.png){fig-align="center" width="415"}
 
 ## The Data
 
+Variables: `cups, employment_status, number_children, wfh, age`
+
 ```{r, echo=FALSE}
 #| label: introducing data
+
 
 coffee_survey_cleanNA <- coffee_survey %>% 
   select(cups, employment_status, number_children, wfh, age) %>% 
@@ -84,7 +102,8 @@ coffee_survey_cleanNA <- coffee_survey %>%
   filter(!is.na(number_children)) %>% 
   filter(!is.na(age)) 
 
-head(coffee_survey_cleanNA)
+coffee_survey_cleanNA
+
 ```
 
 ```{r, echo=FALSE}
@@ -118,8 +137,6 @@ coffee_survey_count_plot1 <- coffee_survey_count_cups %>%
          pos = total_cups/2 + lead(csum, 1),
          pos = if_else(is.na(pos), total_cups/2, pos))
 
-
-coffee_survey_count_plot1
 # plot 1 ^
 ###################
 
@@ -131,7 +148,6 @@ coffee_survey_count_plot1
 #| fig-height: 6
 #| fig-width: 6
 
-coffee_survey
 
 coffee_survey_filter1 <- coffee_survey %>% 
   select(submission_id, cups, employment_status, number_children, wfh, age) %>% 
@@ -145,7 +161,6 @@ coffee_survey_filter1 <- coffee_survey %>%
                   "4" = "4",
                   "More than 4" = "5")) 
 
-coffee_survey_filter1
 
 coffee_survey_filter1_longer <- coffee_survey_filter1 %>% 
   pivot_longer(
@@ -160,7 +175,6 @@ coffee_survey_filter1_longer <- coffee_survey_filter1 %>%
     values_to = "response_value"
   )
 
-coffee_survey_filter1_longer #14,289 rows
 
 # now i will group the data and calculate summary statistics
 coffee_survey_filter1_longer$response_value <- as.numeric(coffee_survey_filter1_longer$response_value)
@@ -190,14 +204,13 @@ coffee_survey_stats_by_group <-  coffee_survey_filter1_longer %>%
   mutate(across(c("mean"), round, 2)) #mean output was returning values with 4 decimal places
   
 
-coffee_survey_stats_by_group
 
 #now to bind together both groups
 coffee_survey_stats <- bind_rows(
   coffee_survey_stats_all,
   coffee_survey_stats_by_group)
 
-coffee_survey_stats
+
 
 #new label for explanatory variable facet
 exp.labs <- c(
@@ -217,7 +230,7 @@ names(exp.labs) <- c(
 
 coffee_survey_stats$explanatory = factor(coffee_survey_stats$explanatory, levels = c("All", "age", "number_children", "employment_status", "wfh"), ordered = TRUE) #manually order explanatory for facet
 
-coffee_survey_stats
+
 p3 <- coffee_survey_stats %>% 
   mutate(explanatory_value = fct_relevel(explanatory_value, 
                                          "", 
@@ -269,10 +282,9 @@ p3 <- coffee_survey_stats %>%
 
 ```
 
-```{r}
+```{r, echo=FALSE}
 #finally, who is drinking the most coffee??
 
-coffee_survey_filter1_longer
 
 
 survey_1 <- coffee_survey_filter1_longer %>% #editing response values so number equals actual response
@@ -285,7 +297,7 @@ survey_1 <- coffee_survey_filter1_longer %>% #editing response values so number 
     response_value == "5" ~ "More than 4")
     )
 
-survey_1
+
 
 coffee_survey_percentage <- survey_1 %>% #calculate sums and percentages for diverging plot
   filter(!is.na(response_value)) %>% 
@@ -322,10 +334,15 @@ coffee_survey_percentage <- coffee_survey_percentage %>%
                                "Retired",
                                "I primarily work in person",
                                "I primarily work from home",
-                               "I do a mix of both")) 
+                               "I do a mix of both")) %>% 
+  mutate(explanatory = fct_relevel(explanatory, 
+                               "age",
+                               "number_children",
+                               "employment_status",
+                               "wfh"))
 
 coffee_survey_percentage$response_value <- factor(coffee_survey_percentage$response_value, levels = c("Less than 1", "1", "2", "3", "4", "More than 4"), ordered = TRUE) #manually order response value for facet
-coffee_survey_percentage
+
 
 p4 <- coffee_survey_percentage %>% 
   ggplot(aes(x = explanatory_value,
@@ -335,16 +352,16 @@ p4 <- coffee_survey_percentage %>%
                          response_value %in% c("Less than 1")), 
            aes(y = -percent_answers)) +
   geom_col(data = filter(coffee_survey_percentage, 
-                         response_value %in% c("More than 4", "4")), 
+                         response_value %in% c("4", "More than 4")), 
            aes(y = percent_answers)) +
   scale_fill_manual(breaks = c("Less than 1", "4", "More than 4"),
-                    values = c("green4", "red3", "red4")) +
+                    values = c("#87A5A5FF", "#D2D2C3FF", "#A5A587FF")) +
   facet_grid(explanatory ~ ., 
              scales = "free", 
              space = "free",
              labeller = labeller(explanatory = exp.labs)) +
   labs(
-    title = "Trends Among Coffee Drinkers",
+    title = "Responses Outside of Average",
     x = NULL,
     y = "Percent of Responses",
     fill = "Number of Cups"
@@ -371,9 +388,6 @@ p4 <- coffee_survey_percentage %>%
 
 ```
 
-
-
-
 ## How Much Coffee Would a Coffee Drinker Drink . . .
 
 ```{r, warning=FALSE, fig.width=5.5, fig.align="center"}
@@ -393,9 +407,9 @@ p <- coffee_survey_count_plot1 %>%
   scale_x_discrete(NULL, expand = c(0, 0)) +
   scale_y_continuous(NULL, expand = c(0, 0)) +
   scale_fill_manual(values = 
-                      c("#D7CCC8FF", "#BCAAA4FF", 
-                        "#A1887FFF", "#8D6E63FF", 
-                        "#6D4C41FF", "#4E342EFF"
+                      c("#87A5A5FF", "#BCAAA4FF", 
+                        "#A1887FFF", "#D2A54BFF",
+                        "#D2D2C3FF", "#A5A587FF" 
                        ), name = "Number of Cups") +
   geom_label_repel( 
     mapping = aes(y = pos, label = paste(percent)),
@@ -403,7 +417,7 @@ p <- coffee_survey_count_plot1 %>%
     nudge_x = 0.9,
     show.legend = FALSE) +
   labs(
-    title = "Distribution of Daily Cups of Coffee \n "
+    title = "Distrubution of Daily Cups of Coffee \nAmong Responses \n "
   ) +
   theme_void() +
   theme(
@@ -417,31 +431,35 @@ p <- coffee_survey_count_plot1 %>%
 p
 ```
 
-
 ## All Variables Accounted For
 
-Average amount of coffee ranges between 1 and 3 cups for each group
+Average amount of coffee ranges between 1 and 3 cups
 
 ```{r, warning=FALSE, fig.width=6, fig.height = 6, fig.align="center"}
 p3
 ```
 
-
-## Extremes
-
+## The Extremes
 
 ```{r, warning=FALSE, fig.width=5.5, fig.align="center"}
 p4
 ```
 
+## Conclusion
 
-# Conclusion
+-   Average cups of coffee ranges between 1 - 3 cups for each group
 
-- Average cups of coffee ranges between 1 and 3 cups for each group
-- Drinking less than 1 cup of coffee is more common among those less than 24 years old, no kids, and unemployed.
-- Drinking more coffee is more common among those 45 years old and older, with many kids, and retired.
-- Future work should consider the weight of age on coffee drinking habits or correlation between factors - what truly has a weight on these habits?
+## Conclusion
 
+-   Average cups of coffee ranges between 1 - 3 cups for each group
+-   Drinking less than 1 cup of coffee is more common among those less than 24 years old, no kids, and unemployed.
+-   Drinking more than average is more common among those 45 years old and older, with many kids, and retired.
 
+## Conclusion
+
+-   Average cups of coffee ranges between 1 - 3 cups for each group
+-   Drinking less than 1 cup of coffee is more common among those less than 24 years old, no kids, and unemployed.
+-   Drinking more than average is more common among those 45 years old and older, with many kids, and retired.
+-   Future work should consider the weight of age on coffee drinking habits or correlation between factors - what truly has a weight on these habits?
 
 ## References

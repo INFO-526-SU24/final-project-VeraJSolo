@@ -142,9 +142,9 @@
   {
     "objectID": "presentation.html#references",
     "href": "presentation.html#references",
-    "title": "Coffee Drinking Habits",
+    "title": "Coffee Drinking Habits and Working Conditions",
     "section": "References",
-    "text": "References"
+    "text": "References\n\n\n\n\n\n\n\n\nCometeer Logo Image. n.d. cometeer.com.\n\n\nLoftfield, Erikka, Neal D Freedman, Kevin W Dodd, Emily Vogtmann, Qian Xiao, Rashmi Sinha, and Barry I Graubard. 2016. “Coffee Drinking Is Widespread in the United States, but Usual Intake Varies by Key Demographic and Lifestyle Factors.” The Journal of Nutrition 146 (9): 1762–68. https://doi.org/10.3945/jn.116.233940.\n\n\ntracykteal. 2024. “The Great American Coffee Taste Test.” https://github.com/rfordatascience/tidytuesday/blob/master/data/2024/2024-05-14/readme.md."
   },
   {
     "objectID": "presentation.html#coffee-survey",
@@ -156,9 +156,9 @@
   {
     "objectID": "presentation.html#the-data",
     "href": "presentation.html#the-data",
-    "title": "Coffee Drinking Habits",
+    "title": "Coffee Drinking Habits and Working Conditions",
     "section": "The Data",
-    "text": "The Data\n\n\n# A tibble: 6 × 5\n  cups        employment_status  number_children wfh                       age  \n  &lt;chr&gt;       &lt;chr&gt;              &lt;chr&gt;           &lt;chr&gt;                     &lt;chr&gt;\n1 3           Employed full-time More than 3     I primarily work from ho… &lt;18 …\n2 1           Employed full-time None            I primarily work from ho… 25-3…\n3 2           Employed full-time 2               I primarily work from ho… 45-5…\n4 2           Unemployed         None            I do a mix of both        25-3…\n5 1           Employed full-time 3               I primarily work in pers… 35-4…\n6 More than 4 Employed full-time 3               I primarily work from ho… 45-5…\n\n\n\n\n# A tibble: 4,042 × 57\n   submission_id age             cups      where_drink brew  brew_other purchase\n   &lt;chr&gt;         &lt;chr&gt;           &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;   \n 1 gMR29l        18-24 years old &lt;NA&gt;      &lt;NA&gt;        &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;    \n 2 BkPN0e        25-34 years old &lt;NA&gt;      &lt;NA&gt;        Pod/… &lt;NA&gt;       &lt;NA&gt;    \n 3 W5G8jj        25-34 years old &lt;NA&gt;      &lt;NA&gt;        Bean… &lt;NA&gt;       &lt;NA&gt;    \n 4 4xWgGr        35-44 years old &lt;NA&gt;      &lt;NA&gt;        Coff… &lt;NA&gt;       &lt;NA&gt;    \n 5 QD27Q8        25-34 years old &lt;NA&gt;      &lt;NA&gt;        Pour… &lt;NA&gt;       &lt;NA&gt;    \n 6 V0LPeM        55-64 years old &lt;NA&gt;      &lt;NA&gt;        Pod/… &lt;NA&gt;       &lt;NA&gt;    \n 7 V0Gaxg        18-24 years old &lt;NA&gt;      At a cafe,… Pour… &lt;NA&gt;       Nationa…\n 8 AdzRL0        &lt;NA&gt;            &lt;NA&gt;      &lt;NA&gt;        &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;    \n 9 LbWda2        25-34 years old Less tha… At a cafe   &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;    \n10 EXQLWN        &lt;NA&gt;            &lt;NA&gt;      &lt;NA&gt;        &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;    \n# ℹ 4,032 more rows\n# ℹ 50 more variables: purchase_other &lt;chr&gt;, favorite &lt;chr&gt;,\n#   favorite_specify &lt;chr&gt;, additions &lt;chr&gt;, additions_other &lt;chr&gt;,\n#   dairy &lt;chr&gt;, sweetener &lt;chr&gt;, style &lt;chr&gt;, strength &lt;chr&gt;,\n#   roast_level &lt;chr&gt;, caffeine &lt;chr&gt;, expertise &lt;dbl&gt;,\n#   coffee_a_bitterness &lt;dbl&gt;, coffee_a_acidity &lt;dbl&gt;,\n#   coffee_a_personal_preference &lt;dbl&gt;, coffee_a_notes &lt;chr&gt;, …\n\n\n# A tibble: 3,949 × 6\n   submission_id cups  employment_status  number_children wfh              age  \n   &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt;              &lt;chr&gt;           &lt;chr&gt;            &lt;chr&gt;\n 1 LbWda2        0     &lt;NA&gt;               &lt;NA&gt;            &lt;NA&gt;             25-3…\n 2 7WWB4A        2     &lt;NA&gt;               &lt;NA&gt;            &lt;NA&gt;             &lt;18 …\n 3 pKL8aB        1     &lt;NA&gt;               &lt;NA&gt;            &lt;NA&gt;             25-3…\n 4 Zd694B        3     Employed full-time More than 3     I primarily wor… &lt;18 …\n 5 QAeYZY        3     &lt;NA&gt;               &lt;NA&gt;            &lt;NA&gt;             &gt;65 …\n 6 QA5JYA        1     Employed full-time None            I primarily wor… 25-3…\n 7 Rz5BPj        2     &lt;NA&gt;               &lt;NA&gt;            &lt;NA&gt;             25-3…\n 8 jyDqva        2     &lt;NA&gt;               &lt;NA&gt;            &lt;NA&gt;             18-2…\n 9 eB7QoJ        3     &lt;NA&gt;               &lt;NA&gt;            &lt;NA&gt;             18-2…\n10 1r2YJQ        5     &lt;NA&gt;               &lt;NA&gt;            &lt;NA&gt;             25-3…\n# ℹ 3,939 more rows\n\n\n# A tibble: 14,289 × 5\n   submission_id explanatory       explanatory_value     response response_value\n   &lt;chr&gt;         &lt;chr&gt;             &lt;chr&gt;                 &lt;chr&gt;    &lt;chr&gt;         \n 1 LbWda2        age               25-34 years old       cups     0             \n 2 7WWB4A        age               &lt;18 years old         cups     2             \n 3 pKL8aB        age               25-34 years old       cups     1             \n 4 Zd694B        employment_status Employed full-time    cups     3             \n 5 Zd694B        number_children   More than 3           cups     3             \n 6 Zd694B        age               &lt;18 years old         cups     3             \n 7 Zd694B        wfh               I primarily work fro… cups     3             \n 8 QAeYZY        age               &gt;65 years old         cups     3             \n 9 QA5JYA        employment_status Employed full-time    cups     1             \n10 QA5JYA        number_children   None                  cups     1             \n# ℹ 14,279 more rows\n\n\n# A tibble: 21 × 6\n# Groups:   explanatory, explanatory_value [21]\n   explanatory       explanatory_value  response  mean   low  high\n   &lt;chr&gt;             &lt;chr&gt;              &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 age               18-24 years old    cups      1.49     0     3\n 2 age               25-34 years old    cups      1.64     1     3\n 3 age               35-44 years old    cups      1.83     1     3\n 4 age               45-54 years old    cups      1.99     1     3\n 5 age               55-64 years old    cups      2.18     1     4\n 6 age               &lt;18 years old      cups      1.21     0     2\n 7 age               &gt;65 years old      cups      2.22     1     4\n 8 employment_status Employed full-time cups      1.78     1     3\n 9 employment_status Employed part-time cups      1.44     0     2\n10 employment_status Homemaker          cups      1.41     0     2\n# ℹ 11 more rows\n\n\n# A tibble: 22 × 6\n   response  mean   low  high explanatory       explanatory_value   \n   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;               \n 1 cups      1.73     1     3 All               \"\"                  \n 2 cups      1.49     0     3 age               \"18-24 years old\"   \n 3 cups      1.64     1     3 age               \"25-34 years old\"   \n 4 cups      1.83     1     3 age               \"35-44 years old\"   \n 5 cups      1.99     1     3 age               \"45-54 years old\"   \n 6 cups      2.18     1     4 age               \"55-64 years old\"   \n 7 cups      1.21     0     2 age               \"&lt;18 years old\"     \n 8 cups      2.22     1     4 age               \"&gt;65 years old\"     \n 9 cups      1.78     1     3 employment_status \"Employed full-time\"\n10 cups      1.44     0     2 employment_status \"Employed part-time\"\n# ℹ 12 more rows\n\n\n# A tibble: 22 × 6\n   response  mean   low  high explanatory       explanatory_value   \n   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;ord&gt;             &lt;chr&gt;               \n 1 cups      1.73     1     3 All               \"\"                  \n 2 cups      1.49     0     3 age               \"18-24 years old\"   \n 3 cups      1.64     1     3 age               \"25-34 years old\"   \n 4 cups      1.83     1     3 age               \"35-44 years old\"   \n 5 cups      1.99     1     3 age               \"45-54 years old\"   \n 6 cups      2.18     1     4 age               \"55-64 years old\"   \n 7 cups      1.21     0     2 age               \"&lt;18 years old\"     \n 8 cups      2.22     1     4 age               \"&gt;65 years old\"     \n 9 cups      1.78     1     3 employment_status \"Employed full-time\"\n10 cups      1.44     0     2 employment_status \"Employed part-time\"\n# ℹ 12 more rows\n\n\n\n\n# A tibble: 14,289 × 5\n   submission_id explanatory       explanatory_value     response response_value\n   &lt;chr&gt;         &lt;chr&gt;             &lt;chr&gt;                 &lt;chr&gt;             &lt;dbl&gt;\n 1 LbWda2        age               25-34 years old       cups                  0\n 2 7WWB4A        age               &lt;18 years old         cups                  2\n 3 pKL8aB        age               25-34 years old       cups                  1\n 4 Zd694B        employment_status Employed full-time    cups                  3\n 5 Zd694B        number_children   More than 3           cups                  3\n 6 Zd694B        age               &lt;18 years old         cups                  3\n 7 Zd694B        wfh               I primarily work fro… cups                  3\n 8 QAeYZY        age               &gt;65 years old         cups                  3\n 9 QA5JYA        employment_status Employed full-time    cups                  1\n10 QA5JYA        number_children   None                  cups                  1\n# ℹ 14,279 more rows\n\n\n# A tibble: 14,289 × 5\n   submission_id explanatory       explanatory_value     response response_value\n   &lt;chr&gt;         &lt;chr&gt;             &lt;chr&gt;                 &lt;chr&gt;    &lt;chr&gt;         \n 1 LbWda2        age               25-34 years old       cups     Less than 1   \n 2 7WWB4A        age               &lt;18 years old         cups     2             \n 3 pKL8aB        age               25-34 years old       cups     1             \n 4 Zd694B        employment_status Employed full-time    cups     3             \n 5 Zd694B        number_children   More than 3           cups     3             \n 6 Zd694B        age               &lt;18 years old         cups     3             \n 7 Zd694B        wfh               I primarily work fro… cups     3             \n 8 QAeYZY        age               &gt;65 years old         cups     3             \n 9 QA5JYA        employment_status Employed full-time    cups     1             \n10 QA5JYA        number_children   None                  cups     1             \n# ℹ 14,279 more rows\n\n\n# A tibble: 122 × 7\n   explanatory explanatory_value response response_value count percent_answers\n   &lt;chr&gt;       &lt;fct&gt;             &lt;chr&gt;    &lt;ord&gt;          &lt;int&gt;           &lt;dbl&gt;\n 1 age         18-24 years old   cups     1                166         0.371  \n 2 age         18-24 years old   cups     2                160         0.358  \n 3 age         18-24 years old   cups     3                 33         0.0738 \n 4 age         18-24 years old   cups     4                 10         0.0112 \n 5 age         18-24 years old   cups     Less than 1       70         0.157  \n 6 age         18-24 years old   cups     More than 4        8         0.0179 \n 7 age         25-34 years old   cups     1                689         0.352  \n 8 age         25-34 years old   cups     2                828         0.423  \n 9 age         25-34 years old   cups     3                206         0.105  \n10 age         25-34 years old   cups     4                 39         0.00997\n# ℹ 112 more rows\n# ℹ 1 more variable: percent_answers_label &lt;chr&gt;"
+    "text": "The Data\nVariables: cups, employment_status, number_children, wfh, age\n\n\n# A tibble: 3,343 × 5\n   cups        employment_status  number_children wfh                      age  \n   &lt;chr&gt;       &lt;chr&gt;              &lt;chr&gt;           &lt;chr&gt;                    &lt;chr&gt;\n 1 3           Employed full-time More than 3     I primarily work from h… &lt;18 …\n 2 1           Employed full-time None            I primarily work from h… 25-3…\n 3 2           Employed full-time 2               I primarily work from h… 45-5…\n 4 2           Unemployed         None            I do a mix of both       25-3…\n 5 1           Employed full-time 3               I primarily work in per… 35-4…\n 6 More than 4 Employed full-time 3               I primarily work from h… 45-5…\n 7 2           Unemployed         2               I do a mix of both       35-4…\n 8 2           Employed full-time More than 3     I primarily work from h… 45-5…\n 9 2           Employed full-time None            I primarily work in per… 35-4…\n10 Less than 1 Employed full-time None            I primarily work in per… 45-5…\n# ℹ 3,333 more rows"
   },
   {
     "objectID": "presentation.html#dont-talk-to-me-before-ive-had-my-coffee",
@@ -184,22 +184,71 @@
   {
     "objectID": "presentation.html#extremes",
     "href": "presentation.html#extremes",
-    "title": "Coffee Drinking Habits",
+    "title": "Coffee Drinking Habits and Working Conditions",
     "section": "Extremes",
     "text": "Extremes"
   },
   {
     "objectID": "presentation.html#all-variables-accounted-for",
     "href": "presentation.html#all-variables-accounted-for",
-    "title": "Coffee Drinking Habits",
+    "title": "Coffee Drinking Habits and Working Conditions",
     "section": "All Variables Accounted For",
-    "text": "All Variables Accounted For\nAverage amount of coffee ranges between 1 and 3 cups for each group"
+    "text": "All Variables Accounted For\nAverage amount of coffee ranges between 1 and 3 cups"
   },
   {
     "objectID": "presentation.html#how-much-coffee-would-a-coffee-drinker-drink-.-.-.",
     "href": "presentation.html#how-much-coffee-would-a-coffee-drinker-drink-.-.-.",
-    "title": "Coffee Drinking Habits",
+    "title": "Coffee Drinking Habits and Working Conditions",
     "section": "How Much Coffee Would a Coffee Drinker Drink . . .",
     "text": "How Much Coffee Would a Coffee Drinker Drink . . ."
+  },
+  {
+    "objectID": "presentation.html#coffee-a-habit-ritual-necessity-luxury",
+    "href": "presentation.html#coffee-a-habit-ritual-necessity-luxury",
+    "title": "Coffee Drinking Habits and Working Conditions",
+    "section": "Coffee: a habit, ritual, necessity, luxury",
+    "text": "Coffee: a habit, ritual, necessity, luxury\n\n75% of the US population drink coffee (Loftfield et al. 2016)\nStudies have shown that lifestyle and demographic factors influence intake (Loftfield et al. 2016)"
+  },
+  {
+    "objectID": "presentation.html#coffee-a-habit-ritual-necessity-luxury-1",
+    "href": "presentation.html#coffee-a-habit-ritual-necessity-luxury-1",
+    "title": "Coffee Drinking Habits and Working Conditions",
+    "section": "Coffee: a habit, ritual, necessity, luxury",
+    "text": "Coffee: a habit, ritual, necessity, luxury\n\n75% of the US population drink coffee (Loftfield et al. 2016)\nStudies have shown that lifestyle and demographic factors influence intake (Loftfield et al. 2016)\n\nHow much coffee are people drinking, and why?"
+  },
+  {
+    "objectID": "presentation.html#the-great-american-coffee-taste-test-data-set",
+    "href": "presentation.html#the-great-american-coffee-taste-test-data-set",
+    "title": "Coffee Drinking Habits and Working Conditions",
+    "section": "The “Great American Coffee Taste Test” data set",
+    "text": "The “Great American Coffee Taste Test” data set\n\nSurvey results filled out by taste test participants, co-hosted by U.S.-based coffee company Cometeer. (tracykteal 2024)\nThe survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provided coffees, and individual demographics.\n\n\nImage credit: Cometeer, cometeer.com (Cometeer Logo Image, n.d.)."
+  },
+  {
+    "objectID": "presentation.html#the-extremes",
+    "href": "presentation.html#the-extremes",
+    "title": "Coffee Drinking Habits and Working Conditions",
+    "section": "The Extremes",
+    "text": "The Extremes"
+  },
+  {
+    "objectID": "presentation.html#conclusion",
+    "href": "presentation.html#conclusion",
+    "title": "Coffee Drinking Habits and Working Conditions",
+    "section": "Conclusion",
+    "text": "Conclusion\n\nAverage cups of coffee ranges between 1 - 3 cups for each group"
+  },
+  {
+    "objectID": "presentation.html#conclusion-1",
+    "href": "presentation.html#conclusion-1",
+    "title": "Coffee Drinking Habits and Working Conditions",
+    "section": "Conclusion",
+    "text": "Conclusion\n\nAverage cups of coffee ranges between 1 - 3 cups for each group\nDrinking less than 1 cup of coffee is more common among those less than 24 years old, no kids, and unemployed.\nDrinking more than average is more common among those 45 years old and older, with many kids, and retired."
+  },
+  {
+    "objectID": "presentation.html#conclusion-2",
+    "href": "presentation.html#conclusion-2",
+    "title": "Coffee Drinking Habits and Working Conditions",
+    "section": "Conclusion",
+    "text": "Conclusion\n\nAverage cups of coffee ranges between 1 - 3 cups for each group\nDrinking less than 1 cup of coffee is more common among those less than 24 years old, no kids, and unemployed.\nDrinking more than average is more common among those 45 years old and older, with many kids, and retired.\nFuture work should consider the weight of age on coffee drinking habits or correlation between factors - what truly has a weight on these habits?"
   }
 ]

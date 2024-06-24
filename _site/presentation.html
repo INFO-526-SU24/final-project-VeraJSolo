@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.4.555">
 
   <meta name="author" content="Vera Jackson">
-  <title>Project Title - Coffee Drinking Habits</title>
+  <title>Project Title - Coffee Drinking Habits and Working Conditions</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -29,7 +29,27 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -325,8 +345,8 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="images/coffee_cover.jpg" data-background-opacity="0.5" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
-  <h1 class="title">Coffee Drinking Habits</h1>
+<section id="title-slide" data-background-image="images/coffee_cover.jpg" data-background-opacity="0.4" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
+  <h1 class="title">Coffee Drinking Habits and Working Conditions</h1>
   <p class="subtitle">INFO 526 - Summer 2024 - Final Project</p>
 
 <div class="quarto-title-authors">
@@ -338,185 +358,48 @@ Vera Jackson
 </div>
 
 </section>
-<section>
-<section id="introduction" class="title-slide slide level1 center">
-<h1>Introduction</h1>
-
+<section id="coffee-a-habit-ritual-necessity-luxury" class="slide level2">
+<h2>Coffee: a habit, ritual, necessity, luxury</h2>
+<ul>
+<li><p>75% of the US population drink coffee <span class="citation" data-cites="loftfield2016">(<a href="#/references" role="doc-biblioref" onclick="">Loftfield et al. 2016</a>)</span></p></li>
+<li><p>Studies have shown that lifestyle and demographic factors influence intake <span class="citation" data-cites="loftfield2016">(<a href="#/references" role="doc-biblioref" onclick="">Loftfield et al. 2016</a>)</span></p></li>
+</ul>
 </section>
-<section id="coffee-survey" class="slide level2">
-<h2>Coffee Survey</h2>
-<p>The “Great American Coffee Taste Test” data set is compiled of survey results that were filled out by participants of a taste test, hosted in part by a coffee company Cometeer. The survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provides coffees, and individual demographics.</p>
+<section id="coffee-a-habit-ritual-necessity-luxury-1" class="slide level2">
+<h2>Coffee: a habit, ritual, necessity, luxury</h2>
+<ul>
+<li><p>75% of the US population drink coffee <span class="citation" data-cites="loftfield2016">(<a href="#/references" role="doc-biblioref" onclick="">Loftfield et al. 2016</a>)</span></p></li>
+<li><p>Studies have shown that lifestyle and demographic factors influence intake <span class="citation" data-cites="loftfield2016">(<a href="#/references" role="doc-biblioref" onclick="">Loftfield et al. 2016</a>)</span></p></li>
+</ul>
+<p><strong>How much coffee are people drinking, and why?</strong></p>
+</section>
+<section id="the-great-american-coffee-taste-test-data-set" class="slide level2">
+<h2>The “Great American Coffee Taste Test” data set</h2>
+<ul>
+<li><p>Survey results filled out by taste test participants, co-hosted by U.S.-based coffee company Cometeer. <span class="citation" data-cites="tracykteal2024">(<a href="#/references" role="doc-biblioref" onclick="">tracykteal 2024</a>)</span></p></li>
+<li><p>The survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provided coffees, and individual demographics.</p></li>
+</ul>
 
-<img data-src="images/cometeer_logo.png" width="500" class="r-stretch quarto-figure-center"><p class="caption">Image credit: Cometeer, cometeer.com.</p></section>
+<img data-src="images/cometeer_logo.png" width="415" class="r-stretch quarto-figure-center"><p class="caption">Image credit: Cometeer, cometeer.com <span class="citation" data-cites="cometeer">(<a href="#/references" role="doc-biblioref" onclick=""><em>Cometeer Logo Image</em>, n.d.</a>)</span>.</p></section>
 <section id="the-data" class="slide level2">
 <h2>The Data</h2>
+<p>Variables: <code>cups, employment_status, number_children, wfh, age</code></p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 5
-  cups        employment_status  number_children wfh                       age  
-  &lt;chr&gt;       &lt;chr&gt;              &lt;chr&gt;           &lt;chr&gt;                     &lt;chr&gt;
-1 3           Employed full-time More than 3     I primarily work from ho… &lt;18 …
-2 1           Employed full-time None            I primarily work from ho… 25-3…
-3 2           Employed full-time 2               I primarily work from ho… 45-5…
-4 2           Unemployed         None            I do a mix of both        25-3…
-5 1           Employed full-time 3               I primarily work in pers… 35-4…
-6 More than 4 Employed full-time 3               I primarily work from ho… 45-5…</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4,042 × 57
-   submission_id age             cups      where_drink brew  brew_other purchase
-   &lt;chr&gt;         &lt;chr&gt;           &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;   
- 1 gMR29l        18-24 years old &lt;NA&gt;      &lt;NA&gt;        &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;    
- 2 BkPN0e        25-34 years old &lt;NA&gt;      &lt;NA&gt;        Pod/… &lt;NA&gt;       &lt;NA&gt;    
- 3 W5G8jj        25-34 years old &lt;NA&gt;      &lt;NA&gt;        Bean… &lt;NA&gt;       &lt;NA&gt;    
- 4 4xWgGr        35-44 years old &lt;NA&gt;      &lt;NA&gt;        Coff… &lt;NA&gt;       &lt;NA&gt;    
- 5 QD27Q8        25-34 years old &lt;NA&gt;      &lt;NA&gt;        Pour… &lt;NA&gt;       &lt;NA&gt;    
- 6 V0LPeM        55-64 years old &lt;NA&gt;      &lt;NA&gt;        Pod/… &lt;NA&gt;       &lt;NA&gt;    
- 7 V0Gaxg        18-24 years old &lt;NA&gt;      At a cafe,… Pour… &lt;NA&gt;       Nationa…
- 8 AdzRL0        &lt;NA&gt;            &lt;NA&gt;      &lt;NA&gt;        &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;    
- 9 LbWda2        25-34 years old Less tha… At a cafe   &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;    
-10 EXQLWN        &lt;NA&gt;            &lt;NA&gt;      &lt;NA&gt;        &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;    
-# ℹ 4,032 more rows
-# ℹ 50 more variables: purchase_other &lt;chr&gt;, favorite &lt;chr&gt;,
-#   favorite_specify &lt;chr&gt;, additions &lt;chr&gt;, additions_other &lt;chr&gt;,
-#   dairy &lt;chr&gt;, sweetener &lt;chr&gt;, style &lt;chr&gt;, strength &lt;chr&gt;,
-#   roast_level &lt;chr&gt;, caffeine &lt;chr&gt;, expertise &lt;dbl&gt;,
-#   coffee_a_bitterness &lt;dbl&gt;, coffee_a_acidity &lt;dbl&gt;,
-#   coffee_a_personal_preference &lt;dbl&gt;, coffee_a_notes &lt;chr&gt;, …</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3,949 × 6
-   submission_id cups  employment_status  number_children wfh              age  
-   &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt;              &lt;chr&gt;           &lt;chr&gt;            &lt;chr&gt;
- 1 LbWda2        0     &lt;NA&gt;               &lt;NA&gt;            &lt;NA&gt;             25-3…
- 2 7WWB4A        2     &lt;NA&gt;               &lt;NA&gt;            &lt;NA&gt;             &lt;18 …
- 3 pKL8aB        1     &lt;NA&gt;               &lt;NA&gt;            &lt;NA&gt;             25-3…
- 4 Zd694B        3     Employed full-time More than 3     I primarily wor… &lt;18 …
- 5 QAeYZY        3     &lt;NA&gt;               &lt;NA&gt;            &lt;NA&gt;             &gt;65 …
- 6 QA5JYA        1     Employed full-time None            I primarily wor… 25-3…
- 7 Rz5BPj        2     &lt;NA&gt;               &lt;NA&gt;            &lt;NA&gt;             25-3…
- 8 jyDqva        2     &lt;NA&gt;               &lt;NA&gt;            &lt;NA&gt;             18-2…
- 9 eB7QoJ        3     &lt;NA&gt;               &lt;NA&gt;            &lt;NA&gt;             18-2…
-10 1r2YJQ        5     &lt;NA&gt;               &lt;NA&gt;            &lt;NA&gt;             25-3…
-# ℹ 3,939 more rows</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 14,289 × 5
-   submission_id explanatory       explanatory_value     response response_value
-   &lt;chr&gt;         &lt;chr&gt;             &lt;chr&gt;                 &lt;chr&gt;    &lt;chr&gt;         
- 1 LbWda2        age               25-34 years old       cups     0             
- 2 7WWB4A        age               &lt;18 years old         cups     2             
- 3 pKL8aB        age               25-34 years old       cups     1             
- 4 Zd694B        employment_status Employed full-time    cups     3             
- 5 Zd694B        number_children   More than 3           cups     3             
- 6 Zd694B        age               &lt;18 years old         cups     3             
- 7 Zd694B        wfh               I primarily work fro… cups     3             
- 8 QAeYZY        age               &gt;65 years old         cups     3             
- 9 QA5JYA        employment_status Employed full-time    cups     1             
-10 QA5JYA        number_children   None                  cups     1             
-# ℹ 14,279 more rows</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 21 × 6
-# Groups:   explanatory, explanatory_value [21]
-   explanatory       explanatory_value  response  mean   low  high
-   &lt;chr&gt;             &lt;chr&gt;              &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
- 1 age               18-24 years old    cups      1.49     0     3
- 2 age               25-34 years old    cups      1.64     1     3
- 3 age               35-44 years old    cups      1.83     1     3
- 4 age               45-54 years old    cups      1.99     1     3
- 5 age               55-64 years old    cups      2.18     1     4
- 6 age               &lt;18 years old      cups      1.21     0     2
- 7 age               &gt;65 years old      cups      2.22     1     4
- 8 employment_status Employed full-time cups      1.78     1     3
- 9 employment_status Employed part-time cups      1.44     0     2
-10 employment_status Homemaker          cups      1.41     0     2
-# ℹ 11 more rows</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 22 × 6
-   response  mean   low  high explanatory       explanatory_value   
-   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;               
- 1 cups      1.73     1     3 All               ""                  
- 2 cups      1.49     0     3 age               "18-24 years old"   
- 3 cups      1.64     1     3 age               "25-34 years old"   
- 4 cups      1.83     1     3 age               "35-44 years old"   
- 5 cups      1.99     1     3 age               "45-54 years old"   
- 6 cups      2.18     1     4 age               "55-64 years old"   
- 7 cups      1.21     0     2 age               "&lt;18 years old"     
- 8 cups      2.22     1     4 age               "&gt;65 years old"     
- 9 cups      1.78     1     3 employment_status "Employed full-time"
-10 cups      1.44     0     2 employment_status "Employed part-time"
-# ℹ 12 more rows</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 22 × 6
-   response  mean   low  high explanatory       explanatory_value   
-   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;ord&gt;             &lt;chr&gt;               
- 1 cups      1.73     1     3 All               ""                  
- 2 cups      1.49     0     3 age               "18-24 years old"   
- 3 cups      1.64     1     3 age               "25-34 years old"   
- 4 cups      1.83     1     3 age               "35-44 years old"   
- 5 cups      1.99     1     3 age               "45-54 years old"   
- 6 cups      2.18     1     4 age               "55-64 years old"   
- 7 cups      1.21     0     2 age               "&lt;18 years old"     
- 8 cups      2.22     1     4 age               "&gt;65 years old"     
- 9 cups      1.78     1     3 employment_status "Employed full-time"
-10 cups      1.44     0     2 employment_status "Employed part-time"
-# ℹ 12 more rows</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 14,289 × 5
-   submission_id explanatory       explanatory_value     response response_value
-   &lt;chr&gt;         &lt;chr&gt;             &lt;chr&gt;                 &lt;chr&gt;             &lt;dbl&gt;
- 1 LbWda2        age               25-34 years old       cups                  0
- 2 7WWB4A        age               &lt;18 years old         cups                  2
- 3 pKL8aB        age               25-34 years old       cups                  1
- 4 Zd694B        employment_status Employed full-time    cups                  3
- 5 Zd694B        number_children   More than 3           cups                  3
- 6 Zd694B        age               &lt;18 years old         cups                  3
- 7 Zd694B        wfh               I primarily work fro… cups                  3
- 8 QAeYZY        age               &gt;65 years old         cups                  3
- 9 QA5JYA        employment_status Employed full-time    cups                  1
-10 QA5JYA        number_children   None                  cups                  1
-# ℹ 14,279 more rows</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 14,289 × 5
-   submission_id explanatory       explanatory_value     response response_value
-   &lt;chr&gt;         &lt;chr&gt;             &lt;chr&gt;                 &lt;chr&gt;    &lt;chr&gt;         
- 1 LbWda2        age               25-34 years old       cups     Less than 1   
- 2 7WWB4A        age               &lt;18 years old         cups     2             
- 3 pKL8aB        age               25-34 years old       cups     1             
- 4 Zd694B        employment_status Employed full-time    cups     3             
- 5 Zd694B        number_children   More than 3           cups     3             
- 6 Zd694B        age               &lt;18 years old         cups     3             
- 7 Zd694B        wfh               I primarily work fro… cups     3             
- 8 QAeYZY        age               &gt;65 years old         cups     3             
- 9 QA5JYA        employment_status Employed full-time    cups     1             
-10 QA5JYA        number_children   None                  cups     1             
-# ℹ 14,279 more rows</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 122 × 7
-   explanatory explanatory_value response response_value count percent_answers
-   &lt;chr&gt;       &lt;fct&gt;             &lt;chr&gt;    &lt;ord&gt;          &lt;int&gt;           &lt;dbl&gt;
- 1 age         18-24 years old   cups     1                166         0.371  
- 2 age         18-24 years old   cups     2                160         0.358  
- 3 age         18-24 years old   cups     3                 33         0.0738 
- 4 age         18-24 years old   cups     4                 10         0.0112 
- 5 age         18-24 years old   cups     Less than 1       70         0.157  
- 6 age         18-24 years old   cups     More than 4        8         0.0179 
- 7 age         25-34 years old   cups     1                689         0.352  
- 8 age         25-34 years old   cups     2                828         0.423  
- 9 age         25-34 years old   cups     3                206         0.105  
-10 age         25-34 years old   cups     4                 39         0.00997
-# ℹ 112 more rows
-# ℹ 1 more variable: percent_answers_label &lt;chr&gt;</code></pre>
+<pre><code># A tibble: 3,343 × 5
+   cups        employment_status  number_children wfh                      age  
+   &lt;chr&gt;       &lt;chr&gt;              &lt;chr&gt;           &lt;chr&gt;                    &lt;chr&gt;
+ 1 3           Employed full-time More than 3     I primarily work from h… &lt;18 …
+ 2 1           Employed full-time None            I primarily work from h… 25-3…
+ 3 2           Employed full-time 2               I primarily work from h… 45-5…
+ 4 2           Unemployed         None            I do a mix of both       25-3…
+ 5 1           Employed full-time 3               I primarily work in per… 35-4…
+ 6 More than 4 Employed full-time 3               I primarily work from h… 45-5…
+ 7 2           Unemployed         2               I do a mix of both       35-4…
+ 8 2           Employed full-time More than 3     I primarily work from h… 45-5…
+ 9 2           Employed full-time None            I primarily work in per… 35-4…
+10 Less than 1 Employed full-time None            I primarily work in per… 45-5…
+# ℹ 3,333 more rows</code></pre>
 </div>
 </div>
 </section>
@@ -526,24 +409,37 @@ Vera Jackson
 <img data-src="presentation_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1650"></section>
 <section id="all-variables-accounted-for" class="slide level2">
 <h2>All Variables Accounted For</h2>
-<p>Average amount of coffee ranges between 1 and 3 cups for each group</p>
+<p>Average amount of coffee ranges between 1 and 3 cups</p>
 
 <img data-src="presentation_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1800"></section>
-<section id="extremes" class="slide level2">
-<h2>Extremes</h2>
+<section id="the-extremes" class="slide level2">
+<h2>The Extremes</h2>
 
-<img data-src="presentation_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1650"></section></section>
-<section>
-<section id="conclusion" class="title-slide slide level1 center">
-<h1>Conclusion</h1>
+<img data-src="presentation_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1650"></section>
+<section id="conclusion" class="slide level2">
+<h2>Conclusion</h2>
 <ul>
-<li>Average cups of coffee ranges between 1 and 3 cups for each group</li>
+<li>Average cups of coffee ranges between 1 - 3 cups for each group</li>
+</ul>
+</section>
+<section id="conclusion-1" class="slide level2">
+<h2>Conclusion</h2>
+<ul>
+<li>Average cups of coffee ranges between 1 - 3 cups for each group</li>
 <li>Drinking less than 1 cup of coffee is more common among those less than 24 years old, no kids, and unemployed.</li>
-<li>Drinking more coffee is more common among those 45 years old and older, with many kids, and retired.</li>
+<li>Drinking more than average is more common among those 45 years old and older, with many kids, and retired.</li>
+</ul>
+</section>
+<section id="conclusion-2" class="slide level2">
+<h2>Conclusion</h2>
+<ul>
+<li>Average cups of coffee ranges between 1 - 3 cups for each group</li>
+<li>Drinking less than 1 cup of coffee is more common among those less than 24 years old, no kids, and unemployed.</li>
+<li>Drinking more than average is more common among those 45 years old and older, with many kids, and retired.</li>
 <li>Future work should consider the weight of age on coffee drinking habits or correlation between factors - what truly has a weight on these habits?</li>
 </ul>
 </section>
-<section id="references" class="slide level2">
+<section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
 
 <div class="quarto-auto-generated-content">
@@ -551,7 +447,18 @@ Vera Jackson
 
 </div>
 </div>
-</section></section>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-cometeer" class="csl-entry" role="listitem">
+<em>Cometeer Logo Image</em>. n.d. <a href="https://cometeer.com">cometeer.com</a>.
+</div>
+<div id="ref-loftfield2016" class="csl-entry" role="listitem">
+Loftfield, Erikka, Neal D Freedman, Kevin W Dodd, Emily Vogtmann, Qian Xiao, Rashmi Sinha, and Barry I Graubard. 2016. <span>“Coffee Drinking Is Widespread in the United States, but Usual Intake Varies by Key Demographic and Lifestyle Factors.”</span> <em>The Journal of Nutrition</em> 146 (9): 1762–68. <a href="https://doi.org/10.3945/jn.116.233940">https://doi.org/10.3945/jn.116.233940</a>.
+</div>
+<div id="ref-tracykteal2024" class="csl-entry" role="listitem">
+tracykteal. 2024. <span>“The Great American Coffee Taste Test.”</span> <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2024/2024-05-14/readme.md">https://github.com/rfordatascience/tidytuesday/blob/master/data/2024/2024-05-14/readme.md</a>.
+</div>
+</div>
+</section>
     </div>
   </div>
 
@@ -763,42 +670,80 @@ Vera Jackson
       });
     </script>
     
+
     <script>
+
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
       // slide changes (different for each slide format).
+
       (function () {
+
         // dispatch for htmlwidgets
+
         function fireSlideEnter() {
+
           const event = window.document.createEvent("Event");
+
           event.initEvent("slideenter", true, true);
+
           window.document.dispatchEvent(event);
+
         }
+
+    
 
         function fireSlideChanged(previousSlide, currentSlide) {
+
           fireSlideEnter();
 
+    
+
           // dispatch for shiny
+
           if (window.jQuery) {
+
             if (previousSlide) {
+
               window.jQuery(previousSlide).trigger("hidden");
+
             }
+
             if (currentSlide) {
+
               window.jQuery(currentSlide).trigger("shown");
+
             }
+
           }
+
         }
+
+    
 
         // hookup for slidy
+
         if (window.w3c_slidy) {
+
           window.w3c_slidy.add_observer(function (slide_num) {
+
             // slide_num starts at position 1
+
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
           });
+
         }
 
+    
+
       })();
+
     </script>
+
+    
 
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
