@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.4.555">
 
   <meta name="author" content="Vera Jackson">
-  <title>Project Title - Coffee Drinking Habits and Working Conditions</title>
+  <title>Project Title - Coffee Drinking Habits and Working Lifestyle</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -346,7 +346,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="images/coffee_cover.jpg" data-background-opacity="0.4" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
-  <h1 class="title">Coffee Drinking Habits and Working Conditions</h1>
+  <h1 class="title">Coffee Drinking Habits and Working Lifestyle</h1>
   <p class="subtitle">INFO 526 - Summer 2024 - Final Project</p>
 
 <div class="quarto-title-authors">
@@ -371,7 +371,7 @@ Vera Jackson
 <li><p>75% of the US population drink coffee <span class="citation" data-cites="loftfield2016">(<a href="#/references" role="doc-biblioref" onclick="">Loftfield et al. 2016</a>)</span></p></li>
 <li><p>Studies have shown that lifestyle and demographic factors influence intake <span class="citation" data-cites="loftfield2016">(<a href="#/references" role="doc-biblioref" onclick="">Loftfield et al. 2016</a>)</span></p></li>
 </ul>
-<p><strong>How much coffee are people drinking, and why?</strong></p>
+<p><strong>What are the correlations between coffee consumption and lifestyle?</strong></p>
 </section>
 <section id="the-great-american-coffee-taste-test-data-set" class="slide level2">
 <h2>The “Great American Coffee Taste Test” data set</h2>
@@ -670,80 +670,42 @@ tracykteal. 2024. <span>“The Great American Coffee Taste Test.”</span> <a hr
       });
     </script>
     
-
     <script>
-
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-
       // slide changes (different for each slide format).
-
       (function () {
-
         // dispatch for htmlwidgets
-
         function fireSlideEnter() {
-
           const event = window.document.createEvent("Event");
-
           event.initEvent("slideenter", true, true);
-
           window.document.dispatchEvent(event);
-
         }
-
-    
 
         function fireSlideChanged(previousSlide, currentSlide) {
-
           fireSlideEnter();
 
-    
-
           // dispatch for shiny
-
           if (window.jQuery) {
-
             if (previousSlide) {
-
               window.jQuery(previousSlide).trigger("hidden");
-
             }
-
             if (currentSlide) {
-
               window.jQuery(currentSlide).trigger("shown");
-
             }
-
           }
-
         }
-
-    
 
         // hookup for slidy
-
         if (window.w3c_slidy) {
-
           window.w3c_slidy.add_observer(function (slide_num) {
-
             // slide_num starts at position 1
-
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-
           });
-
         }
 
-    
-
       })();
-
     </script>
-
-    
 
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {

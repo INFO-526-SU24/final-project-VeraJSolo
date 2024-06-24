@@ -142,7 +142,7 @@
   {
     "objectID": "presentation.html#references",
     "href": "presentation.html#references",
-    "title": "Coffee Drinking Habits and Working Conditions",
+    "title": "Coffee Drinking Habits and Working Lifestyle",
     "section": "References",
     "text": "References\n\n\n\n\n\n\n\n\nCometeer Logo Image. n.d. cometeer.com.\n\n\nLoftfield, Erikka, Neal D Freedman, Kevin W Dodd, Emily Vogtmann, Qian Xiao, Rashmi Sinha, and Barry I Graubard. 2016. “Coffee Drinking Is Widespread in the United States, but Usual Intake Varies by Key Demographic and Lifestyle Factors.” The Journal of Nutrition 146 (9): 1762–68. https://doi.org/10.3945/jn.116.233940.\n\n\ntracykteal. 2024. “The Great American Coffee Taste Test.” https://github.com/rfordatascience/tidytuesday/blob/master/data/2024/2024-05-14/readme.md."
   },
@@ -156,7 +156,7 @@
   {
     "objectID": "presentation.html#the-data",
     "href": "presentation.html#the-data",
-    "title": "Coffee Drinking Habits and Working Conditions",
+    "title": "Coffee Drinking Habits and Working Lifestyle",
     "section": "The Data",
     "text": "The Data\nVariables: cups, employment_status, number_children, wfh, age\n\n\n# A tibble: 3,343 × 5\n   cups        employment_status  number_children wfh                      age  \n   &lt;chr&gt;       &lt;chr&gt;              &lt;chr&gt;           &lt;chr&gt;                    &lt;chr&gt;\n 1 3           Employed full-time More than 3     I primarily work from h… &lt;18 …\n 2 1           Employed full-time None            I primarily work from h… 25-3…\n 3 2           Employed full-time 2               I primarily work from h… 45-5…\n 4 2           Unemployed         None            I do a mix of both       25-3…\n 5 1           Employed full-time 3               I primarily work in per… 35-4…\n 6 More than 4 Employed full-time 3               I primarily work from h… 45-5…\n 7 2           Unemployed         2               I do a mix of both       35-4…\n 8 2           Employed full-time More than 3     I primarily work from h… 45-5…\n 9 2           Employed full-time None            I primarily work in per… 35-4…\n10 Less than 1 Employed full-time None            I primarily work in per… 45-5…\n# ℹ 3,333 more rows"
   },
@@ -191,63 +191,63 @@
   {
     "objectID": "presentation.html#all-variables-accounted-for",
     "href": "presentation.html#all-variables-accounted-for",
-    "title": "Coffee Drinking Habits and Working Conditions",
+    "title": "Coffee Drinking Habits and Working Lifestyle",
     "section": "All Variables Accounted For",
     "text": "All Variables Accounted For\nAverage amount of coffee ranges between 1 and 3 cups"
   },
   {
     "objectID": "presentation.html#how-much-coffee-would-a-coffee-drinker-drink-.-.-.",
     "href": "presentation.html#how-much-coffee-would-a-coffee-drinker-drink-.-.-.",
-    "title": "Coffee Drinking Habits and Working Conditions",
+    "title": "Coffee Drinking Habits and Working Lifestyle",
     "section": "How Much Coffee Would a Coffee Drinker Drink . . .",
     "text": "How Much Coffee Would a Coffee Drinker Drink . . ."
   },
   {
     "objectID": "presentation.html#coffee-a-habit-ritual-necessity-luxury",
     "href": "presentation.html#coffee-a-habit-ritual-necessity-luxury",
-    "title": "Coffee Drinking Habits and Working Conditions",
+    "title": "Coffee Drinking Habits and Working Lifestyle",
     "section": "Coffee: a habit, ritual, necessity, luxury",
     "text": "Coffee: a habit, ritual, necessity, luxury\n\n75% of the US population drink coffee (Loftfield et al. 2016)\nStudies have shown that lifestyle and demographic factors influence intake (Loftfield et al. 2016)"
   },
   {
     "objectID": "presentation.html#coffee-a-habit-ritual-necessity-luxury-1",
     "href": "presentation.html#coffee-a-habit-ritual-necessity-luxury-1",
-    "title": "Coffee Drinking Habits and Working Conditions",
+    "title": "Coffee Drinking Habits and Working Lifestyle",
     "section": "Coffee: a habit, ritual, necessity, luxury",
-    "text": "Coffee: a habit, ritual, necessity, luxury\n\n75% of the US population drink coffee (Loftfield et al. 2016)\nStudies have shown that lifestyle and demographic factors influence intake (Loftfield et al. 2016)\n\nHow much coffee are people drinking, and why?"
+    "text": "Coffee: a habit, ritual, necessity, luxury\n\n75% of the US population drink coffee (Loftfield et al. 2016)\nStudies have shown that lifestyle and demographic factors influence intake (Loftfield et al. 2016)\n\nWhat are the correlations between coffee consumption and lifestyle?"
   },
   {
     "objectID": "presentation.html#the-great-american-coffee-taste-test-data-set",
     "href": "presentation.html#the-great-american-coffee-taste-test-data-set",
-    "title": "Coffee Drinking Habits and Working Conditions",
+    "title": "Coffee Drinking Habits and Working Lifestyle",
     "section": "The “Great American Coffee Taste Test” data set",
     "text": "The “Great American Coffee Taste Test” data set\n\nSurvey results filled out by taste test participants, co-hosted by U.S.-based coffee company Cometeer. (tracykteal 2024)\nThe survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provided coffees, and individual demographics.\n\n\nImage credit: Cometeer, cometeer.com (Cometeer Logo Image, n.d.)."
   },
   {
     "objectID": "presentation.html#the-extremes",
     "href": "presentation.html#the-extremes",
-    "title": "Coffee Drinking Habits and Working Conditions",
+    "title": "Coffee Drinking Habits and Working Lifestyle",
     "section": "The Extremes",
     "text": "The Extremes"
   },
   {
     "objectID": "presentation.html#conclusion",
     "href": "presentation.html#conclusion",
-    "title": "Coffee Drinking Habits and Working Conditions",
+    "title": "Coffee Drinking Habits and Working Lifestyle",
     "section": "Conclusion",
     "text": "Conclusion\n\nAverage cups of coffee ranges between 1 - 3 cups for each group"
   },
   {
     "objectID": "presentation.html#conclusion-1",
     "href": "presentation.html#conclusion-1",
-    "title": "Coffee Drinking Habits and Working Conditions",
+    "title": "Coffee Drinking Habits and Working Lifestyle",
     "section": "Conclusion",
     "text": "Conclusion\n\nAverage cups of coffee ranges between 1 - 3 cups for each group\nDrinking less than 1 cup of coffee is more common among those less than 24 years old, no kids, and unemployed.\nDrinking more than average is more common among those 45 years old and older, with many kids, and retired."
   },
   {
     "objectID": "presentation.html#conclusion-2",
     "href": "presentation.html#conclusion-2",
-    "title": "Coffee Drinking Habits and Working Conditions",
+    "title": "Coffee Drinking Habits and Working Lifestyle",
     "section": "Conclusion",
     "text": "Conclusion\n\nAverage cups of coffee ranges between 1 - 3 cups for each group\nDrinking less than 1 cup of coffee is more common among those less than 24 years old, no kids, and unemployed.\nDrinking more than average is more common among those 45 years old and older, with many kids, and retired.\nFuture work should consider the weight of age on coffee drinking habits or correlation between factors - what truly has a weight on these habits?"
   }

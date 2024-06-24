@@ -1,5 +1,5 @@
 ---
-title: "Coffee Drinking Habits and Working Conditions"
+title: "Coffee Drinking Habits and Working Lifestyle"
 subtitle: "INFO 526 - Summer 2024 - Final Project"
 author: "Vera Jackson"
 title-slide-attributes:
@@ -76,7 +76,7 @@ coffee_survey
 
 -   Studies have shown that lifestyle and demographic factors influence intake [@loftfield2016]
 
-**How much coffee are people drinking, and why?**
+**What are the correlations between coffee consumption and lifestyle?**
 
 ## The "Great American Coffee Taste Test" data set
 
