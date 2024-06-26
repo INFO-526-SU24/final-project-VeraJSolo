@@ -5,7 +5,7 @@ author:
   - name: "Vera Jackson"
     affiliations:
       - name: "School of Information, University of Arizona"
-description: "A data-driven analysis on how much coffee are people drinking, and what lifestyle conditions correlate with this?"
+description: "A data-driven analysis on how much coffee are people drinking, and what lifestyle conditions correlate."
 format:
    html:
     code-tools: true
@@ -18,6 +18,247 @@ execute:
 bibliography: references.bib
 ---
 
+```{r}
+#| label: load-packages
+#| include: false
+
+# Load packages here
+pacman::p_load(dplyr,
+               tidyverse, 
+               glue, 
+               scales, 
+               here, 
+               ggthemes, 
+               janitor, 
+               ggplot2, 
+               readr,
+               ggrepel)
+
+```
+
+```{r}
+#| label: setup
+#| include: false
+
+# Plot theme
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 11))
+
+# For better figure resolution
+knitr::opts_chunk$set(
+  fig.retina = 3, 
+  dpi = 300, 
+  fig.width = 6, 
+  fig.asp = 0.618 
+  )
+```
+
+```{r}
+#| label: load data and cleanup
+#| include: false
+
+
+# load data here
+coffee_survey <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-05-14/coffee_survey.csv')
+
+# glimpse at data (4,042 rows)
+coffee_survey
+
+# clean and select data
+coffee_survey_cleanNA <- coffee_survey %>% 
+  select(cups, employment_status, number_children, wfh, age) %>% 
+  filter(!is.na(cups)) %>% 
+  filter(!is.na(employment_status)) %>%
+  filter(!is.na(wfh)) %>% 
+  filter(!is.na(number_children)) %>% 
+  filter(!is.na(age)) 
+
+coffee_survey_cleanNA
+
+```
+
+```{r, echo=FALSE}
+#| label: code for plot 1 
+#| include: false
+
+##############
+# cleaning for general and plot 1
+# selecting relevant variables for both plots (3,343 rows)
+
+coffee_survey_count_cups <- coffee_survey_cleanNA %>% 
+  count(cups) %>% # counting total count for each employment_status
+  rename(total_cups = n)
+
+manual_order <- c("Less than 1", "1", "2", "3", "4", "More than 4")
+
+# Reorder the dataset according to the manual order
+coffee_survey_count_cups <- coffee_survey_count_cups[match(manual_order, coffee_survey_count_cups$cups), ]
+coffee_survey_count_cups
+
+#calculating percentages
+coffee_survey_count_cups <- coffee_survey_count_cups %>% 
+  mutate(percent = total_cups/sum(total_cups))
+
+coffee_survey_count_cups <- coffee_survey_count_cups %>% 
+  mutate(percent = percent(coffee_survey_count_cups$percent, accuracy = 0.1)) 
+  
+coffee_survey_count_cups
+#mutate to manually position labels on pie chart
+coffee_survey_count_plot1 <- coffee_survey_count_cups %>% 
+  mutate(csum = rev(cumsum(rev(total_cups))),
+         pos = total_cups/2 + lead(csum, 1),
+         pos = if_else(is.na(pos), total_cups/2, pos))
+```
+
+```{r, echo=FALSE}
+#| label: code for plot 2
+#| include: false
+
+coffee_survey_filter1 <- coffee_survey %>% 
+  select(submission_id, cups, employment_status, number_children, wfh, age) %>% 
+  filter(!is.na(cups)) %>% 
+  mutate(
+    cups = recode(cups,
+                  "Less than 1" = "0",
+                  "1" = "1",
+                  "2" = "2",
+                  "3" = "3",
+                  "4" = "4",
+                  "More than 4" = "5")) 
+
+
+coffee_survey_filter1_longer <- coffee_survey_filter1 %>% 
+  pivot_longer(
+    cols = c("employment_status", "number_children", "age", "wfh"), 
+    names_to = "explanatory",
+    values_to = "explanatory_value"
+    ) %>% 
+  filter(!is.na(explanatory_value)) %>% 
+  pivot_longer(
+    cols = c("cups"),
+    names_to = "response",
+    values_to = "response_value"
+  )
+
+
+# now i will group the data and calculate summary statistics
+coffee_survey_filter1_longer$response_value <- as.numeric(coffee_survey_filter1_longer$response_value)
+
+
+coffee_survey_stats_all <- coffee_survey_filter1_longer %>% 
+  group_by(response) %>% 
+ summarise(
+    mean = mean(response_value),
+    low = quantile(response_value, 0.10),
+    high = quantile(response_value, 0.90)
+  ) %>% 
+  mutate(across(c("mean"), round, 2)) #mean output was returning values with 4 decimal places
+
+coffee_survey_stats_all$explanatory <- c("All")
+coffee_survey_stats_all$explanatory_value <- c("")
+
+#now by group
+coffee_survey_stats_by_group <-  coffee_survey_filter1_longer %>% 
+  filter(!is.na(response_value)) %>% 
+  group_by(explanatory, explanatory_value, response) %>% 
+  summarise(
+    mean = mean(response_value),
+    low = quantile(response_value, 0.10),
+    high = quantile(response_value, 0.90)
+  ) %>% 
+  mutate(across(c("mean"), round, 2)) #mean output was returning values with 4 decimal places
+  
+
+
+#now to bind together both groups
+coffee_survey_stats <- bind_rows(
+  coffee_survey_stats_all,
+  coffee_survey_stats_by_group)
+
+
+
+#new label for explanatory variable facet
+exp.labs <- c(
+  "All",
+  "Age",
+  "Number of \nChildren",
+  "Employment \nStatus",
+  "In-Person or \nVirtual Work")
+
+names(exp.labs) <- c(
+  "All", 
+  "age", 
+  "number_children", 
+  "employment_status", 
+  "wfh")
+
+
+coffee_survey_stats$explanatory = factor(coffee_survey_stats$explanatory, levels = c("All", "age", "number_children", "employment_status", "wfh"), ordered = TRUE) #manually order explanatory for facet
+```
+
+```{r, echo = FALSE}
+#| label: code for plot 3
+#| include: false
+
+survey_1 <- coffee_survey_filter1_longer %>% #editing response values so number equals actual response
+  mutate(response_value = case_when(
+    response_value == "0" ~ "Less than 1",
+    response_value == "1" ~ "1",
+    response_value == "2" ~ "2",
+    response_value == "3" ~ "3",
+    response_value == "4" ~ "4",
+    response_value == "5" ~ "More than 4")
+    )
+
+
+
+coffee_survey_percentage <- survey_1 %>% #calculate sums and percentages for diverging plot
+  filter(!is.na(response_value)) %>% 
+  group_by(explanatory, explanatory_value, response, response_value) %>% 
+  summarise(count = n(), .groups = "drop") %>% 
+  group_by(explanatory_value) %>% 
+  mutate(percent_answers = (count / sum(count))) %>% 
+  ungroup() %>% 
+  mutate(percent_answers_label = percent(percent_answers, accuracy = 1)) %>% 
+  mutate(percent_answers = 
+           if_else(response_value %in% 
+                     c("4"), 
+                   percent_answers/2, percent_answers)) #method to make diverging bar plot with neutral in the middle
+  
+coffee_survey_percentage <- coffee_survey_percentage %>% 
+  mutate(explanatory_value = fct_relevel(explanatory_value, 
+                               "<18 years old",
+                               "18-24 years old",
+                               "25-34 years old",
+                               "35-44 years old",
+                               "45-54 years old",
+                               "55-64 years old",
+                               ">65 years old",
+                               "None",
+                               "1",
+                               "2",
+                               "3",
+                               "More than 3",
+                               "Unemployed",
+                               "Student",
+                               "Homemaker",
+                               "Employed part-time",
+                               "Employed full-time",
+                               "Retired",
+                               "I primarily work in person",
+                               "I primarily work from home",
+                               "I do a mix of both")) %>% 
+  mutate(explanatory = fct_relevel(explanatory, 
+                               "age",
+                               "number_children",
+                               "employment_status",
+                               "wfh"))
+
+coffee_survey_percentage$response_value <- factor(coffee_survey_percentage$response_value, levels = c("Less than 1", "1", "2", "3", "4", "More than 4"), ordered = TRUE) #manually order response value for facet
+```
+
+
+
+
 ## Abstract
 
 Add project abstract here.
@@ -26,43 +267,191 @@ Add project abstract here.
 
 Coffee is one of the most popular drinks in the world, and in the USA alone, 75% of the population has reported drinking coffee, with almost half of Americans drinking coffee daily (Loftfield, et al. 2016). There are many reasons why people drink coffee - for some it is a habit or part of their morning routine, some need the caffeine, and some just like the way it tastes. Studies have shown that demographic factors, such as gender and race, influence how much coffee someone drinks (Loftfield, et al. 2016). However, one's lifestyle and environment may also have a part to play in this.
 
-The "Great American Coffee Taste Test" data set is compiled of survey results that were filled out by participants of a taste test, hosted by "world champion barista" James Hoffman and coffee company Cometeer. Cometeer sent 4 unlabelled coffees to over 4,000 customers that would participate in a live taste testing on YouTube while filling out the survey. The survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provides coffees, and individual demographics.
+The "[Great American Coffee Taste Test](https://github.com/rfordatascience/tidytuesday/blob/master/data/2024/2024-05-14/readme.md)" data set come's from [`TidyTuesday`'s 2024 series](https://github.com/rfordatascience/tidytuesday/tree/master/data/2024#readme) is compiled of survey results that were filled out by participants of a taste test, hosted by "world champion barista" James Hoffman and coffee company [Cometeer](https://cometeer.com/pages/the-great-american-coffee-taste-test). Cometeer sent 4 unlabelled coffees to over 4,000 customers that would participate in a live taste testing on YouTube while filling out the survey. The survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provides coffees, and individual demographics.
 
-## Question: What are the correlations between coffee consumption and lifestyle?\*
+## Question: What are the correlations between coffee consumption and lifestyle?
 
 ### Introduction
 
-To answer this question, we will be looking at the "Great American Coffee Taste Test" data set. .
-
 The data has a wide range of questions, with 4,042 responses. Rather than looking at demographics such as gender and race, I was curious about how someone's lifestyle, primarily focused on one's working habits, impacts how much coffee they drink. For the purpose of this question, we will only be looking at the following variables, with the following options to answer in the survey:
 
--   `cups`:
+-   `cups`: "How many cups of coffee do you typically drink per day?"
 
     -   "`Less than 1`", "`1`", "`2`", "`3`", "`4`", "`More than 4`"
 
--   `employment_status`:
+-   `employment_status`: "Employment Status"
 
     -   "`Retired`", "`Employed full-time`", "`Employed part-time`", "`Homemaker`", "`Student`", "`Unemployed`"
 
--   `number_children`:
+-   `number_children`: "Number of Children"
 
     -   "`None`", "`1`", "`2`", "`3`", "`More than 3`"
 
--   `wfh`:
+-   `wfh`: "Do you work from home or in person?"
 
-    -   `"I primarily work in person", "I primarily work from home", "I do a mix of both"`
+    -   `"I primarily work in person"`, `"I primarily work from home"`, `"I do a mix of both"`
 
--   `age`:
+-   `age`: "What is your age?"
 
-    -   `"<18 years old", "18-24 years old", "25-34 years old", "35-44 years old", "45-54 years old", "55-64 years old", ">65 years old"`"
+    -   `"<18 years old"`, `"18-24 years old"`, `"25-34 years old"`, `"35-44 years old"`, `"45-54 years old"`, `"55-64 years old"`, `">65 years old"`"
 
 Removing any responses that did not respond to each of these questions, we are working with 3, 343 responses.
 
-I chose this data set because I was curious about the demographics and preferences of coffee drinkers, both of customers of Cometeer and as a representation of the general North American population. My first question will look at coffee drinking habits (how many cups of coffee are drunken a day) and how they correlate with working and lifestyle situations (whether they work or not, if they work from home or not, and how many children they have). It could be interesting to further analyze that data with why they drink coffee (for the caffeine, or is it for the flavor?) or if that coffee is caffeinated or not, but I want to be careful of not introducing too many variables. Overall, my goal for the first question is to highlight a trend between coffee drinking and lifestyle that could be reflective of the general American population. As for my second question, I am taking a more "marketing" approach, as I will try to determine which type of coffee (in regards to strength, roast, and caffeine-level) is most popular among Cometeer customers, as this information could assist them with product development.
+I chose to analyze this question for this data set because I was curious about what may influence coffee drinkers in their consumption habits. In particular, their working conditions. Whether someone is retired or a student, or working from home or at the office, may form someone's environment and influence their habits. In addition to working and work-from-home status, I also included how many children they have - especially for homemakers, but raising children also is considered a form of labor. Finally, I included age, as this could be another explanatory variable for how much coffee someone drinks.
+
+Overall, my goal for this question is to highlight a trend between coffee drinking and lifestyle that could be reflective of the general American coffee-drinking population.
 
 ### Approach
 
+With the `cups` variable, a pie chart is made to demonstrate the distribution of responses for the entire, cleaned data set. The pie chart is color-coded based on the response to how many cups of coffee one drinks per day, with the percentages of those responses that make up the data set.
+
+Once an overall average is observed, a point plot with error bars ranging from the 10th to 90th percentile was constructed, faceted by the responses to the explanatory variables (`employment_status`, `number_children`, `wfh`, `age`). To obtain the mean and percentiles to be plotted, some calculations had to be conducted:
+
+```{r}
+
+```
+
+The point plot was to best to display the similarity and differences between averages for each group. The percentiles also suggested that certain groups may be more likely to lean either way outside of the average, so to further analyze these, one final plot was constructed.
+
+A diverging bar chart, grouped by explanatory variable and filled for the six possible answers to the "`cups`" variable, was then constructed. Only the answers that were outside of the average were plotted so we could focus on which group is most likely to drink less or more than the average.
+
 ### Analysis
+```{r, warning=FALSE, fig.width=5.5, fig.align="center"}
+#| label: plot 1
+
+coffee_survey_count_plot1 %>%  
+  mutate(cups = fct_relevel(cups, 
+                               "Less than 1",
+                               "1",
+                               "2",
+                               "3",
+                               "4",
+                               "More than 4")) %>% 
+  ggplot(aes(x = "", y = total_cups, fill = cups)) +
+  geom_bar(stat = "identity", width = 1, color = "black") +
+  coord_polar(theta = "y") +
+  scale_x_discrete(NULL, expand = c(0, 0)) +
+  scale_y_continuous(NULL, expand = c(0, 0)) +
+  scale_fill_manual(values = 
+                      c("#87A5A5FF", "#BCAAA4FF", 
+                        "#A1887FFF", "#D2A54BFF",
+                        "#D2D2C3FF", "#A5A587FF" 
+                       ), name = "Number of Cups") +
+  geom_label_repel( 
+    mapping = aes(y = pos, label = paste(percent)),
+    size = 3,
+    nudge_x = 0.9,
+    show.legend = FALSE) +
+  labs(
+    title = "Distrubution of Daily Cups of Coffee \nAmong Responses \n "
+  ) +
+  theme_void() +
+  theme(
+    axis.text = element_blank(),
+    plot.title = element_text(size = 12, face = "bold", hjust = 0.5),
+    plot.title.position = "plot",
+    legend.text = element_text(size = 8), #text of legend
+    legend.key.size = unit(0.5, "cm")
+  ) 
+```
+
+```{r, warning=FALSE, fig.width=5.5, fig.align="center"}
+#| label: plot 2
+
+coffee_survey_stats %>% 
+  mutate(explanatory_value = fct_relevel(explanatory_value, 
+                                         "", 
+                               "<18 years old",
+                               "18-24 years old",
+                               "25-34 years old",
+                               "35-44 years old",
+                               "45-54 years old",
+                               "55-64 years old",
+                               ">65 years old",
+                               "None",
+                               "1",
+                               "2",
+                               "3",
+                               "More than 3",
+                               "Unemployed",
+                               "Student",
+                               "Homemaker",
+                               "Employed part-time",
+                               "Employed full-time",
+                               "Retired",
+                               "I primarily work in person",
+                               "I primarily work from home",
+                               "I do a mix of both")) %>%
+  ggplot(aes(x = mean, y = explanatory_value)) +
+  geom_point() +
+  geom_errorbar(aes(xmin = low, xmax = high), 
+                width = 0.2) +
+  facet_grid(explanatory ~ ., 
+             scales = "free", 
+             space = "free",
+             labeller = labeller(explanatory = exp.labs)) +
+  scale_x_continuous(limits = c(0, 5), breaks = c(0, 1, 2, 3, 4, 5), 
+    labels = label_wrap(10)(c("Less than 1", "1", "2", "3", "4", "More than 4"))) +
+  labs(
+    x = "Number of Cups \n(Error bars range from 10th to 90th percentile)",
+    y = NULL
+  ) +
+  theme_minimal() +
+  theme(
+    panel.grid = element_blank(), #remove lines in plot
+    panel.spacing = unit(0.1, "cm"), #spacing between facets
+    strip.text = element_text(colour = "black"),
+    strip.background = element_rect( #creating blocks for facet labels to match original
+      fill = "grey90", 
+      color = "grey20", 
+      linewidth = 1),
+    strip.text.y = element_text(angle = 0)) #turn explanatory facets from vertical to horizontal)
+```
+
+```{r, warning=FALSE, fig.width=5.5, fig.align="center"}
+#| label: plot 3
+coffee_survey_percentage %>% 
+  ggplot(aes(x = explanatory_value,
+             y = percent_answers,
+             fill = response_value)) +
+  geom_col(data = filter(coffee_survey_percentage, 
+                         response_value %in% c("Less than 1")), 
+           aes(y = -percent_answers)) +
+  geom_col(data = filter(coffee_survey_percentage, 
+                         response_value %in% c("4", "More than 4")), 
+           aes(y = percent_answers)) +
+  scale_fill_manual(breaks = c("Less than 1", "4", "More than 4"),
+                    values = c("#87A5A5FF", "#D2D2C3FF", "#A5A587FF")) +
+  facet_grid(explanatory ~ ., 
+             scales = "free", 
+             space = "free",
+             labeller = labeller(explanatory = exp.labs)) +
+  labs(
+    title = "Responses Outside of Average",
+    x = NULL,
+    y = "Percent of Responses",
+    fill = "Number of Cups"
+  ) +
+  coord_flip() +
+  scale_y_continuous(labels = scales::percent) +
+  theme_minimal() +
+  theme(title = element_text(face = "bold"),
+        panel.grid.major.y = element_blank(),
+        legend.text.position = "top",
+        legend.title = element_text(hjust = 0.5, face = "bold"),
+        legend.background = element_rect(
+          fill = "grey90", 
+          colour = "grey20", 
+          linewidth = 0.5),
+        axis.title = element_text(face = "bold"),
+        strip.text = element_text(size = 7),
+    strip.background = element_rect( #creating blocks for facet labels to match original
+      fill = "grey90", 
+      color = "grey20", 
+      linewidth = 1),
+    strip.text.y = element_text(angle = 0)) #turn explanatory facets from vertical to horizontal))
+```
+
 
 ### Discussion
 
