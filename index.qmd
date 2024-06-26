@@ -11,8 +11,6 @@ format:
     code-tools: true
     code-overflow: wrap
     embed-resources: true
-    code-fold: true
-    code-summary: "Show the code"
 editor: visual
 execute:
   warning: false
@@ -263,7 +261,7 @@ coffee_survey_percentage$response_value <- factor(coffee_survey_percentage$respo
 
 ## Abstract
 
-Add project abstract here.
+Coffee consumption in the U.S. varies significantly, influenced by lifestyle factors. Analysis of "The Great American Coffee Taste Test" data set reveals interesting insights on trends regarding coffee drinking habits among those that drink coffee. It was observed that the average daily coffee intake is 1 or 2 cups of coffee. Older individuals,those with more children, and retired or full-time employees are more likely to 4 or more cups of coffee, while younger individuals, those with no children, or work part-time at the most are more likely to drink less than 1 cup of coffee per day. These findings highlight correlations between lifestyle and working conditions and coffee drinking habits, however more research should be dedicated to explore any causal relationships, especially between multiple explanatory variables.
 
 ## Introduction
 
@@ -344,7 +342,7 @@ coffee_survey_count_plot1 %>%
     show.legend = FALSE) +
   labs(
     title = "Plot 1. Distrubution of Daily Cups of Coffee \nAmong Responses \n ",
-    caption = "Source: 'The Great American Coffee Taste Test' Data Set \n Retreived from TidyTuesday 2024"
+    caption = "Source: 'The Great American Coffee Taste Test' \n Retreived from TidyTuesday 2024"
   ) +
   theme_void() +
   theme(
@@ -355,6 +353,8 @@ coffee_survey_count_plot1 %>%
     legend.key.size = unit(0.5, "cm")
   ) 
 ```
+
+
 
 ```{r, warning=FALSE, fig.width=5.5, fig.align="center"}
 #| label: plot 2
@@ -399,11 +399,12 @@ coffee_survey_stats %>%
     x = "Number of Cups \n(Error bars range from 10th to 90th percentile)",
     y = NULL,
     title = "Plot 2. Distrubution of Daily Cups of Coffee \nAmong Explanatory Variables",
-    caption = "Source: 'The Great American Coffee Taste Test' Data Set \n Retreived from TidyTuesday 2024"
+    caption = "Source: 'The Great American Coffee Taste Test' \n Retreived from TidyTuesday 2024"
   ) +
   theme_minimal() +
   theme(
     panel.grid = element_blank(), #remove lines in plot
+    plot.title = element_text(size = 12, face = "bold", hjust = 0.5),
     panel.spacing = unit(0.1, "cm"), #spacing between facets
     strip.text = element_text(colour = "black"),
     strip.background = element_rect( #creating blocks for facet labels to match original
@@ -412,6 +413,8 @@ coffee_survey_stats %>%
       linewidth = 1),
     strip.text.y = element_text(angle = 0)) #turn explanatory facets from vertical to horizontal)
 ```
+
+
 
 ```{r, warning=FALSE, fig.width=5.5, fig.align="center"}
 #| label: plot 3
@@ -438,7 +441,7 @@ coffee_survey_percentage %>%
     x = NULL,
     y = "Percent of Responses",
     fill = "Number of Cups",
-    caption = "Source: 'The Great American Coffee Taste Test' Data Set \n Retreived from TidyTuesday 2024"
+    caption = "Source: 'The Great American Coffee Taste Test' \n Retreived from TidyTuesday 2024"
   ) +
   coord_flip() +
   scale_y_continuous(labels = scales::percent) +
@@ -470,5 +473,3 @@ This trend is also revealed if only the percentages for the options outside of t
 These trends are not necessarily surprising - those working more with a full-time job or with more children may require more caffeine compared to those with no children and only working part-time. Similarly, older individuals may want more coffee, or have developed an affinity and enjoy multiple cups of coffee more for the taste than caffeine. 
 
 While these trends may be telling of some correlation, none of the explanatory variables are necessarily causal to how many cups of coffee someone drinks per day. Future work should further breakdown these groups, and especially consider the weight of age or correlation between multiple variables. It is important to keep in mind, that the survey respondents are customers of Cometeer, and are not necessarily representative of the entire US or coffee-drinking population.
-
-## References
