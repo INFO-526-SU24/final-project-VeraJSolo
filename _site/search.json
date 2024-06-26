@@ -7,11 +7,11 @@
     "text": "if(!require(\"pacman\"))\n  install.packages(\"pacman\")\n\npacman::p_load(tidyverse, glue, scales, here, ggthemes, janitor, ggplot2, readr)"
   },
   {
-    "objectID": "proposal.html#dataset",
-    "href": "proposal.html#dataset",
-    "title": "Proposal title",
-    "section": "Dataset",
-    "text": "Dataset\n\n# loading data\n\ncoffee_survey &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-05-14/coffee_survey.csv')\n\ncoffee_survey\n\n# A tibble: 4,042 × 57\n   submission_id age             cups      where_drink brew  brew_other purchase\n   &lt;chr&gt;         &lt;chr&gt;           &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;   \n 1 gMR29l        18-24 years old &lt;NA&gt;      &lt;NA&gt;        &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;    \n 2 BkPN0e        25-34 years old &lt;NA&gt;      &lt;NA&gt;        Pod/… &lt;NA&gt;       &lt;NA&gt;    \n 3 W5G8jj        25-34 years old &lt;NA&gt;      &lt;NA&gt;        Bean… &lt;NA&gt;       &lt;NA&gt;    \n 4 4xWgGr        35-44 years old &lt;NA&gt;      &lt;NA&gt;        Coff… &lt;NA&gt;       &lt;NA&gt;    \n 5 QD27Q8        25-34 years old &lt;NA&gt;      &lt;NA&gt;        Pour… &lt;NA&gt;       &lt;NA&gt;    \n 6 V0LPeM        55-64 years old &lt;NA&gt;      &lt;NA&gt;        Pod/… &lt;NA&gt;       &lt;NA&gt;    \n 7 V0Gaxg        18-24 years old &lt;NA&gt;      At a cafe,… Pour… &lt;NA&gt;       Nationa…\n 8 AdzRL0        &lt;NA&gt;            &lt;NA&gt;      &lt;NA&gt;        &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;    \n 9 LbWda2        25-34 years old Less tha… At a cafe   &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;    \n10 EXQLWN        &lt;NA&gt;            &lt;NA&gt;      &lt;NA&gt;        &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;    \n# ℹ 4,032 more rows\n# ℹ 50 more variables: purchase_other &lt;chr&gt;, favorite &lt;chr&gt;,\n#   favorite_specify &lt;chr&gt;, additions &lt;chr&gt;, additions_other &lt;chr&gt;,\n#   dairy &lt;chr&gt;, sweetener &lt;chr&gt;, style &lt;chr&gt;, strength &lt;chr&gt;,\n#   roast_level &lt;chr&gt;, caffeine &lt;chr&gt;, expertise &lt;dbl&gt;,\n#   coffee_a_bitterness &lt;dbl&gt;, coffee_a_acidity &lt;dbl&gt;,\n#   coffee_a_personal_preference &lt;dbl&gt;, coffee_a_notes &lt;chr&gt;, …\n\n\nThe “Great American Coffee Taste Test” data set is compiled of survey results that were filled out by participants of a taste test, hosted in part by a coffee company Cometeer. Cometeer had sent 4 different types of coffee without labels to over 4,000 participants. The survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provides coffees, and individual demographics.\nI chose this data set because I was curious about the demographics and preferences of coffee drinkers, both of customers of Cometeer and as a representation of the general North American population. My first question will look at coffee drinking habits (how many cups of coffee are drunken a day) and how they correlate with working and lifestyle situations (whether they work or not, if they work from home or not, and how many children they have). It could be interesting to further analyze that data with why they drink coffee (for the caffeine, or is it for the flavor?) or if that coffee is caffeinated or not, but I want to be careful of not introducing too many variables. Overall, my goal for the first question is to highlight a trend between coffee drinking and lifestyle that could be reflective of the general American population. As for my second question, I am taking a more “marketing” approach, as I will try to determine which type of coffee (in regards to strength, roast, and caffeine-level) is most popular among Cometeer customers, as this information could assist them with product development."
+    "objectID": "proposal.html#data-set",
+    "href": "proposal.html#data-set",
+    "title": "A Coffee Drinker’s Lifestyle",
+    "section": "Data set",
+    "text": "Data set\n\n# loading data\n\ncoffee_survey &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-05-14/coffee_survey.csv')\n\ncoffee_survey\n\n# A tibble: 4,042 × 57\n   submission_id age             cups      where_drink brew  brew_other purchase\n   &lt;chr&gt;         &lt;chr&gt;           &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;   \n 1 gMR29l        18-24 years old &lt;NA&gt;      &lt;NA&gt;        &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;    \n 2 BkPN0e        25-34 years old &lt;NA&gt;      &lt;NA&gt;        Pod/… &lt;NA&gt;       &lt;NA&gt;    \n 3 W5G8jj        25-34 years old &lt;NA&gt;      &lt;NA&gt;        Bean… &lt;NA&gt;       &lt;NA&gt;    \n 4 4xWgGr        35-44 years old &lt;NA&gt;      &lt;NA&gt;        Coff… &lt;NA&gt;       &lt;NA&gt;    \n 5 QD27Q8        25-34 years old &lt;NA&gt;      &lt;NA&gt;        Pour… &lt;NA&gt;       &lt;NA&gt;    \n 6 V0LPeM        55-64 years old &lt;NA&gt;      &lt;NA&gt;        Pod/… &lt;NA&gt;       &lt;NA&gt;    \n 7 V0Gaxg        18-24 years old &lt;NA&gt;      At a cafe,… Pour… &lt;NA&gt;       Nationa…\n 8 AdzRL0        &lt;NA&gt;            &lt;NA&gt;      &lt;NA&gt;        &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;    \n 9 LbWda2        25-34 years old Less tha… At a cafe   &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;    \n10 EXQLWN        &lt;NA&gt;            &lt;NA&gt;      &lt;NA&gt;        &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;    \n# ℹ 4,032 more rows\n# ℹ 50 more variables: purchase_other &lt;chr&gt;, favorite &lt;chr&gt;,\n#   favorite_specify &lt;chr&gt;, additions &lt;chr&gt;, additions_other &lt;chr&gt;,\n#   dairy &lt;chr&gt;, sweetener &lt;chr&gt;, style &lt;chr&gt;, strength &lt;chr&gt;,\n#   roast_level &lt;chr&gt;, caffeine &lt;chr&gt;, expertise &lt;dbl&gt;,\n#   coffee_a_bitterness &lt;dbl&gt;, coffee_a_acidity &lt;dbl&gt;,\n#   coffee_a_personal_preference &lt;dbl&gt;, coffee_a_notes &lt;chr&gt;, …\n\nhead(coffee_survey)\n\n# A tibble: 6 × 57\n  submission_id age   cups  where_drink brew  brew_other purchase purchase_other\n  &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt;         \n1 gMR29l        18-2… &lt;NA&gt;  &lt;NA&gt;        &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;     &lt;NA&gt;          \n2 BkPN0e        25-3… &lt;NA&gt;  &lt;NA&gt;        Pod/… &lt;NA&gt;       &lt;NA&gt;     &lt;NA&gt;          \n3 W5G8jj        25-3… &lt;NA&gt;  &lt;NA&gt;        Bean… &lt;NA&gt;       &lt;NA&gt;     &lt;NA&gt;          \n4 4xWgGr        35-4… &lt;NA&gt;  &lt;NA&gt;        Coff… &lt;NA&gt;       &lt;NA&gt;     &lt;NA&gt;          \n5 QD27Q8        25-3… &lt;NA&gt;  &lt;NA&gt;        Pour… &lt;NA&gt;       &lt;NA&gt;     &lt;NA&gt;          \n6 V0LPeM        55-6… &lt;NA&gt;  &lt;NA&gt;        Pod/… &lt;NA&gt;       &lt;NA&gt;     &lt;NA&gt;          \n# ℹ 49 more variables: favorite &lt;chr&gt;, favorite_specify &lt;chr&gt;, additions &lt;chr&gt;,\n#   additions_other &lt;chr&gt;, dairy &lt;chr&gt;, sweetener &lt;chr&gt;, style &lt;chr&gt;,\n#   strength &lt;chr&gt;, roast_level &lt;chr&gt;, caffeine &lt;chr&gt;, expertise &lt;dbl&gt;,\n#   coffee_a_bitterness &lt;dbl&gt;, coffee_a_acidity &lt;dbl&gt;,\n#   coffee_a_personal_preference &lt;dbl&gt;, coffee_a_notes &lt;chr&gt;,\n#   coffee_b_bitterness &lt;dbl&gt;, coffee_b_acidity &lt;dbl&gt;,\n#   coffee_b_personal_preference &lt;dbl&gt;, coffee_b_notes &lt;chr&gt;, …\n\n\nThe “Great American Coffee Taste Test” data set is compiled of survey results that were filled out by participants of a taste test, hosted in part by a coffee company Cometeer. Cometeer had sent 4 different types of coffee without labels to over 4,000 participants. The survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provides coffees, and individual demographics.\nI chose this data set because I was curious about the demographics and preferences of coffee drinkers, both of customers of Cometeer and as a representation of the general North American population. My first question will look at coffee drinking habits (how many cups of coffee are drunken a day) and how they correlate with working and lifestyle situations (whether they work or not, if they work from home or not, and how many children they have). It could be interesting to further analyze that data with why they drink coffee (for the caffeine, or is it for the flavor?) or if that coffee is caffeinated or not, but I want to be careful of not introducing too many variables. Overall, my goal for the first question is to highlight a trend between coffee drinking and lifestyle that could be reflective of the general American population. As for my second question, I am taking a more “marketing” approach, as I will try to determine which type of coffee (in regards to strength, roast, and caffeine-level) is most popular among Cometeer customers, as this information could assist them with product development."
   },
   {
     "objectID": "proposal.html#questions",
@@ -28,90 +28,6 @@
     "text": "Analysis plan\nA plan for answering each of the questions including the variables involved, variables to be created (if any), external data to be merged in (if any).\n\nVariables: cups, employment_status, number_children, wfh, age\n\nI plan to create a grouped bar plot, of the count of amount of cups drunken per day (“cups”), which will be grouped by position for work status (“employment_status”) and then color will indicate work from home status (“wfh”). I will also incorporate number of children (“number_children”) into this grouped bar plot, perhaps by faceting.\nAs mentioned, I want to find a way to incorporate number of children (“number_children”), as raising children is a form of labor and should be considered in lifestyle situations, but the number of children may not accurately reflect how many are dependents. To address this, I will create a scatter plot, with number of children against number of cups per day, coloring by age. Incorporating “age” may further explain any trends (a 30 year old with children is more likely to have them in their home versus a 60 year old with children, although this may be an inappropriate generalization to make and I will play around with the data.) (addressing issue #1)\n\nVariables: strength, roast_level, caffeine, value_equipment, value_cafe\n\nTo make it easier to visualize, I will mutate the “strength”, “roast_level”, and “caffeine” variables from categorical to numeric variables, assigning an appropriate number scale (for example, 1-5 for “Weak” to “Very strong” strength). I then intend to create a contour plot of the three variables, visualizing what combination of the three is the most popular coffee consumed. This could be helpful to know for Cometeer, which coffee could be the most profitable to produce.\nTo further explore popularity, I will explore the 3 most popular coffee combinations and compare against the value of home-made (“value_equipment”) and cafe-bought coffee (“value_cafe”) in a bar plot, faceting by the different coffee types (addressing issue #2)."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Project Title",
-    "section": "",
-    "text": "Add project abstract here."
-  },
-  {
-    "objectID": "index.html#abstract",
-    "href": "index.html#abstract",
-    "title": "Project Title",
-    "section": "",
-    "text": "Add project abstract here."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "This project was developed by Vera Soloview Jackson For INFO 526 - Data Analysis and Visualization at the University of Arizona, taught by Dr. Greg Chism. Vera is in her first year of the Master’s of Science in Data Science program at the University of Arizona."
-  },
-  {
-    "objectID": "presentation.html#quarto",
-    "href": "presentation.html#quarto",
-    "title": "How Much Coffee Would a Coffee Drinker Drink . . .",
-    "section": "Quarto",
-    "text": "Quarto\n\nThe presentation is created using the Quarto CLI\n## sets the start of a new slide"
-  },
-  {
-    "objectID": "presentation.html#layouts",
-    "href": "presentation.html#layouts",
-    "title": "How Much Coffee Would a Coffee Drinker Drink . . .",
-    "section": "Layouts",
-    "text": "Layouts\nYou can use plain text\n\n\n\nor bullet points1\n\n\nor in two columns\n\n\n\nlike\nthis\n\nAnd add footnotes"
-  },
-  {
-    "objectID": "presentation.html#code",
-    "href": "presentation.html#code",
-    "title": "How Much Coffee Would a Coffee Drinker Drink . . .",
-    "section": "Code",
-    "text": "Code\n\n\n# A tibble: 4,042 × 57\n   submission_id age             cups      where_drink brew  brew_other purchase\n   &lt;chr&gt;         &lt;chr&gt;           &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;   \n 1 gMR29l        18-24 years old &lt;NA&gt;      &lt;NA&gt;        &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;    \n 2 BkPN0e        25-34 years old &lt;NA&gt;      &lt;NA&gt;        Pod/… &lt;NA&gt;       &lt;NA&gt;    \n 3 W5G8jj        25-34 years old &lt;NA&gt;      &lt;NA&gt;        Bean… &lt;NA&gt;       &lt;NA&gt;    \n 4 4xWgGr        35-44 years old &lt;NA&gt;      &lt;NA&gt;        Coff… &lt;NA&gt;       &lt;NA&gt;    \n 5 QD27Q8        25-34 years old &lt;NA&gt;      &lt;NA&gt;        Pour… &lt;NA&gt;       &lt;NA&gt;    \n 6 V0LPeM        55-64 years old &lt;NA&gt;      &lt;NA&gt;        Pod/… &lt;NA&gt;       &lt;NA&gt;    \n 7 V0Gaxg        18-24 years old &lt;NA&gt;      At a cafe,… Pour… &lt;NA&gt;       Nationa…\n 8 AdzRL0        &lt;NA&gt;            &lt;NA&gt;      &lt;NA&gt;        &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;    \n 9 LbWda2        25-34 years old Less tha… At a cafe   &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;    \n10 EXQLWN        &lt;NA&gt;            &lt;NA&gt;      &lt;NA&gt;        &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;    \n# ℹ 4,032 more rows\n# ℹ 50 more variables: purchase_other &lt;chr&gt;, favorite &lt;chr&gt;,\n#   favorite_specify &lt;chr&gt;, additions &lt;chr&gt;, additions_other &lt;chr&gt;,\n#   dairy &lt;chr&gt;, sweetener &lt;chr&gt;, style &lt;chr&gt;, strength &lt;chr&gt;,\n#   roast_level &lt;chr&gt;, caffeine &lt;chr&gt;, expertise &lt;dbl&gt;,\n#   coffee_a_bitterness &lt;dbl&gt;, coffee_a_acidity &lt;dbl&gt;,\n#   coffee_a_personal_preference &lt;dbl&gt;, coffee_a_notes &lt;chr&gt;, …\n\n\n# A tibble: 3,949 × 6\n   submission_id cups  employment_status  number_children wfh              age  \n   &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt;              &lt;chr&gt;           &lt;chr&gt;            &lt;chr&gt;\n 1 LbWda2        0     &lt;NA&gt;               &lt;NA&gt;            &lt;NA&gt;             25-3…\n 2 7WWB4A        2     &lt;NA&gt;               &lt;NA&gt;            &lt;NA&gt;             &lt;18 …\n 3 pKL8aB        1     &lt;NA&gt;               &lt;NA&gt;            &lt;NA&gt;             25-3…\n 4 Zd694B        3     Employed full-time More than 3     I primarily wor… &lt;18 …\n 5 QAeYZY        3     &lt;NA&gt;               &lt;NA&gt;            &lt;NA&gt;             &gt;65 …\n 6 QA5JYA        1     Employed full-time None            I primarily wor… 25-3…\n 7 Rz5BPj        2     &lt;NA&gt;               &lt;NA&gt;            &lt;NA&gt;             25-3…\n 8 jyDqva        2     &lt;NA&gt;               &lt;NA&gt;            &lt;NA&gt;             18-2…\n 9 eB7QoJ        3     &lt;NA&gt;               &lt;NA&gt;            &lt;NA&gt;             18-2…\n10 1r2YJQ        5     &lt;NA&gt;               &lt;NA&gt;            &lt;NA&gt;             25-3…\n# ℹ 3,939 more rows\n\n\n# A tibble: 14,289 × 5\n   submission_id explanatory       explanatory_value     response response_value\n   &lt;chr&gt;         &lt;chr&gt;             &lt;chr&gt;                 &lt;chr&gt;    &lt;chr&gt;         \n 1 LbWda2        age               25-34 years old       cups     0             \n 2 7WWB4A        age               &lt;18 years old         cups     2             \n 3 pKL8aB        age               25-34 years old       cups     1             \n 4 Zd694B        employment_status Employed full-time    cups     3             \n 5 Zd694B        number_children   More than 3           cups     3             \n 6 Zd694B        age               &lt;18 years old         cups     3             \n 7 Zd694B        wfh               I primarily work fro… cups     3             \n 8 QAeYZY        age               &gt;65 years old         cups     3             \n 9 QA5JYA        employment_status Employed full-time    cups     1             \n10 QA5JYA        number_children   None                  cups     1             \n# ℹ 14,279 more rows\n\n\n# A tibble: 21 × 6\n# Groups:   explanatory, explanatory_value [21]\n   explanatory       explanatory_value  response  mean   low  high\n   &lt;chr&gt;             &lt;chr&gt;              &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 age               18-24 years old    cups      1.49     0     3\n 2 age               25-34 years old    cups      1.64     1     3\n 3 age               35-44 years old    cups      1.83     1     3\n 4 age               45-54 years old    cups      1.99     1     3\n 5 age               55-64 years old    cups      2.18     1     4\n 6 age               &lt;18 years old      cups      1.21     0     2\n 7 age               &gt;65 years old      cups      2.22     1     4\n 8 employment_status Employed full-time cups      1.78     1     3\n 9 employment_status Employed part-time cups      1.44     0     2\n10 employment_status Homemaker          cups      1.41     0     2\n# ℹ 11 more rows\n\n\n# A tibble: 22 × 6\n   response  mean   low  high explanatory       explanatory_value   \n   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;               \n 1 cups      1.73     1     3 All               \"\"                  \n 2 cups      1.49     0     3 age               \"18-24 years old\"   \n 3 cups      1.64     1     3 age               \"25-34 years old\"   \n 4 cups      1.83     1     3 age               \"35-44 years old\"   \n 5 cups      1.99     1     3 age               \"45-54 years old\"   \n 6 cups      2.18     1     4 age               \"55-64 years old\"   \n 7 cups      1.21     0     2 age               \"&lt;18 years old\"     \n 8 cups      2.22     1     4 age               \"&gt;65 years old\"     \n 9 cups      1.78     1     3 employment_status \"Employed full-time\"\n10 cups      1.44     0     2 employment_status \"Employed part-time\"\n# ℹ 12 more rows\n\n\n\n\n# A tibble: 14,289 × 5\n   submission_id explanatory       explanatory_value     response response_value\n   &lt;chr&gt;         &lt;chr&gt;             &lt;chr&gt;                 &lt;chr&gt;             &lt;dbl&gt;\n 1 LbWda2        age               25-34 years old       cups                  0\n 2 7WWB4A        age               &lt;18 years old         cups                  2\n 3 pKL8aB        age               25-34 years old       cups                  1\n 4 Zd694B        employment_status Employed full-time    cups                  3\n 5 Zd694B        number_children   More than 3           cups                  3\n 6 Zd694B        age               &lt;18 years old         cups                  3\n 7 Zd694B        wfh               I primarily work fro… cups                  3\n 8 QAeYZY        age               &gt;65 years old         cups                  3\n 9 QA5JYA        employment_status Employed full-time    cups                  1\n10 QA5JYA        number_children   None                  cups                  1\n# ℹ 14,279 more rows\n\n\n# A tibble: 14,289 × 5\n   submission_id explanatory       explanatory_value     response response_value\n   &lt;chr&gt;         &lt;chr&gt;             &lt;chr&gt;                 &lt;chr&gt;    &lt;chr&gt;         \n 1 LbWda2        age               25-34 years old       cups     Less than 1   \n 2 7WWB4A        age               &lt;18 years old         cups     2             \n 3 pKL8aB        age               25-34 years old       cups     1             \n 4 Zd694B        employment_status Employed full-time    cups     3             \n 5 Zd694B        number_children   More than 3           cups     3             \n 6 Zd694B        age               &lt;18 years old         cups     3             \n 7 Zd694B        wfh               I primarily work fro… cups     3             \n 8 QAeYZY        age               &gt;65 years old         cups     3             \n 9 QA5JYA        employment_status Employed full-time    cups     1             \n10 QA5JYA        number_children   None                  cups     1             \n# ℹ 14,279 more rows\n\n\n# A tibble: 122 × 7\n   explanatory explanatory_value response response_value count percent_answers\n   &lt;chr&gt;       &lt;chr&gt;             &lt;chr&gt;    &lt;chr&gt;          &lt;int&gt;           &lt;dbl&gt;\n 1 age         18-24 years old   cups     1                166         0.371  \n 2 age         18-24 years old   cups     2                160         0.358  \n 3 age         18-24 years old   cups     3                 33         0.0738 \n 4 age         18-24 years old   cups     4                 10         0.0112 \n 5 age         18-24 years old   cups     Less than 1       70         0.157  \n 6 age         18-24 years old   cups     More than 4        8         0.0179 \n 7 age         25-34 years old   cups     1                689         0.352  \n 8 age         25-34 years old   cups     2                828         0.423  \n 9 age         25-34 years old   cups     3                206         0.105  \n10 age         25-34 years old   cups     4                 39         0.00997\n# ℹ 112 more rows\n# ℹ 1 more variable: percent_answers_label &lt;chr&gt;"
-  },
-  {
-    "objectID": "presentation.html#plots",
-    "href": "presentation.html#plots",
-    "title": "How Much Coffee Would a Coffee Drinker Drink . . .",
-    "section": "Plots",
-    "text": "Plots"
-  },
-  {
-    "objectID": "presentation.html#plot-and-text",
-    "href": "presentation.html#plot-and-text",
-    "title": "How Much Coffee Would a Coffee Drinker Drink . . .",
-    "section": "Plot and text",
-    "text": "Plot and text\n\n\n\nSome text\ngoes here"
-  },
-  {
-    "objectID": "presentation.html#tables",
-    "href": "presentation.html#tables",
-    "title": "Project title",
-    "section": "Tables",
-    "text": "Tables\nIf you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,"
-  },
-  {
-    "objectID": "presentation.html#images",
-    "href": "presentation.html#images",
-    "title": "How Much Coffee Would a Coffee Drinker Drink . . .",
-    "section": "Images",
-    "text": "Images\n\nImage credit: Danielle Navarro, Percolate."
-  },
-  {
-    "objectID": "presentation.html#math-expressions",
-    "href": "presentation.html#math-expressions",
-    "title": "How Much Coffee Would a Coffee Drinker Drink . . .",
-    "section": "Math Expressions",
-    "text": "Math Expressions\nYou can write LaTeX math expressions inside a pair of dollar signs, e.g. $\\alpha+\\beta$ renders \\(\\alpha + \\beta\\). You can use the display style with double dollar signs:\n$$\\bar{X}=\\frac{1}{n}\\sum_{i=1}^nX_i$$\n\\[\n\\bar{X}=\\frac{1}{n}\\sum_{i=1}^nX_i\n\\]\nLimitations:\n\nThe source code of a LaTeX math expression must be in one line, unless it is inside a pair of double dollar signs, in which case the starting $$ must appear in the very beginning of a line, followed immediately by a non-space character, and the ending $$ must be at the end of a line, led by a non-space character;\nThere should not be spaces after the opening $ or before the closing $."
-  },
-  {
-    "objectID": "presentation.html#feeling-adventurous",
-    "href": "presentation.html#feeling-adventurous",
-    "title": "Coffee Drinking Habits:",
-    "section": "Feeling adventurous?",
-    "text": "Feeling adventurous?\n\nYou are welcomed to use the default styling of the slides. In fact, that’s what I expect majority of you will do. You will differentiate yourself with the content of your presentation.\nBut some of you might want to play around with slide styling. Some solutions for this can be found at https://quarto.org/docs/presentations/revealjs."
-  },
-  {
     "objectID": "proposal.html#weekly-plan-of-attack",
     "href": "proposal.html#weekly-plan-of-attack",
     "title": "A Coffee Drinker’s Lifestyle",
@@ -119,88 +35,39 @@
     "text": "Weekly Plan of Attack\n\n\n\n\n\n\n\n\n\n\nTask Name\nStatus\nDue\nPriority\nSummary\n\n\n\n\nPeer Proposal\nComplete\nMay 29\nHigh\nProvided peer reviews\n\n\nFinal Proposal\nIn Progress\nJune 3\nHigh\n\n\n\nData wrangling\nIn progress\nJune 7\nHigh\nFocusing on Question 1\n\n\nAttempt plot for Question 1\n\nJune 7\nHigh\n\n\n\nAttempt plot for Question 2\n\nJune 7\nLow\n\n\n\nFinalize plots\n\nJune 14\nHigh\n\n\n\nBegin presentation\n\nJune 14\nMedium\n\n\n\nFinalize presentation slides and video\n\nJune 20\nHigh\nBy this date, I want to have completed everything, leaving the weekend for any final tweaks\n\n\nFinal Presentation Due\n\nJune 24\nHigh"
   },
   {
-    "objectID": "proposal.html#data-set",
-    "href": "proposal.html#data-set",
-    "title": "A Coffee Drinker’s Lifestyle",
-    "section": "Data set",
-    "text": "Data set\n\n# loading data\n\ncoffee_survey &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-05-14/coffee_survey.csv')\n\ncoffee_survey\n\n# A tibble: 4,042 × 57\n   submission_id age             cups      where_drink brew  brew_other purchase\n   &lt;chr&gt;         &lt;chr&gt;           &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;   \n 1 gMR29l        18-24 years old &lt;NA&gt;      &lt;NA&gt;        &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;    \n 2 BkPN0e        25-34 years old &lt;NA&gt;      &lt;NA&gt;        Pod/… &lt;NA&gt;       &lt;NA&gt;    \n 3 W5G8jj        25-34 years old &lt;NA&gt;      &lt;NA&gt;        Bean… &lt;NA&gt;       &lt;NA&gt;    \n 4 4xWgGr        35-44 years old &lt;NA&gt;      &lt;NA&gt;        Coff… &lt;NA&gt;       &lt;NA&gt;    \n 5 QD27Q8        25-34 years old &lt;NA&gt;      &lt;NA&gt;        Pour… &lt;NA&gt;       &lt;NA&gt;    \n 6 V0LPeM        55-64 years old &lt;NA&gt;      &lt;NA&gt;        Pod/… &lt;NA&gt;       &lt;NA&gt;    \n 7 V0Gaxg        18-24 years old &lt;NA&gt;      At a cafe,… Pour… &lt;NA&gt;       Nationa…\n 8 AdzRL0        &lt;NA&gt;            &lt;NA&gt;      &lt;NA&gt;        &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;    \n 9 LbWda2        25-34 years old Less tha… At a cafe   &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;    \n10 EXQLWN        &lt;NA&gt;            &lt;NA&gt;      &lt;NA&gt;        &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;    \n# ℹ 4,032 more rows\n# ℹ 50 more variables: purchase_other &lt;chr&gt;, favorite &lt;chr&gt;,\n#   favorite_specify &lt;chr&gt;, additions &lt;chr&gt;, additions_other &lt;chr&gt;,\n#   dairy &lt;chr&gt;, sweetener &lt;chr&gt;, style &lt;chr&gt;, strength &lt;chr&gt;,\n#   roast_level &lt;chr&gt;, caffeine &lt;chr&gt;, expertise &lt;dbl&gt;,\n#   coffee_a_bitterness &lt;dbl&gt;, coffee_a_acidity &lt;dbl&gt;,\n#   coffee_a_personal_preference &lt;dbl&gt;, coffee_a_notes &lt;chr&gt;, …\n\nhead(coffee_survey)\n\n# A tibble: 6 × 57\n  submission_id age   cups  where_drink brew  brew_other purchase purchase_other\n  &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt;         \n1 gMR29l        18-2… &lt;NA&gt;  &lt;NA&gt;        &lt;NA&gt;  &lt;NA&gt;       &lt;NA&gt;     &lt;NA&gt;          \n2 BkPN0e        25-3… &lt;NA&gt;  &lt;NA&gt;        Pod/… &lt;NA&gt;       &lt;NA&gt;     &lt;NA&gt;          \n3 W5G8jj        25-3… &lt;NA&gt;  &lt;NA&gt;        Bean… &lt;NA&gt;       &lt;NA&gt;     &lt;NA&gt;          \n4 4xWgGr        35-4… &lt;NA&gt;  &lt;NA&gt;        Coff… &lt;NA&gt;       &lt;NA&gt;     &lt;NA&gt;          \n5 QD27Q8        25-3… &lt;NA&gt;  &lt;NA&gt;        Pour… &lt;NA&gt;       &lt;NA&gt;     &lt;NA&gt;          \n6 V0LPeM        55-6… &lt;NA&gt;  &lt;NA&gt;        Pod/… &lt;NA&gt;       &lt;NA&gt;     &lt;NA&gt;          \n# ℹ 49 more variables: favorite &lt;chr&gt;, favorite_specify &lt;chr&gt;, additions &lt;chr&gt;,\n#   additions_other &lt;chr&gt;, dairy &lt;chr&gt;, sweetener &lt;chr&gt;, style &lt;chr&gt;,\n#   strength &lt;chr&gt;, roast_level &lt;chr&gt;, caffeine &lt;chr&gt;, expertise &lt;dbl&gt;,\n#   coffee_a_bitterness &lt;dbl&gt;, coffee_a_acidity &lt;dbl&gt;,\n#   coffee_a_personal_preference &lt;dbl&gt;, coffee_a_notes &lt;chr&gt;,\n#   coffee_b_bitterness &lt;dbl&gt;, coffee_b_acidity &lt;dbl&gt;,\n#   coffee_b_personal_preference &lt;dbl&gt;, coffee_b_notes &lt;chr&gt;, …\n\n\nThe “Great American Coffee Taste Test” data set is compiled of survey results that were filled out by participants of a taste test, hosted in part by a coffee company Cometeer. Cometeer had sent 4 different types of coffee without labels to over 4,000 participants. The survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provides coffees, and individual demographics.\nI chose this data set because I was curious about the demographics and preferences of coffee drinkers, both of customers of Cometeer and as a representation of the general North American population. My first question will look at coffee drinking habits (how many cups of coffee are drunken a day) and how they correlate with working and lifestyle situations (whether they work or not, if they work from home or not, and how many children they have). It could be interesting to further analyze that data with why they drink coffee (for the caffeine, or is it for the flavor?) or if that coffee is caffeinated or not, but I want to be careful of not introducing too many variables. Overall, my goal for the first question is to highlight a trend between coffee drinking and lifestyle that could be reflective of the general American population. As for my second question, I am taking a more “marketing” approach, as I will try to determine which type of coffee (in regards to strength, roast, and caffeine-level) is most popular among Cometeer customers, as this information could assist them with product development."
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Coffee Drinking Habits and Working Lifestyle",
+    "section": "",
+    "text": "Add project abstract here."
   },
   {
-    "objectID": "presentation.html#plot-and-text-1",
-    "href": "presentation.html#plot-and-text-1",
-    "title": "How Much Coffee Would a Coffee Drinker Drink . . .",
-    "section": "Plot and text",
-    "text": "Plot and text\n\n\n\nSome text\ngoes here"
+    "objectID": "index.html#abstract",
+    "href": "index.html#abstract",
+    "title": "Coffee Drinking Habits and Working Lifestyle",
+    "section": "",
+    "text": "Add project abstract here."
   },
   {
-    "objectID": "presentation.html#a-look-at-employment-status",
-    "href": "presentation.html#a-look-at-employment-status",
-    "title": "How Much Coffee Would a Coffee Drinker Drink . . .",
-    "section": "A Look at Employment Status",
-    "text": "A Look at Employment Status"
+    "objectID": "index.html#introduction",
+    "href": "index.html#introduction",
+    "title": "Coffee Drinking Habits and Working Lifestyle",
+    "section": "Introduction",
+    "text": "Introduction\nCoffee is one of the most popular drinks in the world, and in the USA alone, 75% of the population has reported drinking coffee, with almost half of Americans drinking coffee daily (Loftfield, et al. 2016). There are many reasons why people drink coffee - for some it is a habit or part of their morning routine, some need the caffeine, and some just like the way it tastes. Studies have shown that demographic factors, such as gender and race, influence how much coffee someone drinks (Loftfield, et al. 2016). However, one’s lifestyle and environment may also have a part to play in this.\nThe “Great American Coffee Taste Test” data set is compiled of survey results that were filled out by participants of a taste test, hosted by “world champion barista” James Hoffman and coffee company Cometeer. Cometeer sent 4 unlabelled coffees to over 4,000 customers that would participate in a live taste testing on YouTube while filling out the survey. The survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provides coffees, and individual demographics."
   },
   {
-    "objectID": "presentation.html#references",
-    "href": "presentation.html#references",
+    "objectID": "index.html#question-what-are-the-correlations-between-coffee-consumption-and-lifestyle",
+    "href": "index.html#question-what-are-the-correlations-between-coffee-consumption-and-lifestyle",
+    "title": "Coffee Drinking Habits and Working Lifestyle",
+    "section": "Question: What are the correlations between coffee consumption and lifestyle?*",
+    "text": "Question: What are the correlations between coffee consumption and lifestyle?*\n\nIntroduction\nTo answer this question, we will be looking at the “Great American Coffee Taste Test” data set. .\nThe data has a wide range of questions, with 4,042 responses. Rather than looking at demographics such as gender and race, I was curious about how someone’s lifestyle, primarily focused on one’s working habits, impacts how much coffee they drink. For the purpose of this question, we will only be looking at the following variables, with the following options to answer in the survey:\n\ncups:\n\n“Less than 1”, “1”, “2”, “3”, “4”, “More than 4”\n\nemployment_status:\n\n“Retired”, “Employed full-time”, “Employed part-time”, “Homemaker”, “Student”, “Unemployed”\n\nnumber_children:\n\n“None”, “1”, “2”, “3”, “More than 3”\n\nwfh:\n\n\"I primarily work in person\", \"I primarily work from home\", \"I do a mix of both\"\n\nage:\n\n\"&lt;18 years old\", \"18-24 years old\", \"25-34 years old\", \"35-44 years old\", \"45-54 years old\", \"55-64 years old\", \"&gt;65 years old\"”\n\n\nRemoving any responses that did not respond to each of these questions, we are working with 3, 343 responses.\nI chose this data set because I was curious about the demographics and preferences of coffee drinkers, both of customers of Cometeer and as a representation of the general North American population. My first question will look at coffee drinking habits (how many cups of coffee are drunken a day) and how they correlate with working and lifestyle situations (whether they work or not, if they work from home or not, and how many children they have). It could be interesting to further analyze that data with why they drink coffee (for the caffeine, or is it for the flavor?) or if that coffee is caffeinated or not, but I want to be careful of not introducing too many variables. Overall, my goal for the first question is to highlight a trend between coffee drinking and lifestyle that could be reflective of the general American population. As for my second question, I am taking a more “marketing” approach, as I will try to determine which type of coffee (in regards to strength, roast, and caffeine-level) is most popular among Cometeer customers, as this information could assist them with product development.\n\n\nApproach\n\n\nAnalysis\n\n\nDiscussion"
+  },
+  {
+    "objectID": "index.html#references",
+    "href": "index.html#references",
     "title": "Coffee Drinking Habits and Working Lifestyle",
     "section": "References",
-    "text": "References\n\n\n\n\n\n\n\n\nCometeer Logo Image. n.d. cometeer.com.\n\n\nLoftfield, Erikka, Neal D Freedman, Kevin W Dodd, Emily Vogtmann, Qian Xiao, Rashmi Sinha, and Barry I Graubard. 2016. “Coffee Drinking Is Widespread in the United States, but Usual Intake Varies by Key Demographic and Lifestyle Factors.” The Journal of Nutrition 146 (9): 1762–68. https://doi.org/10.3945/jn.116.233940.\n\n\ntracykteal. 2024. “The Great American Coffee Taste Test.” https://github.com/rfordatascience/tidytuesday/blob/master/data/2024/2024-05-14/readme.md."
-  },
-  {
-    "objectID": "presentation.html#coffee-survey",
-    "href": "presentation.html#coffee-survey",
-    "title": "Coffee Drinking Habits",
-    "section": "Coffee Survey",
-    "text": "Coffee Survey\nThe “Great American Coffee Taste Test” data set is compiled of survey results that were filled out by participants of a taste test, hosted in part by a coffee company Cometeer. The survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provides coffees, and individual demographics.\n\nImage credit: Cometeer, cometeer.com."
-  },
-  {
-    "objectID": "presentation.html#the-data",
-    "href": "presentation.html#the-data",
-    "title": "Coffee Drinking Habits and Working Lifestyle",
-    "section": "The Data",
-    "text": "The Data\nVariables: cups, employment_status, number_children, wfh, age\n\n\n# A tibble: 3,343 × 5\n   cups        employment_status  number_children wfh                      age  \n   &lt;chr&gt;       &lt;chr&gt;              &lt;chr&gt;           &lt;chr&gt;                    &lt;chr&gt;\n 1 3           Employed full-time More than 3     I primarily work from h… &lt;18 …\n 2 1           Employed full-time None            I primarily work from h… 25-3…\n 3 2           Employed full-time 2               I primarily work from h… 45-5…\n 4 2           Unemployed         None            I do a mix of both       25-3…\n 5 1           Employed full-time 3               I primarily work in per… 35-4…\n 6 More than 4 Employed full-time 3               I primarily work from h… 45-5…\n 7 2           Unemployed         2               I do a mix of both       35-4…\n 8 2           Employed full-time More than 3     I primarily work from h… 45-5…\n 9 2           Employed full-time None            I primarily work in per… 35-4…\n10 Less than 1 Employed full-time None            I primarily work in per… 45-5…\n# ℹ 3,333 more rows"
-  },
-  {
-    "objectID": "presentation.html#dont-talk-to-me-before-ive-had-my-coffee",
-    "href": "presentation.html#dont-talk-to-me-before-ive-had-my-coffee",
-    "title": "Coffee Drinking Habits:",
-    "section": "Don’t talk to me before I’ve had my coffee!",
-    "text": "Don’t talk to me before I’ve had my coffee!"
-  },
-  {
-    "objectID": "presentation.html#section",
-    "href": "presentation.html#section",
-    "title": "How Much Coffee Would a Coffee Drinker Drink . . .",
-    "section": "",
-    "text": "Mean score ranges from 1 to 3 cups for each group\n\n::: {.column width=“60%”, .column height = “100%, fig-align =”center}\n\n\n\n\n\n\n\n\n\n:::"
-  },
-  {
-    "objectID": "presentation.html#all-of-the-data",
-    "href": "presentation.html#all-of-the-data",
-    "title": "How Much Coffee Would a Coffee Drinker Drink . . .",
-    "section": "All of the Data",
-    "text": "All of the Data\n\nMean score ranges from 1 to 3 cups for each group"
-  },
-  {
-    "objectID": "presentation.html#extremes",
-    "href": "presentation.html#extremes",
-    "title": "Coffee Drinking Habits and Working Conditions",
-    "section": "Extremes",
-    "text": "Extremes"
-  },
-  {
-    "objectID": "presentation.html#all-variables-accounted-for",
-    "href": "presentation.html#all-variables-accounted-for",
-    "title": "Coffee Drinking Habits and Working Lifestyle",
-    "section": "All Variables Accounted For",
-    "text": "All Variables Accounted For\nAverage amount of coffee ranges between 1 and 3 cups"
-  },
-  {
-    "objectID": "presentation.html#how-much-coffee-would-a-coffee-drinker-drink-.-.-.",
-    "href": "presentation.html#how-much-coffee-would-a-coffee-drinker-drink-.-.-.",
-    "title": "Coffee Drinking Habits and Working Lifestyle",
-    "section": "How Much Coffee Would a Coffee Drinker Drink . . .",
-    "text": "How Much Coffee Would a Coffee Drinker Drink . . ."
+    "text": "References"
   },
   {
     "objectID": "presentation.html#coffee-a-habit-ritual-necessity-luxury",
@@ -222,6 +89,27 @@
     "title": "Coffee Drinking Habits and Working Lifestyle",
     "section": "The “Great American Coffee Taste Test” data set",
     "text": "The “Great American Coffee Taste Test” data set\n\nSurvey results filled out by taste test participants, co-hosted by U.S.-based coffee company Cometeer. (tracykteal 2024)\nThe survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provided coffees, and individual demographics.\n\n\nImage credit: Cometeer, cometeer.com (Cometeer Logo Image, n.d.)."
+  },
+  {
+    "objectID": "presentation.html#the-data",
+    "href": "presentation.html#the-data",
+    "title": "Coffee Drinking Habits and Working Lifestyle",
+    "section": "The Data",
+    "text": "The Data\nVariables: cups, employment_status, number_children, wfh, age\n\n\n# A tibble: 3,343 × 5\n   cups        employment_status  number_children wfh                      age  \n   &lt;chr&gt;       &lt;chr&gt;              &lt;chr&gt;           &lt;chr&gt;                    &lt;chr&gt;\n 1 3           Employed full-time More than 3     I primarily work from h… &lt;18 …\n 2 1           Employed full-time None            I primarily work from h… 25-3…\n 3 2           Employed full-time 2               I primarily work from h… 45-5…\n 4 2           Unemployed         None            I do a mix of both       25-3…\n 5 1           Employed full-time 3               I primarily work in per… 35-4…\n 6 More than 4 Employed full-time 3               I primarily work from h… 45-5…\n 7 2           Unemployed         2               I do a mix of both       35-4…\n 8 2           Employed full-time More than 3     I primarily work from h… 45-5…\n 9 2           Employed full-time None            I primarily work in per… 35-4…\n10 Less than 1 Employed full-time None            I primarily work in per… 45-5…\n# ℹ 3,333 more rows"
+  },
+  {
+    "objectID": "presentation.html#how-much-coffee-would-a-coffee-drinker-drink-.-.-.",
+    "href": "presentation.html#how-much-coffee-would-a-coffee-drinker-drink-.-.-.",
+    "title": "Coffee Drinking Habits and Working Lifestyle",
+    "section": "How Much Coffee Would a Coffee Drinker Drink . . .",
+    "text": "How Much Coffee Would a Coffee Drinker Drink . . ."
+  },
+  {
+    "objectID": "presentation.html#all-variables-accounted-for",
+    "href": "presentation.html#all-variables-accounted-for",
+    "title": "Coffee Drinking Habits and Working Lifestyle",
+    "section": "All Variables Accounted For",
+    "text": "All Variables Accounted For\nAverage amount of coffee ranges between 1 and 3 cups"
   },
   {
     "objectID": "presentation.html#the-extremes",
@@ -250,5 +138,19 @@
     "title": "Coffee Drinking Habits and Working Lifestyle",
     "section": "Conclusion",
     "text": "Conclusion\n\nAverage cups of coffee ranges between 1 - 3 cups for each group\nDrinking less than 1 cup of coffee is more common among those less than 24 years old, no kids, and unemployed.\nDrinking more than average is more common among those 45 years old and older, with many kids, and retired.\nFuture work should consider the weight of age on coffee drinking habits or correlation between factors - what truly has a weight on these habits?"
+  },
+  {
+    "objectID": "presentation.html#references",
+    "href": "presentation.html#references",
+    "title": "Coffee Drinking Habits and Working Lifestyle",
+    "section": "References",
+    "text": "References\n\n\n\n\n\n\n\n\nCometeer Logo Image. n.d. cometeer.com.\n\n\nLoftfield, Erikka, Neal D Freedman, Kevin W Dodd, Emily Vogtmann, Qian Xiao, Rashmi Sinha, and Barry I Graubard. 2016. “Coffee Drinking Is Widespread in the United States, but Usual Intake Varies by Key Demographic and Lifestyle Factors.” The Journal of Nutrition 146 (9): 1762–68. https://doi.org/10.3945/jn.116.233940.\n\n\ntracykteal. 2024. “The Great American Coffee Taste Test.” https://github.com/rfordatascience/tidytuesday/blob/master/data/2024/2024-05-14/readme.md."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "This project was developed by Vera Soloview Jackson For INFO 526 - Data Analysis and Visualization at the University of Arizona, taught by Dr. Greg Chism. Vera is in her first year of the Master’s of Science in Data Science program at the University of Arizona."
   }
 ]
