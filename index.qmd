@@ -11,6 +11,8 @@ format:
     code-tools: true
     code-overflow: wrap
     embed-resources: true
+    code-fold: true
+    code-summary: "Show the code"
 editor: visual
 execute:
   warning: false
@@ -305,11 +307,7 @@ Overall, my goal for this question is to highlight a trend between coffee drinki
 
 With the `cups` variable, a pie chart is made to demonstrate the distribution of responses for the entire, cleaned data set. The pie chart is color-coded based on the response to how many cups of coffee one drinks per day, with the percentages of those responses that make up the data set.
 
-Once an overall average is observed, a point plot with error bars ranging from the 10th to 90th percentile was constructed, faceted by the responses to the explanatory variables (`employment_status`, `number_children`, `wfh`, `age`). To obtain the mean and percentiles to be plotted, some calculations had to be conducted:
-
-```{r}
-
-```
+Once an overall average is observed, a point plot with error bars ranging from the 10th to 90th percentile was constructed, faceted by the responses to the explanatory variables (`employment_status`, `number_children`, `wfh`, `age`). To obtain the mean and percentiles to be plotted, some calculations had to be conducted.
 
 The point plot was to best to display the similarity and differences between averages for each group. The percentiles also suggested that certain groups may be more likely to lean either way outside of the average, so to further analyze these, one final plot was constructed.
 
@@ -318,6 +316,8 @@ A diverging bar chart, grouped by explanatory variable and filled for the six po
 ### Analysis
 ```{r, warning=FALSE, fig.width=5.5, fig.align="center"}
 #| label: plot 1
+#| code-fold: true
+#| code-summary: "Show the code"
 
 coffee_survey_count_plot1 %>%  
   mutate(cups = fct_relevel(cups, 
@@ -343,7 +343,8 @@ coffee_survey_count_plot1 %>%
     nudge_x = 0.9,
     show.legend = FALSE) +
   labs(
-    title = "Distrubution of Daily Cups of Coffee \nAmong Responses \n "
+    title = "Plot 1. Distrubution of Daily Cups of Coffee \nAmong Responses \n ",
+    caption = "Source: 'The Great American Coffee Taste Test' Data Set \n Retreived from TidyTuesday 2024"
   ) +
   theme_void() +
   theme(
@@ -357,6 +358,8 @@ coffee_survey_count_plot1 %>%
 
 ```{r, warning=FALSE, fig.width=5.5, fig.align="center"}
 #| label: plot 2
+#| code-fold: true
+#| code-summary: "Show the code"
 
 coffee_survey_stats %>% 
   mutate(explanatory_value = fct_relevel(explanatory_value, 
@@ -394,7 +397,9 @@ coffee_survey_stats %>%
     labels = label_wrap(10)(c("Less than 1", "1", "2", "3", "4", "More than 4"))) +
   labs(
     x = "Number of Cups \n(Error bars range from 10th to 90th percentile)",
-    y = NULL
+    y = NULL,
+    title = "Plot 2. Distrubution of Daily Cups of Coffee \nAmong Explanatory Variables",
+    caption = "Source: 'The Great American Coffee Taste Test' Data Set \n Retreived from TidyTuesday 2024"
   ) +
   theme_minimal() +
   theme(
@@ -410,6 +415,8 @@ coffee_survey_stats %>%
 
 ```{r, warning=FALSE, fig.width=5.5, fig.align="center"}
 #| label: plot 3
+#| code-fold: true
+#| code-summary: "Show the code"
 coffee_survey_percentage %>% 
   ggplot(aes(x = explanatory_value,
              y = percent_answers,
@@ -427,10 +434,11 @@ coffee_survey_percentage %>%
              space = "free",
              labeller = labeller(explanatory = exp.labs)) +
   labs(
-    title = "Responses Outside of Average",
+    title = "Plot 3. Responses Outside of Average",
     x = NULL,
     y = "Percent of Responses",
-    fill = "Number of Cups"
+    fill = "Number of Cups",
+    caption = "Source: 'The Great American Coffee Taste Test' Data Set \n Retreived from TidyTuesday 2024"
   ) +
   coord_flip() +
   scale_y_continuous(labels = scales::percent) +
@@ -454,5 +462,13 @@ coffee_survey_percentage %>%
 
 
 ### Discussion
+
+Across the board, the average numbers of cups of coffee coffee-drinkers typically drink per day is one to three cups, with most groups averaging around 2 cups, as shown in Plot 1 and Plot 2. However, a trend is revealed, especially correlating with number of children and age. The average increases from 1 to 3 cups with increasing age and increasing number of children. The average is also higher for those that are retired or work full-time, compared to those that work part-time, or are students, homemakers, or unemployed. There was no notable difference between those who work from home or in person.
+
+This trend is also revealed if only the percentages for the options outside of the average are looked at, as shown in Plot 3. There is a higher percentage of those younger than 18 years old and among those that do not have children that drink less than 1 cup of coffee a day. For those who drink 4 or more cups of coffee, it is more likely that they are older than 65 years old or have 3 or more children. Similarly, more retired individuals reported drinking 4 or more cups of coffee a day than any other employment type, and those that are unemployed had the highest percentage of individuals drinking less than 1 cup a day.
+
+These trends are not necessarily surprising - those working more with a full-time job or with more children may require more caffeine compared to those with no children and only working part-time. Similarly, older individuals may want more coffee, or have developed an affinity and enjoy multiple cups of coffee more for the taste than caffeine. 
+
+While these trends may be telling of some correlation, none of the explanatory variables are necessarily causal to how many cups of coffee someone drinks per day. Future work should further breakdown these groups, and especially consider the weight of age or correlation between multiple variables. It is important to keep in mind, that the survey respondents are customers of Cometeer, and are not necessarily representative of the entire US or coffee-drinking population.
 
 ## References
