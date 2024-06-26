@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Vera Jackson">
-<meta name="description" content="Project description">
+<meta name="description" content="A data-driven analysis on how much coffee are people drinking, and what lifestyle conditions correlate with this?">
 
-<title>Project Title</title>
+<title>Project Title - Coffee Drinking Habits and Working Lifestyle</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -4755,6 +4755,15 @@ vertical-align: -.125em;
    
   <ul>
   <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#question-what-are-the-correlations-between-coffee-consumption-and-lifestyle" id="toc-question-what-are-the-correlations-between-coffee-consumption-and-lifestyle" class="nav-link" data-scroll-target="#question-what-are-the-correlations-between-coffee-consumption-and-lifestyle">Question: What are the correlations between coffee consumption and lifestyle?*</a>
+  <ul class="collapse">
+  <li><a href="#introduction-1" id="toc-introduction-1" class="nav-link" data-scroll-target="#introduction-1">Introduction</a></li>
+  <li><a href="#approach" id="toc-approach" class="nav-link" data-scroll-target="#approach">Approach</a></li>
+  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
@@ -4763,13 +4772,13 @@ vertical-align: -.125em;
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Project Title</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Coffee Drinking Habits and Working Lifestyle</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 <p class="subtitle lead">INFO 526 - Summer 2024 - Final Project</p>
 </div>
 
 <div>
   <div class="description">
-    Project description
+    A data-driven analysis on how much coffee are people drinking, and what lifestyle conditions correlate with this?
   </div>
 </div>
 
@@ -4802,6 +4811,55 @@ vertical-align: -.125em;
 <section id="abstract" class="level2">
 <h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
 <p>Add project abstract here.</p>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Coffee is one of the most popular drinks in the world, and in the USA alone, 75% of the population has reported drinking coffee, with almost half of Americans drinking coffee daily (Loftfield, et al. 2016). There are many reasons why people drink coffee - for some it is a habit or part of their morning routine, some need the caffeine, and some just like the way it tastes. Studies have shown that demographic factors, such as gender and race, influence how much coffee someone drinks (Loftfield, et al. 2016). However, one’s lifestyle and environment may also have a part to play in this.</p>
+<p>The “Great American Coffee Taste Test” data set is compiled of survey results that were filled out by participants of a taste test, hosted by “world champion barista” James Hoffman and coffee company Cometeer. Cometeer sent 4 unlabelled coffees to over 4,000 customers that would participate in a live taste testing on YouTube while filling out the survey. The survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provides coffees, and individual demographics.</p>
+</section>
+<section id="question-what-are-the-correlations-between-coffee-consumption-and-lifestyle" class="level2">
+<h2 class="anchored" data-anchor-id="question-what-are-the-correlations-between-coffee-consumption-and-lifestyle">Question: What are the correlations between coffee consumption and lifestyle?*</h2>
+<section id="introduction-1" class="level3">
+<h3 class="anchored" data-anchor-id="introduction-1">Introduction</h3>
+<p>To answer this question, we will be looking at the “Great American Coffee Taste Test” data set. .</p>
+<p>The data has a wide range of questions, with 4,042 responses. Rather than looking at demographics such as gender and race, I was curious about how someone’s lifestyle, primarily focused on one’s working habits, impacts how much coffee they drink. For the purpose of this question, we will only be looking at the following variables, with the following options to answer in the survey:</p>
+<ul>
+<li><p><code>cups</code>:</p>
+<ul>
+<li>“<code>Less than 1</code>”, “<code>1</code>”, “<code>2</code>”, “<code>3</code>”, “<code>4</code>”, “<code>More than 4</code>”</li>
+</ul></li>
+<li><p><code>employment_status</code>:</p>
+<ul>
+<li>“<code>Retired</code>”, “<code>Employed full-time</code>”, “<code>Employed part-time</code>”, “<code>Homemaker</code>”, “<code>Student</code>”, “<code>Unemployed</code>”</li>
+</ul></li>
+<li><p><code>number_children</code>:</p>
+<ul>
+<li>“<code>None</code>”, “<code>1</code>”, “<code>2</code>”, “<code>3</code>”, “<code>More than 3</code>”</li>
+</ul></li>
+<li><p><code>wfh</code>:</p>
+<ul>
+<li><code>&quot;I primarily work in person&quot;, &quot;I primarily work from home&quot;, &quot;I do a mix of both&quot;</code></li>
+</ul></li>
+<li><p><code>age</code>:</p>
+<ul>
+<li><code>&quot;&lt;18 years old&quot;, &quot;18-24 years old&quot;, &quot;25-34 years old&quot;, &quot;35-44 years old&quot;, &quot;45-54 years old&quot;, &quot;55-64 years old&quot;, &quot;&gt;65 years old&quot;</code>”</li>
+</ul></li>
+</ul>
+<p>Removing any responses that did not respond to each of these questions, we are working with 3, 343 responses.</p>
+<p>I chose this data set because I was curious about the demographics and preferences of coffee drinkers, both of customers of Cometeer and as a representation of the general North American population. My first question will look at coffee drinking habits (how many cups of coffee are drunken a day) and how they correlate with working and lifestyle situations (whether they work or not, if they work from home or not, and how many children they have). It could be interesting to further analyze that data with why they drink coffee (for the caffeine, or is it for the flavor?) or if that coffee is caffeinated or not, but I want to be careful of not introducing too many variables. Overall, my goal for the first question is to highlight a trend between coffee drinking and lifestyle that could be reflective of the general American population. As for my second question, I am taking a more “marketing” approach, as I will try to determine which type of coffee (in regards to strength, roast, and caffeine-level) is most popular among Cometeer customers, as this information could assist them with product development.</p>
+</section>
+<section id="approach" class="level3">
+<h3 class="anchored" data-anchor-id="approach">Approach</h3>
+</section>
+<section id="analysis" class="level3">
+<h3 class="anchored" data-anchor-id="analysis">Analysis</h3>
+</section>
+<section id="discussion" class="level3">
+<h3 class="anchored" data-anchor-id="discussion">Discussion</h3>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
 
 
 <!-- -->
@@ -5414,13 +5472,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class>
 <div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;Project Title&quot;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;Coffee Drinking Habits and Working Lifestyle&quot;</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> &quot;INFO 526 - Summer 2024 - Final Project&quot;</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> </span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">  - name: &quot;Vera Jackson&quot;</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">    affiliations:</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">      - name: &quot;School of Information, University of Arizona&quot;</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> &quot;Project description&quot;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> &quot;A data-driven analysis on how much coffee are people drinking, and what lifestyle conditions correlate with this?&quot;</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">   html:</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
@@ -5430,11 +5488,58 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">  echo: false</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Abstract</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>Add project abstract here.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> references.bib</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">## Abstract</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>Add project abstract here.</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>Coffee is one of the most popular drinks in the world, and in the USA alone, 75% of the population has reported drinking coffee, with almost half of Americans drinking coffee daily (Loftfield, et al. 2016). There are many reasons why people drink coffee - for some it is a habit or part of their morning routine, some need the caffeine, and some just like the way it tastes. Studies have shown that demographic factors, such as gender and race, influence how much coffee someone drinks (Loftfield, et al. 2016). However, one&#39;s lifestyle and environment may also have a part to play in this.</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>The &quot;Great American Coffee Taste Test&quot; data set is compiled of survey results that were filled out by participants of a taste test, hosted by &quot;world champion barista&quot; James Hoffman and coffee company Cometeer. Cometeer sent 4 unlabelled coffees to over 4,000 customers that would participate in a live taste testing on YouTube while filling out the survey. The survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provides coffees, and individual demographics.</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="fu">## Question: What are the correlations between coffee consumption and lifestyle?\*</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu">### Introduction</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>To answer this question, we will be looking at the &quot;Great American Coffee Taste Test&quot; data set. .</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>The data has a wide range of questions, with 4,042 responses. Rather than looking at demographics such as gender and race, I was curious about how someone&#39;s lifestyle, primarily focused on one&#39;s working habits, impacts how much coffee they drink. For the purpose of this question, we will only be looking at the following variables, with the following options to answer in the survey:</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`cups`</span>:</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>&quot;<span class="in">`Less than 1`</span>&quot;, &quot;<span class="in">`1`</span>&quot;, &quot;<span class="in">`2`</span>&quot;, &quot;<span class="in">`3`</span>&quot;, &quot;<span class="in">`4`</span>&quot;, &quot;<span class="in">`More than 4`</span>&quot;</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`employment_status`</span>:</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>&quot;<span class="in">`Retired`</span>&quot;, &quot;<span class="in">`Employed full-time`</span>&quot;, &quot;<span class="in">`Employed part-time`</span>&quot;, &quot;<span class="in">`Homemaker`</span>&quot;, &quot;<span class="in">`Student`</span>&quot;, &quot;<span class="in">`Unemployed`</span>&quot;</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`number_children`</span>:</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>&quot;<span class="in">`None`</span>&quot;, &quot;<span class="in">`1`</span>&quot;, &quot;<span class="in">`2`</span>&quot;, &quot;<span class="in">`3`</span>&quot;, &quot;<span class="in">`More than 3`</span>&quot;</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`wfh`</span>:</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span><span class="in">`&quot;I primarily work in person&quot;, &quot;I primarily work from home&quot;, &quot;I do a mix of both&quot;`</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`age`</span>:</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span><span class="in">`&quot;&lt;18 years old&quot;, &quot;18-24 years old&quot;, &quot;25-34 years old&quot;, &quot;35-44 years old&quot;, &quot;45-54 years old&quot;, &quot;55-64 years old&quot;, &quot;&gt;65 years old&quot;`</span>&quot;</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>Removing any responses that did not respond to each of these questions, we are working with 3, 343 responses.</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>I chose this data set because I was curious about the demographics and preferences of coffee drinkers, both of customers of Cometeer and as a representation of the general North American population. My first question will look at coffee drinking habits (how many cups of coffee are drunken a day) and how they correlate with working and lifestyle situations (whether they work or not, if they work from home or not, and how many children they have). It could be interesting to further analyze that data with why they drink coffee (for the caffeine, or is it for the flavor?) or if that coffee is caffeinated or not, but I want to be careful of not introducing too many variables. Overall, my goal for the first question is to highlight a trend between coffee drinking and lifestyle that could be reflective of the general American population. As for my second question, I am taking a more &quot;marketing&quot; approach, as I will try to determine which type of coffee (in regards to strength, roast, and caffeine-level) is most popular among Cometeer customers, as this information could assist them with product development.</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="fu">### Approach</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="fu">### Analysis</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="fu">### Discussion</span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="fu">## References</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

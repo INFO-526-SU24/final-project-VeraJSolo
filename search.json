@@ -37,16 +37,37 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Project Title",
+    "title": "Coffee Drinking Habits and Working Lifestyle",
     "section": "",
     "text": "Add project abstract here."
   },
   {
     "objectID": "index.html#abstract",
     "href": "index.html#abstract",
-    "title": "Project Title",
+    "title": "Coffee Drinking Habits and Working Lifestyle",
     "section": "",
     "text": "Add project abstract here."
+  },
+  {
+    "objectID": "index.html#introduction",
+    "href": "index.html#introduction",
+    "title": "Coffee Drinking Habits and Working Lifestyle",
+    "section": "Introduction",
+    "text": "Introduction\nCoffee is one of the most popular drinks in the world, and in the USA alone, 75% of the population has reported drinking coffee, with almost half of Americans drinking coffee daily (Loftfield, et al. 2016). There are many reasons why people drink coffee - for some it is a habit or part of their morning routine, some need the caffeine, and some just like the way it tastes. Studies have shown that demographic factors, such as gender and race, influence how much coffee someone drinks (Loftfield, et al. 2016). However, one’s lifestyle and environment may also have a part to play in this.\nThe “Great American Coffee Taste Test” data set is compiled of survey results that were filled out by participants of a taste test, hosted by “world champion barista” James Hoffman and coffee company Cometeer. Cometeer sent 4 unlabelled coffees to over 4,000 customers that would participate in a live taste testing on YouTube while filling out the survey. The survey includes questions about coffee drinking habits, coffee preferences, individual taste test results for each of the 4 provides coffees, and individual demographics."
+  },
+  {
+    "objectID": "index.html#question-what-are-the-correlations-between-coffee-consumption-and-lifestyle",
+    "href": "index.html#question-what-are-the-correlations-between-coffee-consumption-and-lifestyle",
+    "title": "Coffee Drinking Habits and Working Lifestyle",
+    "section": "Question: What are the correlations between coffee consumption and lifestyle?*",
+    "text": "Question: What are the correlations between coffee consumption and lifestyle?*\n\nIntroduction\nTo answer this question, we will be looking at the “Great American Coffee Taste Test” data set. .\nThe data has a wide range of questions, with 4,042 responses. Rather than looking at demographics such as gender and race, I was curious about how someone’s lifestyle, primarily focused on one’s working habits, impacts how much coffee they drink. For the purpose of this question, we will only be looking at the following variables, with the following options to answer in the survey:\n\ncups:\n\n“Less than 1”, “1”, “2”, “3”, “4”, “More than 4”\n\nemployment_status:\n\n“Retired”, “Employed full-time”, “Employed part-time”, “Homemaker”, “Student”, “Unemployed”\n\nnumber_children:\n\n“None”, “1”, “2”, “3”, “More than 3”\n\nwfh:\n\n\"I primarily work in person\", \"I primarily work from home\", \"I do a mix of both\"\n\nage:\n\n\"&lt;18 years old\", \"18-24 years old\", \"25-34 years old\", \"35-44 years old\", \"45-54 years old\", \"55-64 years old\", \"&gt;65 years old\"”\n\n\nRemoving any responses that did not respond to each of these questions, we are working with 3, 343 responses.\nI chose this data set because I was curious about the demographics and preferences of coffee drinkers, both of customers of Cometeer and as a representation of the general North American population. My first question will look at coffee drinking habits (how many cups of coffee are drunken a day) and how they correlate with working and lifestyle situations (whether they work or not, if they work from home or not, and how many children they have). It could be interesting to further analyze that data with why they drink coffee (for the caffeine, or is it for the flavor?) or if that coffee is caffeinated or not, but I want to be careful of not introducing too many variables. Overall, my goal for the first question is to highlight a trend between coffee drinking and lifestyle that could be reflective of the general American population. As for my second question, I am taking a more “marketing” approach, as I will try to determine which type of coffee (in regards to strength, roast, and caffeine-level) is most popular among Cometeer customers, as this information could assist them with product development.\n\n\nApproach\n\n\nAnalysis\n\n\nDiscussion"
+  },
+  {
+    "objectID": "index.html#references",
+    "href": "index.html#references",
+    "title": "Coffee Drinking Habits and Working Lifestyle",
+    "section": "References",
+    "text": "References"
   },
   {
     "objectID": "presentation.html#coffee-a-habit-ritual-necessity-luxury",
